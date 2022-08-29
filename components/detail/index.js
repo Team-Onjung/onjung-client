@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {
   Button,
   Dimensions,
@@ -13,6 +13,8 @@ import {
 } from 'react-native';
 import {COLOR} from '../../utils/color';
 // import HashTag from './hashtag';
+import HashTag from './hashtag/index';
+import RentDatePicker from './rentPicker';
 
 const Detail = () => {
   const Data = {
@@ -24,12 +26,13 @@ const Detail = () => {
     category: '디지털 / 가전',
     description:
       '깨끗하게 사용해서 거의 새 것 수준입니다. \n집에서친구랑 영화볼 때 유용하게 사용해요 \n특별한 날을 위해 득템해가세요!!',
-    hashtags: '프로젝터, 영화, 빔프로젝터',
+    hashtags: ['프로젝터', '영화', '빔프로젝터'],
     price_for_day: 5000,
     img_url:
       'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT4KbX9ryNVL1pC8iXCLY6lNRAz37Aa7irCYg&usqp=CAU',
     rates: 5.0,
   };
+  const [date, setDate] = useState(3);
 
   const {width} = Dimensions.get('window');
 
@@ -83,10 +86,7 @@ const Detail = () => {
           <Text style={[styles.category, styles.bold]}>{Data.category}</Text>
           <Price />
           <Text style={styles.description}>{Data.description}</Text>
-          {/* <FlatList
-          data={Data.hashtags}
-          renderItem={({item}) => <HashTag item={item} />}
-        /> */}
+          <HashTag item={[...Data.hashtags]} />
         </View>
         <View style={styles.seperator} />
         <View style={[styles.price, {marginVertical: 24}]}>
@@ -110,12 +110,13 @@ const Detail = () => {
               일일 대여가
             </Text>
             <Text style={[styles.bold, {fontSize: 18, color: '#444'}]}>
-              {(Data.price_for_day * 10).toLocaleString('ko-KR')}원
+              {(Data.price_for_day * date).toLocaleString('ko-KR')}원
             </Text>
           </View>
           <Text style={[styles.bold, {fontSize: 11, color: '#9e9e9e'}]}>
             최소 3일 이상 대여해야 해요.
           </Text>
+          <RentDatePicker date={date} setDate={setDate} />
         </View>
         <Pressable
           style={{
