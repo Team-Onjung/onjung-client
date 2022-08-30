@@ -12,7 +12,8 @@ const RentDatePicker = ({date, setDate}) => {
           key={curDate}
           onPress={() => setDate(curDate)}
           style={[styles.box, date === curDate && styles.selected]}>
-          <Text style={[styles.text, date === curDate && {color: COLOR.WHITE}]}>
+          <Text
+            style={[styles.text, date === curDate && {color: COLOR.$white}]}>
             {curDate}일
           </Text>
         </Pressable>
@@ -44,7 +45,7 @@ const styles = StyleSheet.create({
   },
 
   selected: {
-    backgroundColor: COLOR.MAIN,
+    backgroundColor: COLOR.$primary,
   },
 });
 
