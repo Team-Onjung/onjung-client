@@ -75,7 +75,7 @@ const Detail = () => {
             </View>
           </View>
           <View style={styles.rate_box}>
-            <Text style={[styles.bold, {color: COLOR.MAIN}]}>
+            <Text style={[styles.bold, {color: COLOR.$primary}]}>
               ★ {Data.rates.toFixed(1)}
             </Text>
           </View>
@@ -124,11 +124,11 @@ const Detail = () => {
             marginBottom: 16,
             height: 48,
             borderRadius: 8,
-            backgroundColor: COLOR.MAIN,
+            backgroundColor: COLOR.$primary,
             justifyContent: 'center',
             alignItems: 'center',
           }}>
-          <Text style={[styles.bold, {color: COLOR.WHITE, fontSize: 16}]}>
+          <Text style={[styles.bold, {color: COLOR.$white, fontSize: 16}]}>
             채팅하기
           </Text>
         </Pressable>
@@ -169,7 +169,7 @@ const styles = StyleSheet.create({
     width: 56,
     height: 32,
     borderRadius: 5,
-    backgroundColor: COLOR.BACK,
+    backgroundColor: COLOR.$black,
     justifyContent: 'center',
     alignItems: 'center',
   },

@@ -7,13 +7,26 @@ import Main from './../components/main/index';
 import Search from './../components/search/index';
 import Chat from './../components/chat/index';
 import Profile from '../components/profile';
+import {COLOR} from './../utils/color';
 
 const Tab = createBottomTabNavigator();
 
 const MainTab = navigation => {
   return (
-    <Tab.Navigator>
-      <Tab.Screen name="Home" component={Main} options={{title: '찜 목록'}} />
+    <Tab.Navigator
+      screenOptions={{
+        tabBarStyle: {height: 81},
+        tabBarActiveTintColor: COLOR.$primary,
+        tabBarInactiveTintColor: COLOR['$gray-5'],
+        tabBarLabelStyle: {
+          fontWeight: 'bold',
+          lineHeight: 20,
+          letterSpacing: -0.24,
+          fontSize: 11,
+          fontFamily: 'AppleSDGothicNeoM',
+        },
+      }}>
+      <Tab.Screen name="Home" component={Main} options={{title: '정 나눔'}} />
       <Tab.Screen name="Search" component={Search} options={{title: '검색'}} />
       <Tab.Screen
         name="Post"

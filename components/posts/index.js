@@ -1,18 +1,25 @@
+import {useNavigation} from '@react-navigation/native';
 import React from 'react';
 import {Pressable, StyleSheet, Text, View} from 'react-native';
 
-const Post = navigation => {
+const Post = () => {
+  const navigation = useNavigation();
+
   return (
     <View style={styles.block}>
       <Pressable
         style={styles.box}
-        onPress={navigation.navigate('PostAvailable')}>
-        <Text>Post Available</Text>
+        onPress={() =>
+          navigation.navigate('PostAvailable', {title: '물건 등록'})
+        }>
+        <Text style={styles.text}>Post Available</Text>
       </Pressable>
       <Pressable
         style={[styles.box, {marginLeft: 20}]}
-        onPress={navigation.navigate('PostRequest')}>
-        <Text>Post Request</Text>
+        onPress={() =>
+          navigation.navigate('PostAvailable', {title: '물건 요청'})
+        }>
+        <Text style={styles.text}>Post Request</Text>
       </Pressable>
     </View>
   );
@@ -34,6 +41,11 @@ const styles = StyleSheet.create({
     backgroundColor: '#9e9e9e',
     justifyContent: 'center',
     alignItems: 'center',
+  },
+
+  text: {
+    fontSize: 20,
+    fontFamily: 'AppleSDGothicNeoM',
   },
 });
 
