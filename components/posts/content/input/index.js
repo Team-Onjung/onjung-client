@@ -1,20 +1,30 @@
 import React from 'react';
 import {StyleSheet, Text, TextInput, View} from 'react-native';
-import {COLOR} from './../../../utils/color';
+import {COLOR} from '../../../utils/color';
 
-const PostTextInput = ({text, isGray, hasMarginBottom}) => {
+const PostTextInput = ({
+  title,
+  isGray,
+  hasMarginBottom,
+  onChangeText,
+  value,
+}) => {
   return (
     <View style={styles.block}>
       <Text style={[styles.text, isGray ? styles.gray : styles.black]}>
-        {text}
+        {title}
       </Text>
-      <TextInput style={[styles.input, hasMarginBottom && {marginBottom: 8}]} />
+      <TextInput
+        style={[styles.input, hasMarginBottom && styles.margin]}
+        onChangeText={onChangeText}
+        value={value}
+      />
     </View>
   );
 };
 
 const styles = StyleSheet.create({
-  block: {},
+  block: {flex: 1},
 
   text: {
     fontFamily: 'AppleSDGothicNeoB',
@@ -36,6 +46,11 @@ const styles = StyleSheet.create({
     borderBottomWidth: 1,
     borderBottomColor: COLOR['$gray-6'],
     marginHorizontal: 24,
+    height: 48,
+  },
+
+  margin: {
+    marginBottom: 8,
   },
 });
 
