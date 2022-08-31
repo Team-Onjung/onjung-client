@@ -43,7 +43,7 @@ const PostContent = ({navigation, route}) => {
     <KeyboardAvoidingView
       style={styles.keyboardAvoidingView}
       behavior={Platform.select({ios: 'padding'})}>
-      <SafeAreaView>
+      <SafeAreaView style={styles.block}>
         <ImagePicker />
         <PostForm
           form={form}
