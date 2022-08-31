@@ -1,35 +1,48 @@
 import React, {useState} from 'react';
 import {Image, Platform, Pressable, StyleSheet, Text, View} from 'react-native';
-import {launchImageLibrary} from 'react-native-image-picker';
+import {launchCamera, launchImageLibrary} from 'react-native-image-picker';
 import {COLOR} from '../../../../utils/color';
+import ImgModal from './img_modal';
 
 const ImagePicker = () => {
   const [response, setResponse] = useState(null);
-  const onSelectImage = () => {
-    launchImageLibrary(
-      {
-        mediaType: 'photo',
-        maxWidth: 512,
-        maxHeight: 512,
-        includeBase64: Platform.OS === 'android',
-      },
-      res => {
-        if (res.didCancel) {
-          return;
-        }
+  const [modalVisible, setModalVisible] = useState(false);
 
-        setResponse(res);
-      },
-    );
+  const imagePickerOption = {
+    mediaType: 'photo',
+    maxWidth: 768,
+    maxHeight: 768,
+    includeBase64: Platform.OS === 'android',
   };
 
-  console.log(response?.assets[0]?.uri);
+  const onPickImage = res => {
+    if (res.didCancel || !res) {
+      return;
+    }
+
+    setResponse(res);
+  };
+
+  const onLaunchCamera = () => {
+    launchCamera(imagePickerOption, onPickImage);
+  };
+
+  const onLaunchImageLibrary = () => {
+    launchImageLibrary(imagePickerOption, onPickImage);
+  };
+
   return (
     <View style={styles.block}>
-      <Pressable style={styles.box} onPress={onSelectImage}>
+      <Pressable style={styles.box} onPress={() => setModalVisible(true)}>
         <Image style={styles.box} source={{uri: response?.assets[0]?.uri}} />
         <Text>Image Picker</Text>
       </Pressable>
+      <ImgModal
+        visible={modalVisible}
+        onLaunchCamera={onLaunchCamera}
+        onLaunchImageLibrary={onLaunchImageLibrary}
+        onClose={() => setModalVisible(false)}
+      />
     </View>
   );
 };
