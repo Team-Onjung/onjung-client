@@ -3,8 +3,7 @@ import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import MainTab from './MainTab';
 import Post from '../components/posts';
 import {Text, TouchableOpacity, View} from 'react-native';
-import PostAvailable from './../components/posts/post_availabe/index';
-import PostRequest from './../components/posts/post_request/index';
+import PostContent from './../components/posts/content/index';
 
 const Stack = createNativeStackNavigator();
 
@@ -20,8 +19,8 @@ const RootStack = () => {
         component={MainTab}
         options={{headerShown: false}}
       />
-      <Stack.Screen name="PostAvailable" component={PostAvailable} options />
-      <Stack.Screen name="PostRequest" component={PostRequest} />
+      <Stack.Screen name="PostAvailable" component={PostContent} />
+      <Stack.Screen name="PostRequest" component={PostContent} />
     </Stack.Navigator>
   );
 };

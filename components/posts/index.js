@@ -1,12 +1,13 @@
 import {useNavigation} from '@react-navigation/native';
 import React from 'react';
-import {Pressable, StyleSheet, Text, View} from 'react-native';
+import {Pressable, StyleSheet, Text} from 'react-native';
+import {SafeAreaView} from 'react-native-safe-area-context';
 
 const Post = () => {
   const navigation = useNavigation();
 
   return (
-    <View style={styles.block}>
+    <SafeAreaView style={styles.block}>
       <Pressable
         style={styles.box}
         onPress={() =>
@@ -15,13 +16,13 @@ const Post = () => {
         <Text style={styles.text}>Post Available</Text>
       </Pressable>
       <Pressable
-        style={[styles.box, {marginLeft: 20}]}
+        style={[styles.box]}
         onPress={() =>
           navigation.navigate('PostAvailable', {title: '물건 요청'})
         }>
         <Text style={styles.text}>Post Request</Text>
       </Pressable>
-    </View>
+    </SafeAreaView>
   );
 };
 
@@ -31,7 +32,6 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
-    marginHorizontal: 16,
   },
 
   box: {
@@ -41,6 +41,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#9e9e9e',
     justifyContent: 'center',
     alignItems: 'center',
+    marginHorizontal: 16,
   },
 
   text: {
