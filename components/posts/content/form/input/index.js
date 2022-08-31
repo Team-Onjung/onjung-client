@@ -1,6 +1,6 @@
 import React from 'react';
 import {StyleSheet, Text, TextInput, View} from 'react-native';
-import {COLOR} from '../../../../utils/color';
+import {COLOR} from '../../../../../utils/color';
 
 const PostTextInput = ({
   title,
@@ -38,8 +38,8 @@ const styles = StyleSheet.create({
   },
 
   black: {
-    color: '#333d48',
-    fontSize: 17,
+    color: COLOR['$gray-2'],
+    fontSize: 15,
   },
 
   input: {

@@ -16,7 +16,7 @@ export const COLOR = {
   '$gray-7': '#D1D6DB',
   '$gray-8': '#E5E8EB',
   '$gray-9': '#F2F4F6',
-  '$gray-0': '#F9FAFB',
+  '$gray-10': '#F9FAFB',
 
   // MAIN COLOR
   $primary: '#FC7574',
