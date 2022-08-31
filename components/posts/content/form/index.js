@@ -1,5 +1,5 @@
 import React from 'react';
-import PostTextInput from '../../input';
+import PostTextInput from '../../content/input/index';
 
 const PostForm = ({form, setForm, routeName}) => {
   const onFormTextHandler = name => value => {

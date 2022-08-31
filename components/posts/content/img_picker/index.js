@@ -1,9 +1,10 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {Image, Platform, Pressable, StyleSheet, Text, View} from 'react-native';
 import {launchImageLibrary} from 'react-native-image-picker';
 import {COLOR} from '../../../../utils/color';
 
 const ImagePicker = () => {
+  const [response, setResponse] = useState(null);
   const onSelectImage = () => {
     launchImageLibrary(
       {
@@ -13,13 +14,20 @@ const ImagePicker = () => {
         includeBase64: Platform.OS === 'android',
       },
       res => {
-        console.log(res);
+        if (res.didCancel) {
+          return;
+        }
+
+        setResponse(res);
       },
     );
   };
+
+  console.log(response?.assets[0]?.uri);
   return (
     <View style={styles.block}>
       <Pressable style={styles.box} onPress={onSelectImage}>
+        <Image style={styles.box} source={{uri: response?.assets[0]?.uri}} />
         <Text>Image Picker</Text>
       </Pressable>
     </View>
@@ -29,7 +37,6 @@ const ImagePicker = () => {
 const styles = StyleSheet.create({
   block: {
     flex: 1,
-    backgroundColor: COLOR.$black,
   },
 
   box: {

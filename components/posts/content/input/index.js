@@ -1,6 +1,6 @@
 import React from 'react';
 import {StyleSheet, Text, TextInput, View} from 'react-native';
-import {COLOR} from '../../../utils/color';
+import {COLOR} from '../../../../utils/color';
 
 const PostTextInput = ({
   title,
