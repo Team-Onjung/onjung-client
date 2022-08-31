@@ -1,8 +1,9 @@
 import React from 'react';
-import {Modal, Pressable, StyleSheet, Text, View} from 'react-native';
+import {Modal, Platform, Pressable, StyleSheet, Text, View} from 'react-native';
+import {launchImageLibrary} from 'react-native-image-picker';
 import {COLOR} from '../../../../../utils/color';
 
-const ImgModal = ({visible, onClose}) => {
+const ImgModal = ({visible, onClose, onLaunchCamera, onLaunchImageLibrary}) => {
   return (
     <Modal
       visible={visible}
@@ -13,12 +14,20 @@ const ImgModal = ({visible, onClose}) => {
         <View style={styles.whiteBox}>
           <Pressable
             stlye={styles.actionButton}
-            android_ripple={{color: COLOR.$white}}>
+            android_ripple={{color: COLOR.$white}}
+            onPress={() => {
+              onLaunchCamera();
+              onClose();
+            }}>
             <Text style={styles.actionText}>사진 촬영</Text>
           </Pressable>
           <Pressable
             stlye={styles.actionButton}
-            android_ripple={{color: COLOR.$white}}>
+            android_ripple={{color: COLOR.$white}}
+            onPress={() => {
+              onLaunchImageLibrary();
+              onClose();
+            }}>
             <Text style={styles.actionText}>사진 선택</Text>
           </Pressable>
         </View>
