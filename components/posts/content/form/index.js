@@ -24,14 +24,6 @@ const PostForm = ({form, setForm, routeName}) => {
         isGray={false}
         hasMarginBottom
       />
-      <PostTextInput
-        title={routeName === '물건 등록' ? '대여 가능 기간' : '예상 대여 기간'}
-        minDate={form.min_dates}
-        setStartDate={onFormTextHandler('start_date')}
-        setEndDate={onFormTextHandler('end_date')}
-        isGray={false}
-        hasMarginBottom
-      />
 
       <DatePicker
         title={routeName === '물건 등록' ? '대여 가능 기간' : '예상 대여 기간'}

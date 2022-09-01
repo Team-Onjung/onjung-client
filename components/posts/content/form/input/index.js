@@ -24,11 +24,14 @@ const PostTextInput = ({
 };
 
 const styles = StyleSheet.create({
-  block: {flex: 1},
+  block: {
+    flex: 1,
+    marginHorizontal: 20,
+  },
 
   text: {
+    marginLeft: 4,
     fontFamily: 'AppleSDGothicNeoB',
-    marginHorizontal: 20,
     letterSpacing: -0.15,
   },
 
@@ -45,8 +48,8 @@ const styles = StyleSheet.create({
   input: {
     borderBottomWidth: 1,
     borderBottomColor: COLOR['$gray-6'],
-    marginHorizontal: 24,
-    height: 48,
+    height: 12,
+    marginTop: 16,
   },
 
   margin: {
