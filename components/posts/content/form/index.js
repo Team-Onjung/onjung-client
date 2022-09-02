@@ -9,7 +9,7 @@ const PostForm = ({form, setForm, routeName}) => {
   };
 
   return (
-    <>
+    <View style={styles.block}>
       <PostTextInput
         title={'글 제목'}
         value={form.title}
@@ -55,12 +55,12 @@ const PostForm = ({form, setForm, routeName}) => {
         value={form.description}
         isGray={true}
       />
-    </>
+    </View>
   );
 };
 
 const styles = StyleSheet.create({
-  block: {},
+  block: {flex: 1},
 });
 
 export default PostForm;

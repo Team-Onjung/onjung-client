@@ -6,6 +6,7 @@ import {
   Keyboard,
   KeyboardAvoidingView,
   Platform,
+  ScrollView,
 } from 'react-native';
 import {SafeAreaView} from 'react-native-safe-area-context';
 import {COLOR} from '../../../utils/color';
@@ -45,12 +46,14 @@ const PostContent = ({navigation, route}) => {
       style={styles.keyboardAvoidingView}
       behavior={Platform.select({ios: 'padding'})}>
       <SafeAreaView style={styles.block}>
-        <ImagePicker />
-        <PostForm
-          form={form}
-          setForm={setForm}
-          routeName={route.params.title}
-        />
+        <ScrollView>
+          <ImagePicker />
+          <PostForm
+            form={form}
+            setForm={setForm}
+            routeName={route.params.title}
+          />
+        </ScrollView>
       </SafeAreaView>
     </KeyboardAvoidingView>
   );
@@ -72,10 +75,6 @@ const styles = StyleSheet.create({
   block: {
     flex: 1,
     justifyContent: 'center',
-  },
-
-  form: {
-    flex: 1,
   },
 });
 

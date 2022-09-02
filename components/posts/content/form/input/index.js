@@ -41,6 +41,7 @@ const styles = StyleSheet.create({
   },
 
   black: {
+    flex: 1,
     color: COLOR['$gray-2'],
     fontSize: 15,
   },
@@ -48,12 +49,11 @@ const styles = StyleSheet.create({
   input: {
     borderBottomWidth: 1,
     borderBottomColor: COLOR['$gray-6'],
-    height: 12,
-    marginTop: 16,
+    paddingBottom: 0,
   },
 
   margin: {
-    marginBottom: 8,
+    marginBottom: 16,
   },
 });
 

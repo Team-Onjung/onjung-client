@@ -1,7 +1,6 @@
 export const COLOR = {
   // BLACK
   $black: '#222222',
-  $neutralDark: '#454545',
 
   // WHITE
   $white: '#FFF',
@@ -21,4 +20,6 @@ export const COLOR = {
   // MAIN COLOR
   $primary: '#FC7574',
   $secondary: '#FFE9E9',
+  $tertiary: '#FFF3EF',
+  $brown: '#454545',
 };

@@ -1,4 +1,4 @@
-import {format} from 'date-fns';
+import {format, set} from 'date-fns';
 import {ko} from 'date-fns/locale';
 import React, {useState} from 'react';
 import {Pressable, StyleSheet, Text, View} from 'react-native';
@@ -7,64 +7,61 @@ import DatePickerModal from './date_picker_modal';
 import DateTimePicker from 'react-native-modal-datetime-picker';
 
 const DatePicker = ({title, hasMarginBottom}) => {
-  // const [startDate, setStartDate] = useState(new Date());
-  // const [endDate, setEndDate] = useState(new Date());
-  // const [isVisible, setIsVisible] = useState(false);
+  const [startDate, setStartDate] = useState(new Date());
+  const [startVisible, setStartVisible] = useState(false);
+  const onStartConfirm = selectedDate => {
+    setStartVisible(false);
+    setStartDate(selectedDate);
 
-  const [isVisible, setIsVisible] = useState({
-    start: false,
-    end: false,
-  });
-
-  const [dateModal, setDateModal] = useState({
-    start: new Date(),
-    end: new Date(),
-  });
-
-  const onPressDate = name => {
-    setIsVisible({...isVisible, name: [true]});
+    if (endDate < selectedDate) {
+      setEndDate(selectedDate);
+    }
+  };
+  const onStartCancel = () => {
+    setStartVisible(false);
   };
 
-  const onConfirm = ({name, selectedDate}) => {
-    setIsVisible({...isVisible, name: [false]});
-    setDateModal({...dateModal, [name]: selectedDate});
+  const [endDate, setEndDate] = useState(new Date());
+  const [endVisible, setEndVisible] = useState(false);
+  const onEndConfirm = selectedDate => {
+    setEndVisible(false);
+    setEndDate(selectedDate);
   };
-
-  const onCancel = name => {
-    setIsVisible({...isVisible, [name]: false});
+  const onEndCancel = () => {
+    setEndVisible(false);
   };
 
   return (
     <View style={[styles.block, hasMarginBottom && styles.margin]}>
       <Text style={styles.title}>{title}</Text>
       <View style={styles.box}>
-        <Pressable
-          style={styles.date}
-          onPress={() => setIsVisible({...isVisible, ['start']: true})}>
+        <Pressable style={styles.date} onPress={() => setStartVisible(true)}>
           <Text style={styles.date_text}>
-            {format(new Date(dateModal.start), 'yyyy-MM-dd', {locale: ko})}
+            {format(new Date(startDate), 'yyyy-MM-dd', {locale: ko})}
           </Text>
         </Pressable>
         <Text style={[styles.text, styles.marginRight]}>부터</Text>
 
-        <Pressable style={styles.date}>
+        <Pressable style={styles.date} onPress={() => setEndVisible(true)}>
           <Text style={styles.date_text}>
-            {format(new Date(dateModal.end), 'yyyy-MM-dd', {locale: ko})}
+            {format(new Date(endDate), 'yyyy-MM-dd', {locale: ko})}
           </Text>
         </Pressable>
         <Text style={styles.text}>까지</Text>
       </View>
       <DatePickerModal
-        isVisible={isVisible.start}
-        date={dateModal.start}
-        onConfirm={() => onConfirm('start')}
-        onCancel={() => onCancel('start')}
+        isVisible={startVisible}
+        minimumDate={new Date()}
+        date={startDate}
+        onConfirm={onStartConfirm}
+        onCancel={onStartCancel}
       />
       <DatePickerModal
-        isVisible={isVisible.end}
-        date={dateModal.end}
-        onConfirm={() => onConfirm('end')}
-        onCancel={() => onCancel('end')}
+        isVisible={endVisible}
+        minimumDate={startDate}
+        date={endDate}
+        onConfirm={onEndConfirm}
+        onCancel={onEndCancel}
       />
       {/* <DateTimePicker
         isVisible={isVisible}
