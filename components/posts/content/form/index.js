@@ -1,5 +1,7 @@
 import React from 'react';
-import PostTextInput from '../../content/input/index';
+import {StyleSheet, View} from 'react-native';
+import PostTextInput from '../../content/form/input/index';
+import DatePicker from './date_picker';
 
 const PostForm = ({form, setForm, routeName}) => {
   const onFormTextHandler = name => value => {
@@ -7,7 +9,7 @@ const PostForm = ({form, setForm, routeName}) => {
   };
 
   return (
-    <>
+    <View style={styles.block}>
       <PostTextInput
         title={'글 제목'}
         value={form.title}
@@ -22,13 +24,12 @@ const PostForm = ({form, setForm, routeName}) => {
         isGray={false}
         hasMarginBottom
       />
-      <PostTextInput
+
+      <DatePicker
         title={routeName === '물건 등록' ? '대여 가능 기간' : '예상 대여 기간'}
-        value={form.dates}
-        onChangeText={onFormTextHandler('dates')}
-        isGray={false}
         hasMarginBottom
       />
+
       {routeName === '물건 등록' && (
         <>
           <PostTextInput
@@ -54,8 +55,12 @@ const PostForm = ({form, setForm, routeName}) => {
         value={form.description}
         isGray={true}
       />
-    </>
+    </View>
   );
 };
+
+const styles = StyleSheet.create({
+  block: {flex: 1},
+});
 
 export default PostForm;

@@ -1,6 +1,6 @@
 import React from 'react';
 import {StyleSheet, Text, TextInput, View} from 'react-native';
-import {COLOR} from '../../../../utils/color';
+import {COLOR} from '../../../../../utils/color';
 
 const PostTextInput = ({
   title,
@@ -24,11 +24,14 @@ const PostTextInput = ({
 };
 
 const styles = StyleSheet.create({
-  block: {flex: 1},
+  block: {
+    flex: 1,
+    marginHorizontal: 20,
+  },
 
   text: {
+    marginLeft: 4,
     fontFamily: 'AppleSDGothicNeoB',
-    marginHorizontal: 20,
     letterSpacing: -0.15,
   },
 
@@ -38,19 +41,19 @@ const styles = StyleSheet.create({
   },
 
   black: {
-    color: '#333d48',
-    fontSize: 17,
+    flex: 1,
+    color: COLOR['$gray-2'],
+    fontSize: 15,
   },
 
   input: {
     borderBottomWidth: 1,
     borderBottomColor: COLOR['$gray-6'],
-    marginHorizontal: 24,
-    height: 48,
+    paddingBottom: 0,
   },
 
   margin: {
-    marginBottom: 8,
+    marginBottom: 16,
   },
 });
 
