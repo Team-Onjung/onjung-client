@@ -1,10 +1,9 @@
-import {format, set} from 'date-fns';
+import {format} from 'date-fns';
 import {ko} from 'date-fns/locale';
 import React, {useState} from 'react';
 import {Pressable, StyleSheet, Text, View} from 'react-native';
-import {COLOR} from '../../../../../utils/color';
+import {width, height, colors} from '../../../../../utils/globalStyles';
 import DatePickerModal from './date_picker_modal';
-import DateTimePicker from 'react-native-modal-datetime-picker';
 
 const DatePicker = ({title, hasMarginBottom}) => {
   const [startDate, setStartDate] = useState(new Date());
@@ -49,27 +48,23 @@ const DatePicker = ({title, hasMarginBottom}) => {
         </Pressable>
         <Text style={styles.text}>까지</Text>
       </View>
-      <DatePickerModal
-        isVisible={startVisible}
-        minimumDate={new Date()}
-        date={startDate}
-        onConfirm={onStartConfirm}
-        onCancel={onStartCancel}
-      />
-      <DatePickerModal
-        isVisible={endVisible}
-        minimumDate={startDate}
-        date={endDate}
-        onConfirm={onEndConfirm}
-        onCancel={onEndCancel}
-      />
-      {/* <DateTimePicker
-        isVisible={isVisible}
-        mode={'date'}
-        date={new Date()}
-        onConfirm={() => onConfirm}
-        onCancel={onCancel}
-      /> */}
+      {startVisible ? (
+        <DatePickerModal
+          isVisible={startVisible}
+          minimumDate={new Date()}
+          date={startDate}
+          onConfirm={onStartConfirm}
+          onCancel={onStartCancel}
+        />
+      ) : (
+        <DatePickerModal
+          isVisible={endVisible}
+          minimumDate={startDate}
+          date={endDate}
+          onConfirm={onEndConfirm}
+          onCancel={onEndCancel}
+        />
+      )}
     </View>
   );
 };
@@ -85,43 +80,43 @@ const styles = StyleSheet.create({
   },
 
   title: {
-    marginLeft: 4,
-    color: COLOR['$gray-2'],
+    marginLeft: width * 4,
+    color: colors['$gray-2'],
     fontWeight: 'bold',
-    fontSize: 15,
-    letterSpacing: -0.15,
+    fontSize: width * 15,
+    letterSpacing: width * -0.15,
   },
 
   date: {
-    paddingHorizontal: 15,
-    paddingVertical: 10,
-    backgroundColor: COLOR['$gray-6'],
+    paddingHorizontal: width * 15,
+    paddingVertical: width * 10,
+    backgroundColor: colors['$gray-6'],
     borderRadius: 5,
     flex: 1,
-    marginRight: 10,
+    marginRight: width * 10,
     justifyContent: 'center',
   },
 
   date_text: {
-    color: COLOR['$gray-4'],
-    fontSize: 15,
-    letterSpacing: -0.15,
+    color: colors['$gray-4'],
+    fontSize: width * 15,
+    letterSpacing: width * -0.15,
     fontWeight: '600',
   },
 
   text: {
-    color: COLOR['$gray-2'],
-    fontSize: 15,
-    letterSpacing: -0.15,
+    color: colors['$gray-2'],
+    fontSize: width * 15,
+    letterSpacing: width * -0.15,
     fontWeight: 'bold',
   },
 
   marginRight: {
-    marginRight: 10,
+    marginRight: width * 10,
   },
 
   margin: {
-    marginBottom: 8,
+    marginBottom: width * 8,
   },
 });
 

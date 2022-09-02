@@ -9,9 +9,10 @@ import {
   ScrollView,
 } from 'react-native';
 import {SafeAreaView} from 'react-native-safe-area-context';
-import {COLOR} from '../../../utils/color';
+import {colors} from '../../../utils/globalStyles';
 import PostForm from './form';
 import ImagePicker from './img_picker';
+import {height, width} from './../../../utils/globalStyles';
 
 const PostContent = ({navigation, route}) => {
   const [form, setForm] = useState({
@@ -61,11 +62,10 @@ const PostContent = ({navigation, route}) => {
 
 const styles = StyleSheet.create({
   complete: {
-    color: COLOR.$primary,
+    color: colors.$primary,
     fontWeight: 'bold',
-    letterSpacing: -0.24,
-    lineHeight: 20,
-    fontSize: 17,
+    letterSpacing: width * -0.24,
+    fontSize: width * 17,
   },
 
   keyboardAvoidingView: {

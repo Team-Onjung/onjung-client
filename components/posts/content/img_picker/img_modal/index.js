@@ -1,7 +1,7 @@
 import React from 'react';
 import {Modal, Platform, Pressable, StyleSheet, Text, View} from 'react-native';
 import {launchImageLibrary} from 'react-native-image-picker';
-import {COLOR} from '../../../../../utils/color';
+import {width, height, colors} from '../../../../../utils/globalStyles';
 
 const ImgModal = ({visible, onClose, onLaunchCamera, onLaunchImageLibrary}) => {
   return (
@@ -14,21 +14,21 @@ const ImgModal = ({visible, onClose, onLaunchCamera, onLaunchImageLibrary}) => {
         <View style={styles.whiteBox}>
           <Pressable
             stlye={styles.actionButton}
-            android_ripple={{color: COLOR.$white}}
+            android_ripple={{color: colors.$white}}
             onPress={() => {
               onLaunchCamera();
               onClose();
             }}>
-            <Text style={styles.actionText}>사진 촬영</Text>
+            <Text style={styles.text}>사진 촬영</Text>
           </Pressable>
           <Pressable
             stlye={styles.actionButton}
-            android_ripple={{color: COLOR.$white}}
+            android_ripple={{color: colors.$white}}
             onPress={() => {
               onLaunchImageLibrary();
               onClose();
             }}>
-            <Text style={styles.actionText}>사진 선택</Text>
+            <Text style={styles.text}>사진 선택</Text>
           </Pressable>
         </View>
       </Pressable>
@@ -44,21 +44,22 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   whiteBox: {
-    width: 300,
+    width: width * 300,
     backgroundColor: 'white',
     borderRadius: 4,
     elevation: 2,
   },
   actionButton: {
-    padding: 16,
+    padding: width * 16,
     flexDirection: 'row',
     alignItems: 'center',
   },
   icon: {
-    marginRight: 8,
+    marginRight: width * 8,
   },
   text: {
-    fontSize: 16,
+    fontSize: width * 17,
+    color: colors['$gray-4'],
   },
 });
 

@@ -1,7 +1,7 @@
 import React from 'react';
 import {StyleSheet, View} from 'react-native';
-import PostTextInput from '../../content/form/input/index';
-import DatePicker from './date_picker';
+import DatePicker from './date_picker/index';
+import PostTextInput from './input/index';
 
 const PostForm = ({form, setForm, routeName}) => {
   const onFormTextHandler = name => value => {
