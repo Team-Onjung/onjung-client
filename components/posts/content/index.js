@@ -9,10 +9,9 @@ import {
   ScrollView,
 } from 'react-native';
 import {SafeAreaView} from 'react-native-safe-area-context';
-import {colors} from '../../../utils/globalStyles';
 import PostForm from './form';
 import ImagePicker from './img_picker';
-import {height, width} from './../../../utils/globalStyles';
+import {height, width, colors} from './../../../utils/globalStyles';
 
 const PostContent = ({navigation, route}) => {
   const [form, setForm] = useState({
@@ -23,6 +22,7 @@ const PostContent = ({navigation, route}) => {
     end_date: '',
     min_dates: '',
     price: '',
+    deposit: '',
     description: '',
   });
 
@@ -62,13 +62,14 @@ const PostContent = ({navigation, route}) => {
 
 const styles = StyleSheet.create({
   complete: {
-    color: colors.$primary,
+    color: colors.$coral - 4,
     fontWeight: 'bold',
     letterSpacing: width * -0.24,
     fontSize: width * 17,
   },
 
   keyboardAvoidingView: {
+    backgroundColor: colors.$white,
     flex: 1,
   },
 

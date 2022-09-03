@@ -14,8 +14,7 @@ const RootStack = () => {
       initialRouteName="Home"
       screenOptions={{
         headerTitleStyle: {
-          // fontSize: width * 17로 했더니 '완료' 버튼이랑 크기 차이가 발생함
-          fontSize: width * 18,
+          fontSize: width * 17,
           fontWeight: 'bold',
         },
       }}>

@@ -2,8 +2,9 @@ import {format} from 'date-fns';
 import {ko} from 'date-fns/locale';
 import React, {useState} from 'react';
 import {Pressable, StyleSheet, Text, View} from 'react-native';
-import {width, height, colors} from '../../../../../utils/globalStyles';
+import {width, height, colors, fonts} from '../../../../../utils/globalStyles';
 import DatePickerModal from './date_picker_modal';
+import CustomPressable from '../custom_pressable';
 
 const DatePicker = ({title, hasMarginBottom}) => {
   const [startDate, setStartDate] = useState(new Date());
@@ -12,6 +13,7 @@ const DatePicker = ({title, hasMarginBottom}) => {
     setStartVisible(false);
     setStartDate(selectedDate);
 
+    // endDate가 시작일로 선택한 날보다 앞에 있으면 시작일과 종료일 동기화
     if (endDate < selectedDate) {
       setEndDate(selectedDate);
     }
@@ -31,23 +33,25 @@ const DatePicker = ({title, hasMarginBottom}) => {
   };
 
   return (
-    <View style={[styles.block, hasMarginBottom && styles.margin]}>
-      <Text style={styles.title}>{title}</Text>
+    <View style={styles.block}>
+      <Text style={[styles.title, {...fonts.H5}, {marginBottom: width * 12}]}>
+        {title}
+      </Text>
       <View style={styles.box}>
-        <Pressable style={styles.date} onPress={() => setStartVisible(true)}>
-          <Text style={styles.date_text}>
-            {format(new Date(startDate), 'yyyy-MM-dd', {locale: ko})}
-          </Text>
-        </Pressable>
-        <Text style={[styles.text, styles.marginRight]}>부터</Text>
+        {/* 대여 시작 가능일 선택 */}
+        <CustomPressable onPress={() => setStartVisible(true)}>
+          {format(new Date(startDate), 'yyyy-MM-dd', {locale: ko})}
+        </CustomPressable>
 
-        <Pressable style={styles.date} onPress={() => setEndVisible(true)}>
-          <Text style={styles.date_text}>
-            {format(new Date(endDate), 'yyyy-MM-dd', {locale: ko})}
-          </Text>
-        </Pressable>
-        <Text style={styles.text}>까지</Text>
+        <Text style={{marginHorizontal: width * 8}}>~</Text>
+
+        {/* 대여 종료일 선택 */}
+        <CustomPressable onPress={() => setEndVisible(true)}>
+          {format(new Date(startDate), 'yyyy-MM-dd', {locale: ko})}
+        </CustomPressable>
       </View>
+
+      {/* visible 상태에 따른 시작일 및 종료일 모달창 띄우기 */}
       {startVisible ? (
         <DatePickerModal
           isVisible={startVisible}
@@ -70,53 +74,23 @@ const DatePicker = ({title, hasMarginBottom}) => {
 };
 
 const styles = StyleSheet.create({
-  block: {flex: 1, marginHorizontal: 20},
+  block: {
+    marginHorizontal: width * 24,
+    paddingVertical: width * 24,
+    borderBottomColor: colors['$gray-6'],
+    borderBottomWidth: 0.5,
+  },
 
   box: {
-    flex: 1,
     flexDirection: 'row',
-    justifyContent: 'space-between',
+    justifyContent: 'flex-start',
     alignItems: 'center',
   },
 
   title: {
-    marginLeft: width * 4,
-    color: colors['$gray-2'],
-    fontWeight: 'bold',
-    fontSize: width * 15,
-    letterSpacing: width * -0.15,
-  },
-
-  date: {
-    paddingHorizontal: width * 15,
-    paddingVertical: width * 10,
-    backgroundColor: colors['$gray-6'],
-    borderRadius: 5,
-    flex: 1,
-    marginRight: width * 10,
-    justifyContent: 'center',
-  },
-
-  date_text: {
-    color: colors['$gray-4'],
-    fontSize: width * 15,
-    letterSpacing: width * -0.15,
-    fontWeight: '600',
-  },
-
-  text: {
     color: colors['$gray-2'],
     fontSize: width * 15,
     letterSpacing: width * -0.15,
-    fontWeight: 'bold',
-  },
-
-  marginRight: {
-    marginRight: width * 10,
-  },
-
-  margin: {
-    marginBottom: width * 8,
   },
 });
 

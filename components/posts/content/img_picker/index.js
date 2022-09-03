@@ -49,15 +49,15 @@ const ImagePicker = () => {
 const styles = StyleSheet.create({
   block: {
     flex: 1,
-    paddingTop: width * 16,
-    paddingHorizontal: width * 16,
+    paddingVertical: width * 24,
+    paddingHorizontal: width * 24,
   },
 
   box: {
     width: width * 62,
     aspectRatio: 1,
     borderRadius: 10,
-    backgroundColor: colors['$gray-6'],
+    backgroundColor: colors['$coral-1'],
   },
 
   img: {
