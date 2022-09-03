@@ -7,7 +7,7 @@ import Main from './../components/main/index';
 import Search from './../components/search/index';
 import Chat from './../components/chat/index';
 import Profile from '../components/profile';
-import {COLOR} from './../utils/color';
+import {colors, width} from './../utils/globalStyles';
 
 const Tab = createBottomTabNavigator();
 
@@ -15,14 +15,14 @@ const MainTab = navigation => {
   return (
     <Tab.Navigator
       screenOptions={{
-        tabBarStyle: {height: 81},
-        tabBarActiveTintColor: COLOR.$primary,
-        tabBarInactiveTintColor: COLOR['$gray-5'],
+        tabBarStyle: {height: 81, backgroundColor: colors.$white},
+        tabBarActiveTintColor: colors.$primary,
+        tabBarInactiveTintColor: colors['$gray-5'],
         tabBarLabelStyle: {
           fontWeight: 'bold',
-          lineHeight: 20,
-          letterSpacing: -0.24,
-          fontSize: 11,
+          lineHeight: width * 20,
+          letterSpacing: width * -0.24,
+          fontSize: width * 11,
           fontFamily: 'AppleSDGothicNeoM',
         },
       }}>

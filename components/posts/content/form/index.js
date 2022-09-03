@@ -1,7 +1,9 @@
 import React from 'react';
-import {StyleSheet, View} from 'react-native';
-import PostTextInput from '../../content/form/input/index';
-import DatePicker from './date_picker';
+import {StyleSheet, Text, View} from 'react-native';
+import DatePicker from './date_picker/index';
+import PostTextInput from './input/index';
+import CustomPressable from './custom_pressable';
+import SelectBox from './select_box';
 
 const PostForm = ({form, setForm, routeName}) => {
   const onFormTextHandler = name => value => {
@@ -14,38 +16,41 @@ const PostForm = ({form, setForm, routeName}) => {
         title={'글 제목'}
         value={form.title}
         onChangeText={onFormTextHandler('title')}
-        isGray={true}
-        hasMarginBottom
       />
-      <PostTextInput
-        title={'카테고리 선택'}
+
+      <SelectBox
+        title="카테고리 선택"
+        justifyContent="space-between"
         value={form.category}
-        onChangeText={onFormTextHandler('category')}
-        isGray={false}
-        hasMarginBottom
-      />
+        onChangeText={onFormTextHandler('category')}>
+        <Text>+</Text>
+      </SelectBox>
 
       <DatePicker
         title={routeName === '물건 등록' ? '대여 가능 기간' : '예상 대여 기간'}
-        hasMarginBottom
       />
 
       {routeName === '물건 등록' && (
         <>
-          <PostTextInput
-            title={'최소 대여일'}
-            value={form.min_dates}
-            onChangeText={onFormTextHandler('min_dates')}
-            isGray={false}
-            hasMarginBottom
-          />
+          <SelectBox
+            title="최소 대여일"
+            justifyContent="flex-start"
+            hasMarginRight>
+            <CustomPressable onPress={() => console.log('customPressable')}>
+              hi
+            </CustomPressable>
+          </SelectBox>
 
           <PostTextInput
             title={'\u{20A9} 일당 가격'}
             value={form.price}
             onChangeText={onFormTextHandler('price')}
-            isGray={true}
-            hasMarginBottom
+          />
+
+          <PostTextInput
+            title={'\u{20A9} 보증금 제시'}
+            value={form.deposit}
+            onChangeText={onFormTextHandler('deposit')}
           />
         </>
       )}
@@ -53,7 +58,6 @@ const PostForm = ({form, setForm, routeName}) => {
         title={'내용'}
         onChangeText={onFormTextHandler('description')}
         value={form.description}
-        isGray={true}
       />
     </View>
   );

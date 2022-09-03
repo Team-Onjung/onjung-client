@@ -4,6 +4,7 @@ import MainTab from './MainTab';
 import Post from '../components/posts';
 import {Text, TouchableOpacity, View} from 'react-native';
 import PostContent from './../components/posts/content/index';
+import {width} from '../utils/globalStyles';
 
 const Stack = createNativeStackNavigator();
 
@@ -12,7 +13,10 @@ const RootStack = () => {
     <Stack.Navigator
       initialRouteName="Home"
       screenOptions={{
-        headerTitleStyle: {fontSize: 17, fontWeight: 'bold'},
+        headerTitleStyle: {
+          fontSize: width * 17,
+          fontWeight: 'bold',
+        },
       }}>
       <Stack.Screen
         name="MainTab"

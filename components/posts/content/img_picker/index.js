@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import {Image, Platform, Pressable, StyleSheet, Text, View} from 'react-native';
 import {launchCamera, launchImageLibrary} from 'react-native-image-picker';
-import {COLOR} from '../../../../utils/color';
+import {width, height, colors} from '../../../../utils/globalStyles';
 import ImgModal from './img_modal';
 
 const ImagePicker = () => {
@@ -35,7 +35,6 @@ const ImagePicker = () => {
     <View style={styles.block}>
       <Pressable style={styles.box} onPress={() => setModalVisible(true)}>
         <Image style={styles.box} source={{uri: response?.assets[0]?.uri}} />
-        <Text>Image Picker</Text>
       </Pressable>
       <ImgModal
         visible={modalVisible}
@@ -50,12 +49,15 @@ const ImagePicker = () => {
 const styles = StyleSheet.create({
   block: {
     flex: 1,
+    paddingVertical: width * 24,
+    paddingHorizontal: width * 24,
   },
 
   box: {
-    width: 62,
+    width: width * 62,
     aspectRatio: 1,
     borderRadius: 10,
+    backgroundColor: colors['$coral-1'],
   },
 
   img: {

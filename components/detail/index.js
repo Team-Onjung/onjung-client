@@ -11,7 +11,7 @@ import {
   Text,
   View,
 } from 'react-native';
-import {COLOR} from '../../utils/color';
+import {colors} from '../../utils/globalStyles';
 // import HashTag from './hashtag';
 import HashTag from './hashtag/index';
 import RentDatePicker from './rentPicker';
@@ -75,7 +75,7 @@ const Detail = () => {
             </View>
           </View>
           <View style={styles.rate_box}>
-            <Text style={[styles.bold, {color: COLOR.$primary}]}>
+            <Text style={[styles.bold, {color: colors.$primary}]}>
               ★ {Data.rates.toFixed(1)}
             </Text>
           </View>
@@ -124,11 +124,11 @@ const Detail = () => {
             marginBottom: 16,
             height: 48,
             borderRadius: 8,
-            backgroundColor: COLOR.$primary,
+            backgroundColor: colors.$primary,
             justifyContent: 'center',
             alignItems: 'center',
           }}>
-          <Text style={[styles.bold, {color: COLOR.$white, fontSize: 16}]}>
+          <Text style={[styles.bold, {color: colors.$white, fontSize: 16}]}>
             채팅하기
           </Text>
         </Pressable>
@@ -169,7 +169,7 @@ const styles = StyleSheet.create({
     width: 56,
     height: 32,
     borderRadius: 5,
-    backgroundColor: COLOR.$black,
+    backgroundColor: colors.$black,
     justifyContent: 'center',
     alignItems: 'center',
   },

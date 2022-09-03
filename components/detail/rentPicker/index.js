@@ -1,6 +1,6 @@
 import React from 'react';
 import {Pressable, StyleSheet, Text, View} from 'react-native';
-import {COLOR} from './../../../utils/color';
+import {colors} from './../../../utils/globalStyles';
 
 const RentDatePicker = ({date, setDate}) => {
   const dates = [3, 5, 10, 15, 30];
@@ -13,7 +13,7 @@ const RentDatePicker = ({date, setDate}) => {
           onPress={() => setDate(curDate)}
           style={[styles.box, date === curDate && styles.selected]}>
           <Text
-            style={[styles.text, date === curDate && {color: COLOR.$white}]}>
+            style={[styles.text, date === curDate && {color: colors.$white}]}>
             {curDate}일
           </Text>
         </Pressable>
@@ -45,7 +45,7 @@ const styles = StyleSheet.create({
   },
 
   selected: {
-    backgroundColor: COLOR.$primary,
+    backgroundColor: colors.$primary,
   },
 });
 
