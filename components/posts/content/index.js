@@ -12,10 +12,11 @@ import {SafeAreaView} from 'react-native-safe-area-context';
 import PostForm from './form';
 import ImagePicker from './img_picker';
 import {height, width, colors} from './../../../utils/globalStyles';
+import ArrowLeft from '../../../assets/icons/icon-arrow-left.svg';
 
 const PostContent = ({navigation, route}) => {
   const [form, setForm] = useState({
-    img: '',
+    img: [],
     title: '',
     category: '',
     start_date: '',
@@ -33,6 +34,11 @@ const PostContent = ({navigation, route}) => {
 
   useLayoutEffect(() => {
     navigation.setOptions({
+      headerLeft: () => (
+        <Pressable onPress={() => navigation.pop()}>
+          <ArrowLeft />
+        </Pressable>
+      ),
       title: `${route.params.title}`,
       headerRight: () => (
         <Pressable onPress={() => onSubmit()}>
@@ -48,7 +54,7 @@ const PostContent = ({navigation, route}) => {
       behavior={Platform.select({ios: 'padding'})}>
       <SafeAreaView style={styles.block}>
         <ScrollView>
-          <ImagePicker />
+          <ImagePicker img={form.img} setForm={setForm} />
           <PostForm
             form={form}
             setForm={setForm}

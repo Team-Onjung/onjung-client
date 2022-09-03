@@ -47,7 +47,7 @@ const DatePicker = ({title, hasMarginBottom}) => {
 
         {/* 대여 종료일 선택 */}
         <CustomPressable onPress={() => setEndVisible(true)}>
-          {format(new Date(startDate), 'yyyy-MM-dd', {locale: ko})}
+          {format(new Date(endDate), 'yyyy-MM-dd', {locale: ko})}
         </CustomPressable>
       </View>
 

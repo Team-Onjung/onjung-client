@@ -1,12 +1,13 @@
 import React from 'react';
 import {Pressable, StyleSheet, Text} from 'react-native';
 import {colors, fonts, width} from '../../../../../utils/globalStyles';
+import DropIcon from '../../../../../assets/icons/icon-drop-down.svg';
 
 const CustomPressable = ({children, onPress}) => {
   return (
     <Pressable style={styles.block} onPress={onPress}>
       <Text style={styles.text}>{children}</Text>
-      <Text>+</Text>
+      <DropIcon width={16} height={16} />
     </Pressable>
   );
 };
@@ -15,10 +16,11 @@ const styles = StyleSheet.create({
   block: {
     paddingHorizontal: width * 8,
     paddingVertical: width * 5,
-    backgroundColor: colors['$coral-1'],
+    backgroundColor: colors['$gray-9'],
     borderRadius: 5,
     flexDirection: 'row',
     justifyContent: 'center',
+    alignItems: 'center',
   },
 
   textBox: {
