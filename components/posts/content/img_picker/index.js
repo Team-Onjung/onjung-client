@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import {Image, Platform, Pressable, StyleSheet, Text, View} from 'react-native';
 import {launchCamera, launchImageLibrary} from 'react-native-image-picker';
+import CameraIcon from '../../../../assets/icons/icon-camera.svg';
 import {width, height, colors} from '../../../../utils/globalStyles';
 import ImgModal from './img_modal';
 
@@ -34,6 +35,7 @@ const ImagePicker = () => {
   return (
     <View style={styles.block}>
       <Pressable style={styles.box} onPress={() => setModalVisible(true)}>
+        {/* <CameraIcon width={160} height={60} /> */}
         <Image style={styles.box} source={{uri: response?.assets[0]?.uri}} />
       </Pressable>
       <ImgModal

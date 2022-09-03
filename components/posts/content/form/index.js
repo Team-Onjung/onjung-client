@@ -1,7 +1,7 @@
 import React from 'react';
 import {StyleSheet, Text, View} from 'react-native';
-import DatePicker from './date_picker/index';
-import PostTextInput from './input/index';
+import DatePicker from './date_picker';
+import PostTextInput from './input';
 import CustomPressable from './custom_pressable';
 import SelectBox from './select_box';
 
@@ -54,10 +54,13 @@ const PostForm = ({form, setForm, routeName}) => {
           />
         </>
       )}
+
       <PostTextInput
         title={'내용'}
         onChangeText={onFormTextHandler('description')}
         value={form.description}
+        multiline
+        content
       />
     </View>
   );

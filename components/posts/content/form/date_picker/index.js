@@ -1,8 +1,8 @@
 import {format} from 'date-fns';
 import {ko} from 'date-fns/locale';
 import React, {useState} from 'react';
-import {Pressable, StyleSheet, Text, View} from 'react-native';
-import {width, height, colors, fonts} from '../../../../../utils/globalStyles';
+import {StyleSheet, Text, View} from 'react-native';
+import {width, colors, fonts} from '../../../../../utils/globalStyles';
 import DatePickerModal from './date_picker_modal';
 import CustomPressable from '../custom_pressable';
 

@@ -1,11 +1,17 @@
 import {Dimensions} from 'react-native';
 
 export const colors = {
-  // BLACK
-  $black: '#222222',
+  // Primary COLOR
+  '$coral-5': '#F05655',
+  '$coral-4': '#FC7574',
+  '$coral-3': '#FFCCCC',
+  '$coral-2': '#FFE9E9',
+  '$coral-1': '#FFF3EF',
 
-  // WHITE
+  // Secondary COLOR
+  $black: '#222222',
   $white: '#FFF',
+  $brown: '#454545',
 
   // GRAY (Darker to Lighter)
   '$gray-1': '#191F28',
@@ -18,13 +24,6 @@ export const colors = {
   '$gray-8': '#E5E8EB',
   '$gray-9': '#F2F4F6',
   '$gray-10': '#F9FAFB',
-
-  // Primary COLOR
-  '$coral-4': '#F05655',
-  '$coral-3': '#FC7574',
-  '$coral-2': '#FFCCCC',
-  '$coral-1': '#FFF3EF',
-  $brown: '#454545',
 };
 
 export const basicDimensions = {
@@ -41,12 +40,44 @@ export const width =
   (Dimensions.get('screen').width * (1 / basicDimensions.width)).toFixed(2);
 
 export const fonts = {
-  H1: {fontFamily: 'AppleSDGothicNeoB', fontSize: width * 23},
-  H2: {fontFamily: 'AppleSDGothicNeoB', fontSize: width * 21},
-  H3: {fontFamily: 'AppleSDGothicNeoB', fontSize: width * 19},
-  H4: {fontFamily: 'AppleSDGothicNeoB', fontSize: width * 17},
-  H5: {fontFamily: 'AppleSDGothicNeoB', fontSize: width * 15},
-  H6: {fontFamily: 'AppleSDGothicNeoB', fontSize: width * 13},
-  H7: {fontFamily: 'AppleSDGothicNeoB', fontSize: width * 12},
-  H8: {fontFamily: 'AppleSDGothicNeoB', fontSize: width * 11},
+  H1: {
+    fontFamily: 'AppleSDGothicNeoB',
+    fontSize: width * 23,
+    color: colors['$gray-2'],
+  },
+  H2: {
+    fontFamily: 'AppleSDGothicNeoB',
+    fontSize: width * 21,
+    color: colors['$gray-2'],
+  },
+  H3: {
+    fontFamily: 'AppleSDGothicNeoSB',
+    fontSize: width * 19,
+    color: colors['$gray-3'],
+  },
+  H4: {
+    fontFamily: 'AppleSDGothicNeoSB',
+    fontSize: width * 17,
+    color: colors['$gray-3'],
+  },
+  H5: {
+    fontFamily: 'AppleSDGothicNeoSB',
+    fontSize: width * 15,
+    color: colors['$gray-3'],
+  },
+  H6: {
+    fontFamily: 'AppleSDGothicNeoR',
+    fontSize: width * 13,
+    color: colors['$gray-4'],
+  },
+  H7: {
+    fontFamily: 'AppleSDGothicNeoR',
+    fontSize: width * 12,
+    color: colors['$gray-4'],
+  },
+  H8: {
+    fontFamily: 'AppleSDGothicNeoR',
+    fontSize: width * 11,
+    color: colors['$gray-4'],
+  },
 };

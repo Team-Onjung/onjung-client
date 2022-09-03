@@ -1,13 +1,11 @@
 import React from 'react';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
-import Detail from './../components/detail/index';
 import Post from '../components/posts';
-import {Text, TouchableOpacity} from 'react-native';
 import Main from './../components/main/index';
 import Search from './../components/search/index';
 import Chat from './../components/chat/index';
 import Profile from '../components/profile';
-import {colors, width} from './../utils/globalStyles';
+import {colors, height, width} from './../utils/globalStyles';
 
 const Tab = createBottomTabNavigator();
 
@@ -15,8 +13,8 @@ const MainTab = navigation => {
   return (
     <Tab.Navigator
       screenOptions={{
-        tabBarStyle: {height: 81, backgroundColor: colors.$white},
-        tabBarActiveTintColor: colors.$primary,
+        tabBarStyle: {height: height * 88, backgroundColor: colors.$white},
+        tabBarActiveTintColor: colors['$coral-3'],
         tabBarInactiveTintColor: colors['$gray-5'],
         tabBarLabelStyle: {
           fontWeight: 'bold',

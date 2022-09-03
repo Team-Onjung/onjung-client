@@ -62,7 +62,7 @@ const PostContent = ({navigation, route}) => {
 
 const styles = StyleSheet.create({
   complete: {
-    color: colors.$coral - 4,
+    color: colors['$coral-4'],
     fontWeight: 'bold',
     letterSpacing: width * -0.24,
     fontSize: width * 17,
