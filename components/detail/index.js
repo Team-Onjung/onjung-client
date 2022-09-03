@@ -1,8 +1,6 @@
 import React, {useState} from 'react';
 import {
-  Button,
   Dimensions,
-  FlatList,
   Image,
   Pressable,
   ScrollView,
@@ -11,10 +9,10 @@ import {
   Text,
   View,
 } from 'react-native';
-import {colors} from '../../utils/globalStyles';
 // import HashTag from './hashtag';
-import HashTag from './hashtag/index';
+import HashTag from './hashtag';
 import RentDatePicker from './rentPicker';
+import {colors} from '../../utils/globalStyles';
 
 const Detail = () => {
   const Data = {

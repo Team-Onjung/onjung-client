@@ -5,6 +5,7 @@ import Post from '../components/posts';
 import {Text, TouchableOpacity, View} from 'react-native';
 import PostContent from './../components/posts/content/index';
 import {width} from '../utils/globalStyles';
+import {colors} from './../utils/globalStyles';
 
 const Stack = createNativeStackNavigator();
 
@@ -16,15 +17,26 @@ const RootStack = () => {
         headerTitleStyle: {
           fontSize: width * 17,
           fontWeight: 'bold',
+          color: colors['$gray-2'],
         },
       }}>
       <Stack.Screen
         name="MainTab"
         component={MainTab}
-        options={{headerShown: false}}
+        options={{headerShown: false, headerTitleAlign: 'center'}}
       />
-      <Stack.Screen name="PostAvailable" component={PostContent} />
-      <Stack.Screen name="PostRequest" component={PostContent} />
+      <Stack.Screen
+        name="PostAvailable"
+        component={PostContent}
+        options={{
+          headerTitleAlign: 'center',
+        }}
+      />
+      <Stack.Screen
+        name="PostRequest"
+        component={PostContent}
+        options={{headerTitleAlign: 'center'}}
+      />
     </Stack.Navigator>
   );
 };

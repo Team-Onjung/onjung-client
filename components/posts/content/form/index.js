@@ -1,9 +1,10 @@
 import React from 'react';
 import {StyleSheet, Text, View} from 'react-native';
-import DatePicker from './date_picker/index';
-import PostTextInput from './input/index';
+import DatePicker from './date_picker';
+import PostTextInput from './input';
 import CustomPressable from './custom_pressable';
 import SelectBox from './select_box';
+import ArrowRight from '../../../../assets/icons/icon-arrow-right.svg';
 
 const PostForm = ({form, setForm, routeName}) => {
   const onFormTextHandler = name => value => {
@@ -23,7 +24,7 @@ const PostForm = ({form, setForm, routeName}) => {
         justifyContent="space-between"
         value={form.category}
         onChangeText={onFormTextHandler('category')}>
-        <Text>+</Text>
+        <ArrowRight width={21} height={21} />
       </SelectBox>
 
       <DatePicker
@@ -37,7 +38,7 @@ const PostForm = ({form, setForm, routeName}) => {
             justifyContent="flex-start"
             hasMarginRight>
             <CustomPressable onPress={() => console.log('customPressable')}>
-              hi
+              7일
             </CustomPressable>
           </SelectBox>
 
@@ -54,10 +55,13 @@ const PostForm = ({form, setForm, routeName}) => {
           />
         </>
       )}
+
       <PostTextInput
         title={'내용'}
         onChangeText={onFormTextHandler('description')}
         value={form.description}
+        multiline
+        content
       />
     </View>
   );

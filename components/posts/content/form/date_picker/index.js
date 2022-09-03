@@ -1,8 +1,8 @@
 import {format} from 'date-fns';
 import {ko} from 'date-fns/locale';
 import React, {useState} from 'react';
-import {Pressable, StyleSheet, Text, View} from 'react-native';
-import {width, height, colors, fonts} from '../../../../../utils/globalStyles';
+import {StyleSheet, Text, View} from 'react-native';
+import {width, colors, fonts} from '../../../../../utils/globalStyles';
 import DatePickerModal from './date_picker_modal';
 import CustomPressable from '../custom_pressable';
 
@@ -47,7 +47,7 @@ const DatePicker = ({title, hasMarginBottom}) => {
 
         {/* 대여 종료일 선택 */}
         <CustomPressable onPress={() => setEndVisible(true)}>
-          {format(new Date(startDate), 'yyyy-MM-dd', {locale: ko})}
+          {format(new Date(endDate), 'yyyy-MM-dd', {locale: ko})}
         </CustomPressable>
       </View>
 

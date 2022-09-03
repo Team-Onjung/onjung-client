@@ -1,6 +1,6 @@
 import React from 'react';
 import {Pressable, StyleSheet, Text, View} from 'react-native';
-import {colors} from './../../../utils/globalStyles';
+import {colors} from '../../../utils/globalStyles';
 
 const RentDatePicker = ({date, setDate}) => {
   const dates = [3, 5, 10, 15, 30];
