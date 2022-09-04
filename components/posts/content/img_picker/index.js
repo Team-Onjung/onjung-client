@@ -37,6 +37,21 @@ const ImagePicker = ({form, setForm}) => {
     setForm({...form, img: response});
   };
 
+  const imgarray = [
+    'file:///data/user/0/com.onjung_client/cache/rn_image_picker_lib_temp_bcbd48a9-d166-434e-8f75-33efb7815b81.jpg',
+    'file:///data/user/0/com.onjung_client/cache/rn_image_picker_lib_temp_bcbd48a9-d166-434e-8f75-33efb7815b81.jpg',
+    'file:///data/user/0/com.onjung_client/cache/rn_image_picker_lib_temp_bcbd48a9-d166-434e-8f75-33efb7815b81.jpg',
+    'file:///data/user/0/com.onjung_client/cache/rn_image_picker_lib_temp_bcbd48a9-d166-434e-8f75-33efb7815b81.jpg',
+    'file:///data/user/0/com.onjung_client/cache/rn_image_picker_lib_temp_bcbd48a9-d166-434e-8f75-33efb7815b81.jpg',
+    'file:///data/user/0/com.onjung_client/cache/rn_image_picker_lib_temp_bcbd48a9-d166-434e-8f75-33efb7815b81.jpg',
+    'file:///data/user/0/com.onjung_client/cache/rn_image_picker_lib_temp_bcbd48a9-d166-434e-8f75-33efb7815b81.jpg',
+    'file:///data/user/0/com.onjung_client/cache/rn_image_picker_lib_temp_bcbd48a9-d166-434e-8f75-33efb7815b81.jpg',
+    'file:///data/user/0/com.onjung_client/cache/rn_image_picker_lib_temp_bcbd48a9-d166-434e-8f75-33efb7815b81.jpg',
+    'file:///data/user/0/com.onjung_client/cache/rn_image_picker_lib_temp_bcbd48a9-d166-434e-8f75-33efb7815b81.jpg',
+    'file:///data/user/0/com.onjung_client/cache/rn_image_picker_lib_temp_bcbd48a9-d166-434e-8f75-33efb7815b81.jpg',
+    'file:///data/user/0/com.onjung_client/cache/rn_image_picker_lib_temp_bcbd48a9-d166-434e-8f75-33efb7815b81.jpg',
+  ];
+
   const onLaunchCamera = () => {
     launchCamera(imagePickerOption, onPickImage);
   };
@@ -48,22 +63,33 @@ const ImagePicker = ({form, setForm}) => {
   return (
     <View style={styles.block}>
       <ScrollView style={styles.imgArr} horizontal>
-        <Pressable style={styles.box} onPress={() => setModalVisible(true)}>
+        <Pressable style={styles.picker} onPress={() => setModalVisible(true)}>
           <CameraIcon width={24} height={24} />
-
-          <Text style={styles.text}>{response.length}/12</Text>
+          {/* imgarray는 전부 response로  */}
+          <Text style={styles.text}>{imgarray.length}/12</Text>
         </Pressable>
-        {response.map((res, idx) => (
-          <View style={styles.imgBox}>
-            {/* <View style={style.close}></View> */}
-            <CloseIcon width={24} height={24} style={styles.close} />
-            <Image
-              style={[
-                styles.img,
-                idx === response.length - 1 && styles.lastImg,
-              ]}
-              source={{uri: res?.assets[0]?.uri}}
-            />
+        {imgarray.map((res, idx) => (
+          <View
+            style={[styles.extra, idx === imgarray - 1 && styles.lastClose]}>
+            <View style={styles.box}>
+              {/* <View style={style.close}></View> */}
+              <CloseIcon
+                width={24}
+                height={24}
+                style={[
+                  styles.close,
+                  idx === imgarray.lenght - 1 && styles.lastClose,
+                ]}
+              />
+              {/* uri: res?.assets[0]?.uri  */}
+              <Image
+                style={[
+                  styles.img,
+                  idx === imgarray.length - 1 && styles.lastImg,
+                ]}
+                source={{uri: res}}
+              />
+            </View>
           </View>
         ))}
       </ScrollView>
@@ -81,12 +107,16 @@ const ImagePicker = ({form, setForm}) => {
 const styles = StyleSheet.create({
   block: {
     flex: 1,
-    paddingVertical: width * 24,
+    paddingBottom: width * 24,
     paddingHorizontal: width * 24,
     overflow: 'visible',
   },
 
   imgArr: {flexDirection: 'row', overflow: 'visible'},
+
+  extra: {paddingTop: width * 24},
+
+  box: {position: 'relative'},
 
   img: {
     width: width * 62,
@@ -99,12 +129,24 @@ const styles = StyleSheet.create({
     marginRight: 0,
   },
 
-  imgBox: {position: 'relative', overflow: 'visible', justifyContent: 'center'},
+  close: {
+    position: 'absolute',
+    top: width * -6,
+    right: 0,
+    zIndex: 99,
+    padding: 2,
+    // transform: [{translateY: -24}, {translateX: 24}],
+  },
 
-  box: {
+  lastClose: {
+    right: width * -8,
+  },
+
+  picker: {
     width: width * 62,
     aspectRatio: 1,
     borderRadius: 10,
+    marginTop: width * 24,
     backgroundColor: colors['$coral-1'],
     justifyContent: 'center',
     alignItems: 'center',
@@ -115,15 +157,6 @@ const styles = StyleSheet.create({
     fontSize: width * 11,
     color: colors['$coral-4'],
     letterSpacing: width * -0.15,
-  },
-
-  close: {
-    position: 'absolute',
-    top: width * -8,
-    right: 0,
-    zIndex: 99,
-    padding: 2,
-    // transform: [{translateY: -24}, {translateX: 24}],
   },
 });
 
