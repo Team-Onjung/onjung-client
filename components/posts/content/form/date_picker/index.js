@@ -1,33 +1,44 @@
 import {format} from 'date-fns';
 import {ko} from 'date-fns/locale';
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {StyleSheet, Text, View} from 'react-native';
 import {width, colors, fonts} from '../../../../../utils/globalStyles';
 import DatePickerModal from './date_picker_modal';
 import CustomPressable from '../custom_pressable';
+import DateTimePicker from 'react-native-modal-datetime-picker';
 
-const DatePicker = ({title, hasMarginBottom}) => {
-  const [startDate, setStartDate] = useState(new Date());
+const DatePicker = ({
+  title,
+  startDate,
+  endDate,
+  onChangeStartDate,
+  onChangeEndDate,
+}) => {
   const [startVisible, setStartVisible] = useState(false);
+  const [endVisible, setEndVisible] = useState(false);
+  // console.log(
+  //   format(new Date(), 'yyyy-MM-dd', {locale: ko}) <
+  //     format(new Date(selectedDate), 'yyyy-MM-dd', {locale: ko}),
+  // );
+
   const onStartConfirm = selectedDate => {
     setStartVisible(false);
-    setStartDate(selectedDate);
+
+    onChangeStartDate(selectedDate);
 
     // endDate가 시작일로 선택한 날보다 앞에 있으면 시작일과 종료일 동기화
-    if (endDate < selectedDate) {
-      setEndDate(selectedDate);
-    }
   };
+
   const onStartCancel = () => {
     setStartVisible(false);
   };
 
-  const [endDate, setEndDate] = useState(new Date());
-  const [endVisible, setEndVisible] = useState(false);
   const onEndConfirm = selectedDate => {
     setEndVisible(false);
-    setEndDate(selectedDate);
+
+    onChangeEndDate(selectedDate);
   };
+
   const onEndCancel = () => {
     setEndVisible(false);
   };
@@ -39,20 +50,40 @@ const DatePicker = ({title, hasMarginBottom}) => {
       </Text>
       <View style={styles.box}>
         {/* 대여 시작 가능일 선택 */}
-        <CustomPressable onPress={() => setStartVisible(true)}>
+        <CustomPressable date onPress={() => setStartVisible(true)}>
           {format(new Date(startDate), 'yyyy-MM-dd', {locale: ko})}
         </CustomPressable>
 
         <Text style={{marginHorizontal: width * 8}}>~</Text>
 
         {/* 대여 종료일 선택 */}
-        <CustomPressable onPress={() => setEndVisible(true)}>
+        <CustomPressable date onPress={() => setEndVisible(true)}>
           {format(new Date(endDate), 'yyyy-MM-dd', {locale: ko})}
         </CustomPressable>
       </View>
 
       {/* visible 상태에 따른 시작일 및 종료일 모달창 띄우기 */}
-      {startVisible ? (
+      {startVisible && (
+        <DateTimePicker
+          onConfirm={onStartConfirm}
+          onCancel={onStartCancel}
+          minimumDate={new Date()}
+          mode={'date'}
+          date={startDate}
+          isVisible={startVisible}
+        />
+      )}
+      {endVisible && (
+        <DateTimePicker
+          onConfirm={onEndConfirm}
+          onCancel={onEndCancel}
+          minimumDate={new Date()}
+          mode={'date'}
+          date={endDate}
+          isVisible={endVisible}
+        />
+      )}
+      {/* {startVisible ? (
         <DatePickerModal
           isVisible={startVisible}
           minimumDate={new Date()}
@@ -61,14 +92,16 @@ const DatePicker = ({title, hasMarginBottom}) => {
           onCancel={onStartCancel}
         />
       ) : (
-        <DatePickerModal
-          isVisible={endVisible}
-          minimumDate={startDate}
-          date={endDate}
-          onConfirm={onEndConfirm}
-          onCancel={onEndCancel}
-        />
-      )}
+        endVisible && (
+          <DatePickerModal
+            isVisible={endVisible}
+            minimumDate={startDate}
+            date={endDate}
+            onConfirm={onEndConfirm}
+            onCancel={onEndCancel}
+          />
+        )
+      )} */}
     </View>
   );
 };

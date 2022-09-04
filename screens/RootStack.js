@@ -1,8 +1,6 @@
 import React from 'react';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import MainTab from './MainTab';
-import Post from '../components/posts';
-import {Text, TouchableOpacity, View} from 'react-native';
 import PostContent from './../components/posts/content/index';
 import {width} from '../utils/globalStyles';
 import {colors} from './../utils/globalStyles';

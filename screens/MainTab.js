@@ -26,16 +26,20 @@ const MainTab = navigation => {
         tabBarStyle: {
           height: height * 88,
           backgroundColor: colors.$white,
-          justifyContent: 'center',
         },
         tabBarActiveTintColor: colors['$coral-4'],
         tabBarInactiveTintColor: colors['$gray-5'],
         tabBarLabelStyle: {
           fontWeight: 'bold',
-          lineHeight: width * 20,
+          lineHeight: width * 11 * 1.5,
           letterSpacing: width * -0.24,
           fontSize: width * 11,
           fontFamily: 'AppleSDGothicNeoM',
+        },
+        tabBarItemStyle: {
+          justifyContent: 'flex-start',
+          paddingTop: width * 8,
+          marginBottom: width * 32,
         },
       }}>
       <Tab.Screen
@@ -43,6 +47,7 @@ const MainTab = navigation => {
         component={Main}
         options={{
           title: '정 나눔',
+          tabBarIconStyle: {height: 32, width: 32},
           tabBarIcon: ({focused}) =>
             focused ? (
               <HomeIcon width={32} height={32} />
@@ -58,9 +63,9 @@ const MainTab = navigation => {
           title: '검색',
           tabBarIcon: ({focused}) =>
             focused ? (
-              <SearchIcon width={33} height={32} />
+              <SearchIcon width={32} height={32} />
             ) : (
-              <MonoSearchIcon width={33} height={32} />
+              <MonoSearchIcon width={32} height={32} />
             ),
         }}
       />
@@ -72,9 +77,9 @@ const MainTab = navigation => {
           headerShown: false,
           tabBarIcon: ({focused}) =>
             focused ? (
-              <PlusIcon width={33} height={32} />
+              <PlusIcon width={32} height={32} />
             ) : (
-              <MonoPlusIcon width={33} height={32} />
+              <MonoPlusIcon width={32} height={32} />
             ),
         }}
       />
@@ -85,9 +90,9 @@ const MainTab = navigation => {
           title: '채팅',
           tabBarIcon: ({focused}) =>
             focused ? (
-              <ChatIcon width={33} height={32} />
+              <ChatIcon width={32} height={32} />
             ) : (
-              <MonoChatIcon width={33} height={32} />
+              <MonoChatIcon width={32} height={32} />
             ),
         }}
       />
@@ -98,9 +103,9 @@ const MainTab = navigation => {
           title: '마이페이지',
           tabBarIcon: ({focused}) =>
             focused ? (
-              <ProfileIcon width={33} height={32} />
+              <ProfileIcon width={32} height={32} />
             ) : (
-              <MonoProfileIcon width={33} height={32} />
+              <MonoProfileIcon width={32} height={32} />
             ),
         }}
       />

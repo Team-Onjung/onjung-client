@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useCallback} from 'react';
 import {StyleSheet, Text, View} from 'react-native';
 import DatePicker from './date_picker';
 import PostTextInput from './input';
@@ -7,9 +7,15 @@ import SelectBox from './select_box';
 import ArrowRight from '../../../../assets/icons/icon-arrow-right.svg';
 
 const PostForm = ({form, setForm, routeName}) => {
-  const onFormTextHandler = name => value => {
-    setForm({...form, [name]: value});
-  };
+  const onFormTextHandler = useCallback(
+    name => value => {
+      setForm({...form, [name]: value});
+    },
+    [form, setForm],
+  );
+  // const onFormTextHandler = name => value => {
+  //   setForm({...form, [name]: value});
+  // };
 
   return (
     <View style={styles.block}>
@@ -29,6 +35,10 @@ const PostForm = ({form, setForm, routeName}) => {
 
       <DatePicker
         title={routeName === '물건 등록' ? '대여 가능 기간' : '예상 대여 기간'}
+        startDate={form.start_date}
+        endDate={form.end_date}
+        onChangeStartDate={onFormTextHandler('start_date')}
+        onChangeEndDate={onFormTextHandler('end_date')}
       />
 
       {routeName === '물건 등록' && (

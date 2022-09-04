@@ -9,7 +9,7 @@ const Post = () => {
 
   return (
     <SafeAreaView style={styles.block}>
-      <Text style={styles.title}>어떤 게시글을 등록하시겠습니까?</Text>
+      <Text style={styles.title}>어떤 게시글을 등록하시겠어요?</Text>
       <View style={styles.pressables}>
         <Pressable
           style={styles.box}
@@ -73,7 +73,7 @@ const styles = StyleSheet.create({
         },
       },
       android: {
-        elevation: 3,
+        elevation: 2,
       },
     }),
   },

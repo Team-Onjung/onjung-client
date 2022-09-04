@@ -1,9 +1,9 @@
 import React, {useState} from 'react';
 import {
-  FlatList,
   Image,
   Platform,
   Pressable,
+  ScrollView,
   StyleSheet,
   Text,
   View,
@@ -11,13 +11,11 @@ import {
 import {launchCamera, launchImageLibrary} from 'react-native-image-picker';
 import CameraIcon from '../../../../assets/icons/icon-camera.svg';
 import {width, height, colors} from '../../../../utils/globalStyles';
-import {Icon} from '../../../svg';
 import ImgModal from './img_modal';
-import {Path, Svg, SvgXml} from 'react-native-svg';
-import {Camera} from '../../../../assets/icons';
+import CloseIcon from '../../../../assets/icons/icon-circle-close.svg';
 
-const ImagePicker = ({img, setForm}) => {
-  const [response, setResponse] = useState(null);
+const ImagePicker = ({form, setForm}) => {
+  const [response, setResponse] = useState([]);
   const [modalVisible, setModalVisible] = useState(false);
 
   const imagePickerOption = {
@@ -32,7 +30,11 @@ const ImagePicker = ({img, setForm}) => {
       return;
     }
 
-    setResponse(res);
+    console.log(res);
+
+    setResponse([...response, res]);
+
+    setForm({...form, img: response});
   };
 
   const onLaunchCamera = () => {
@@ -45,11 +47,26 @@ const ImagePicker = ({img, setForm}) => {
 
   return (
     <View style={styles.block}>
-      <Pressable style={styles.box} onPress={() => setModalVisible(true)}>
-        <CameraIcon width={24} height={25} />
+      <ScrollView style={styles.imgArr} horizontal>
+        <Pressable style={styles.box} onPress={() => setModalVisible(true)}>
+          <CameraIcon width={24} height={24} />
 
-        <Text style={styles.text}>0/12</Text>
-      </Pressable>
+          <Text style={styles.text}>{response.length}/12</Text>
+        </Pressable>
+        {response.map((res, idx) => (
+          <View style={styles.imgBox}>
+            {/* <View style={style.close}></View> */}
+            <CloseIcon width={24} height={24} style={styles.close} />
+            <Image
+              style={[
+                styles.img,
+                idx === response.length - 1 && styles.lastImg,
+              ]}
+              source={{uri: res?.assets[0]?.uri}}
+            />
+          </View>
+        ))}
+      </ScrollView>
       {/* <Image style={styles.box} source={{uri: response?.assets[0]?.uri}} /> */}
       <ImgModal
         visible={modalVisible}
@@ -66,7 +83,23 @@ const styles = StyleSheet.create({
     flex: 1,
     paddingVertical: width * 24,
     paddingHorizontal: width * 24,
+    overflow: 'visible',
   },
+
+  imgArr: {flexDirection: 'row', overflow: 'visible'},
+
+  img: {
+    width: width * 62,
+    aspectRatio: 1,
+    borderRadius: 10,
+    marginHorizontal: width * 8,
+  },
+
+  lastImg: {
+    marginRight: 0,
+  },
+
+  imgBox: {position: 'relative', overflow: 'visible', justifyContent: 'center'},
 
   box: {
     width: width * 62,
@@ -75,6 +108,7 @@ const styles = StyleSheet.create({
     backgroundColor: colors['$coral-1'],
     justifyContent: 'center',
     alignItems: 'center',
+    marginRight: width * 8,
   },
 
   text: {
@@ -83,8 +117,13 @@ const styles = StyleSheet.create({
     letterSpacing: width * -0.15,
   },
 
-  img: {
-    flex: 1,
+  close: {
+    position: 'absolute',
+    top: width * -8,
+    right: 0,
+    zIndex: 99,
+    padding: 2,
+    // transform: [{translateY: -24}, {translateX: 24}],
   },
 });
 
