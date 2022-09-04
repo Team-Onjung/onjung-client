@@ -24,6 +24,7 @@ const styles = StyleSheet.create({
     borderBottomWidth: 0.5,
     borderBottomColor: colors['$gray-6'],
     ...fonts.H4,
+    color: colors['$gray-2'],
   },
 
   multiline: {

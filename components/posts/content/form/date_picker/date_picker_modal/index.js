@@ -9,6 +9,7 @@ const DatePickerModal = ({
   onConfirm,
   onCancel,
 }) => {
+  console.log(onConfirm);
   return (
     <View>
       <DateTimePicker
