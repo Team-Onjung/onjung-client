@@ -11,10 +11,8 @@ import {
 import {SafeAreaView} from 'react-native-safe-area-context';
 import PostForm from './form';
 import ImagePicker from './img_picker';
-import {height, width, colors} from './../../../utils/globalStyles';
+import {width, colors} from './../../../utils/globalStyles';
 import ArrowLeft from '../../../assets/icons/icon-arrow-left.svg';
-import {format} from 'date-fns';
-import {ko} from 'date-fns/locale';
 
 const PostContent = ({navigation, route}) => {
   const [form, setForm] = useState({
@@ -24,8 +22,8 @@ const PostContent = ({navigation, route}) => {
     start_date: new Date(),
     end_date: new Date(),
     min_dates: '',
-    price: '',
-    deposit: '',
+    price: null,
+    deposit: null,
     description: '',
   });
 
