@@ -1,7 +1,6 @@
 import React from 'react';
-import {Modal, Platform, Pressable, StyleSheet, Text, View} from 'react-native';
-import {launchImageLibrary} from 'react-native-image-picker';
-import {width, height, colors} from '../../../../../utils/globalStyles';
+import {Modal, Pressable, StyleSheet, Text, View} from 'react-native';
+import {width, colors} from '../../../../../utils/globalStyles';
 
 const ImgModal = ({visible, onClose, onLaunchCamera, onLaunchImageLibrary}) => {
   return (

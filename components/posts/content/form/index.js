@@ -1,5 +1,5 @@
 import React, {useCallback} from 'react';
-import {StyleSheet, Text, View} from 'react-native';
+import {StyleSheet, View} from 'react-native';
 import DatePicker from './date_picker';
 import PostTextInput from './input';
 import CustomPressable from './custom_pressable';

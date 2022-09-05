@@ -2,7 +2,6 @@ import React, {useState} from 'react';
 import {StyleSheet, Text, TextInput, View} from 'react-native';
 import {width, colors, fonts} from './../../../../../utils/globalStyles';
 import WonIcon from '../../../../../assets/icons/icon-won.svg';
-import WonFocusIcon from '../../../../../assets/icons/icon-won-focused.svg';
 
 const PostTextInput = ({
   title,
@@ -33,7 +32,9 @@ const PostTextInput = ({
             onFocus={() => setFocused(true)}
             onBlur={() => setFocused(false)}
           />
-          <Text style={styles.secondText}>{secondText}</Text>
+          <Text style={[styles.secondText, value && styles.visible]}>
+            {secondText}
+          </Text>
         </View>
       ) : (
         <TextInput
@@ -89,7 +90,10 @@ const styles = StyleSheet.create({
     color: colors['$gray-6'],
     fontSize: width * 17,
     fontFamily: 'AppleSDGothicNeoSB',
+    display: 'none',
   },
+
+  visible: {display: 'flex'},
 
   multiline: {
     fontFamily: 'AppleSDGothicNeoR',
