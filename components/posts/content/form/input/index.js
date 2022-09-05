@@ -12,6 +12,14 @@ const PostTextInput = ({
   icon,
 }) => {
   const [focused, setFocused] = useState(false);
+  // const [formatted, setFormatted] = useState('');
+
+  // useEffect(() => {
+  //   if (icon && value) {
+  //     setFormatted(value.replace(/\B(?=(\d{3})+(?!\d))/g, ','));
+  //   }
+  // }, [value, icon]);
+
   return (
     <>
       {icon ? (
@@ -23,9 +31,11 @@ const PostTextInput = ({
             style={styles.icon}
           />
           <TextInput
+            keyboardType="numeric"
+            returnKeyType="next"
             style={[styles.withText, multiline && styles.multiline]}
             onChangeText={onChangeText}
-            value={value}
+            value={value && value.replace(/\B(?=(\d{3})+(?!\d))/g, ',')}
             placeholder={title}
             placeholderTextColor={colors['$gray-6']}
             multiline={multiline}
@@ -42,6 +52,7 @@ const PostTextInput = ({
           onChangeText={onChangeText}
           value={value}
           placeholder={title}
+          returnKeyType="next"
           placeholderTextColor={colors['$gray-6']}
           multiline={multiline}
         />

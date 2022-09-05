@@ -32,6 +32,7 @@ const ImagePicker = ({form, setForm}) => {
       return;
     }
 
+    console.log(res);
     const addRes = {uri: res.assets[0].uri, id: uuidv4()};
     const formImg = form.img;
 
