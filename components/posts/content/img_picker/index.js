@@ -10,7 +10,7 @@ import {
 } from 'react-native';
 import {launchCamera, launchImageLibrary} from 'react-native-image-picker';
 import CameraIcon from '../../../../assets/icons/icon-camera.svg';
-import {width, height, colors} from '../../../../utils/globalStyles';
+import {width, colors} from '../../../../utils/globalStyles';
 import ImgModal from './img_modal';
 import CloseIcon from '../../../../assets/icons/icon-circle-close.svg';
 import {v4 as uuidv4} from 'uuid';
