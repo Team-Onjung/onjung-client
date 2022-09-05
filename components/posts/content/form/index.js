@@ -60,16 +60,20 @@ const PostForm = ({form, setForm, routeName}) => {
           <BorderIcon style={styles.border} />
 
           <PostTextInput
-            title={'\u{20A9} 일당 가격'}
+            title={'일당 가격'}
             value={form.price}
             onChangeText={onFormTextHandler('price')}
+            secondText={'/일'}
+            icon
           />
           <BorderIcon style={styles.border} />
 
           <PostTextInput
-            title={'\u{20A9} 보증금 제시'}
+            title={'보증금 제시'}
             value={form.deposit}
             onChangeText={onFormTextHandler('deposit')}
+            secondText={'보증금'}
+            icon
           />
           <BorderIcon style={styles.border} />
         </>
