@@ -30,8 +30,6 @@ const styles = StyleSheet.create({
     margin: 0,
     marginHorizontal: width * 24,
     paddingVertical: width * 20,
-    borderBottomWidth: 0.5,
-    borderBottomColor: colors['$gray-6'],
     ...fonts.H4,
     color: colors['$gray-2'],
   },

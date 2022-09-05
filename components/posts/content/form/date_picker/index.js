@@ -110,8 +110,6 @@ const styles = StyleSheet.create({
   block: {
     marginHorizontal: width * 24,
     paddingVertical: width * 24,
-    borderBottomColor: colors['$gray-6'],
-    borderBottomWidth: 0.5,
   },
 
   box: {
