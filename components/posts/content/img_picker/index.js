@@ -13,6 +13,7 @@ import CameraIcon from '../../../../assets/icons/icon-camera.svg';
 import {width, height, colors} from '../../../../utils/globalStyles';
 import ImgModal from './img_modal';
 import CloseIcon from '../../../../assets/icons/icon-circle-close.svg';
+import {v4 as uuidv4} from 'uuid';
 
 const ImagePicker = ({form, setForm}) => {
   const [response, setResponse] = useState([]);
@@ -26,68 +27,73 @@ const ImagePicker = ({form, setForm}) => {
   };
 
   const onPickImage = res => {
+    // 취소 버튼을 눌렀거나, 선택된 이미지가 없을 경우 실행하지 않음
     if (res.didCancel || !res) {
       return;
     }
 
-    console.log(res);
+    const addRes = {uri: res.assets[0].uri, id: uuidv4()};
+    const formImg = form.img;
 
-    setResponse([...response, res]);
-
-    setForm({...form, img: response});
+    setResponse([...response, addRes]);
+    setForm({...form, img: [...formImg, res.assets[0].uri]});
   };
 
-  const imgarray = [
-    'file:///data/user/0/com.onjung_client/cache/rn_image_picker_lib_temp_bcbd48a9-d166-434e-8f75-33efb7815b81.jpg',
-    'file:///data/user/0/com.onjung_client/cache/rn_image_picker_lib_temp_bcbd48a9-d166-434e-8f75-33efb7815b81.jpg',
-    'file:///data/user/0/com.onjung_client/cache/rn_image_picker_lib_temp_bcbd48a9-d166-434e-8f75-33efb7815b81.jpg',
-    'file:///data/user/0/com.onjung_client/cache/rn_image_picker_lib_temp_bcbd48a9-d166-434e-8f75-33efb7815b81.jpg',
-    'file:///data/user/0/com.onjung_client/cache/rn_image_picker_lib_temp_bcbd48a9-d166-434e-8f75-33efb7815b81.jpg',
-    'file:///data/user/0/com.onjung_client/cache/rn_image_picker_lib_temp_bcbd48a9-d166-434e-8f75-33efb7815b81.jpg',
-    'file:///data/user/0/com.onjung_client/cache/rn_image_picker_lib_temp_bcbd48a9-d166-434e-8f75-33efb7815b81.jpg',
-    'file:///data/user/0/com.onjung_client/cache/rn_image_picker_lib_temp_bcbd48a9-d166-434e-8f75-33efb7815b81.jpg',
-    'file:///data/user/0/com.onjung_client/cache/rn_image_picker_lib_temp_bcbd48a9-d166-434e-8f75-33efb7815b81.jpg',
-    'file:///data/user/0/com.onjung_client/cache/rn_image_picker_lib_temp_bcbd48a9-d166-434e-8f75-33efb7815b81.jpg',
-    'file:///data/user/0/com.onjung_client/cache/rn_image_picker_lib_temp_bcbd48a9-d166-434e-8f75-33efb7815b81.jpg',
-    'file:///data/user/0/com.onjung_client/cache/rn_image_picker_lib_temp_bcbd48a9-d166-434e-8f75-33efb7815b81.jpg',
-  ];
-
   const onLaunchCamera = () => {
+    // 카메라 촬영 후 업로드
     launchCamera(imagePickerOption, onPickImage);
   };
 
   const onLaunchImageLibrary = () => {
+    // 앨범에서 이미지 선택
     launchImageLibrary(imagePickerOption, onPickImage);
+  };
+
+  const onRemove = id => {
+    // response 배열에서 선택한 이미지의 id와 다른 것들만 모으기
+    const nextarr = response.filter(img => img.id !== id);
+    // nextarr 요소들의 uri 키값만 모아서 새로운 배열 만들기
+    const nextFormImg = nextarr.map(item => item.uri);
+
+    setResponse(nextarr);
+    setForm({...form, img: nextFormImg});
+    // setForm({...form, img: nextFormImg});
   };
 
   return (
     <View style={styles.block}>
-      <ScrollView style={styles.imgArr} horizontal>
+      <ScrollView
+        style={styles.imgArr}
+        horizontal
+        contentContainerStyle={styles.contentContainer}>
         <Pressable style={styles.picker} onPress={() => setModalVisible(true)}>
           <CameraIcon width={24} height={24} />
           {/* imgarray는 전부 response로  */}
-          <Text style={styles.text}>{imgarray.length}/12</Text>
+          <Text style={styles.text}>{response.length}/12</Text>
         </Pressable>
-        {imgarray.map((res, idx) => (
+        {response.map((res, idx) => (
           <View
-            style={[styles.extra, idx === imgarray - 1 && styles.lastClose]}>
+            key={res.id}
+            style={[styles.extra, idx === response - 1 && styles.lastClose]}>
             <View style={styles.box}>
               {/* <View style={style.close}></View> */}
               <CloseIcon
+                onPress={() => onRemove(res.id, res.uri)}
+                id={res.id}
                 width={24}
                 height={24}
                 style={[
                   styles.close,
-                  idx === imgarray.lenght - 1 && styles.lastClose,
+                  idx === response.length - 1 && styles.lastClose,
                 ]}
               />
               {/* uri: res?.assets[0]?.uri  */}
               <Image
                 style={[
                   styles.img,
-                  idx === imgarray.length - 1 && styles.lastImg,
+                  idx === response.length - 1 && styles.lastImg,
                 ]}
-                source={{uri: res}}
+                source={{uri: res.uri}}
               />
             </View>
           </View>
@@ -112,7 +118,12 @@ const styles = StyleSheet.create({
     overflow: 'visible',
   },
 
-  imgArr: {flexDirection: 'row', overflow: 'visible'},
+  imgArr: {
+    flexDirection: 'row',
+    overflow: 'visible',
+  },
+
+  contentContainer: {flexGrow: 1, justifyContent: 'flex-start'},
 
   extra: {paddingTop: width * 24},
 

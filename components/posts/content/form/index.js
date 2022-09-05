@@ -5,6 +5,7 @@ import PostTextInput from './input';
 import CustomPressable from './custom_pressable';
 import SelectBox from './select_box';
 import ArrowRight from '../../../../assets/icons/icon-arrow-right.svg';
+import BorderIcon from '../../../../assets/icons/icon-border-line.svg';
 
 const PostForm = ({form, setForm, routeName}) => {
   const onFormTextHandler = useCallback(
@@ -24,6 +25,8 @@ const PostForm = ({form, setForm, routeName}) => {
         value={form.title}
         onChangeText={onFormTextHandler('title')}
       />
+
+      <BorderIcon />
 
       <SelectBox
         title="카테고리 선택"
