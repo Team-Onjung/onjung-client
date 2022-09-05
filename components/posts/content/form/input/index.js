@@ -1,17 +1,26 @@
 import React from 'react';
 import {StyleSheet, Text, TextInput, View} from 'react-native';
 import {width, colors, fonts} from './../../../../../utils/globalStyles';
+import WonIcon from '../../../../../assets/icons/icon-won.svg';
 
-const PostTextInput = ({title, onChangeText, value, multiline}) => {
+const PostTextInput = ({title, onChangeText, value, multiline, icon}) => {
   return (
-    <TextInput
-      style={[styles.input, multiline && styles.multiline]}
-      onChangeText={onChangeText}
-      value={value}
-      placeholder={title}
-      placeholderTextColor={colors['$gray-6']}
-      multiline={multiline}
-    />
+    <>
+      {icon ? (
+        <View>
+          <WonIcon width={24} height={24} />
+        </View>
+      ) : (
+        <TextInput
+          style={[styles.input, multiline && styles.multiline]}
+          onChangeText={onChangeText}
+          value={value}
+          placeholder={title}
+          placeholderTextColor={colors['$gray-6']}
+          multiline={multiline}
+        />
+      )}
+    </>
   );
 };
 
@@ -21,8 +30,6 @@ const styles = StyleSheet.create({
     margin: 0,
     marginHorizontal: width * 24,
     paddingVertical: width * 20,
-    borderBottomWidth: 0.5,
-    borderBottomColor: colors['$gray-6'],
     ...fonts.H4,
     color: colors['$gray-2'],
   },

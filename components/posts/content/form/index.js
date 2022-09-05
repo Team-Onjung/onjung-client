@@ -5,6 +5,8 @@ import PostTextInput from './input';
 import CustomPressable from './custom_pressable';
 import SelectBox from './select_box';
 import ArrowRight from '../../../../assets/icons/icon-arrow-right.svg';
+import BorderIcon from '../../../../assets/icons/icon-border-line.svg';
+import {width} from '../../../../utils/globalStyles';
 
 const PostForm = ({form, setForm, routeName}) => {
   const onFormTextHandler = useCallback(
@@ -25,6 +27,8 @@ const PostForm = ({form, setForm, routeName}) => {
         onChangeText={onFormTextHandler('title')}
       />
 
+      <BorderIcon style={styles.border} />
+
       <SelectBox
         title="카테고리 선택"
         justifyContent="space-between"
@@ -32,6 +36,7 @@ const PostForm = ({form, setForm, routeName}) => {
         onChangeText={onFormTextHandler('category')}>
         <ArrowRight width={21} height={21} />
       </SelectBox>
+      <BorderIcon style={styles.border} />
 
       <DatePicker
         title={routeName === '물건 등록' ? '대여 가능 기간' : '예상 대여 기간'}
@@ -40,6 +45,7 @@ const PostForm = ({form, setForm, routeName}) => {
         onChangeStartDate={onFormTextHandler('start_date')}
         onChangeEndDate={onFormTextHandler('end_date')}
       />
+      <BorderIcon style={styles.border} />
 
       {routeName === '물건 등록' && (
         <>
@@ -51,18 +57,21 @@ const PostForm = ({form, setForm, routeName}) => {
               7일
             </CustomPressable>
           </SelectBox>
+          <BorderIcon style={styles.border} />
 
           <PostTextInput
             title={'\u{20A9} 일당 가격'}
             value={form.price}
             onChangeText={onFormTextHandler('price')}
           />
+          <BorderIcon style={styles.border} />
 
           <PostTextInput
             title={'\u{20A9} 보증금 제시'}
             value={form.deposit}
             onChangeText={onFormTextHandler('deposit')}
           />
+          <BorderIcon style={styles.border} />
         </>
       )}
 
@@ -79,6 +88,10 @@ const PostForm = ({form, setForm, routeName}) => {
 
 const styles = StyleSheet.create({
   block: {flex: 1},
+
+  border: {
+    marginHorizontal: width * 20,
+  },
 });
 
 export default PostForm;
