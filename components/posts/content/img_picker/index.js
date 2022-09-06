@@ -119,13 +119,14 @@ const styles = StyleSheet.create({
     flex: 1,
     flexDirection: 'row',
     paddingBottom: width * 24,
-    paddingHorizontal: width * 24,
+    marginHorizontal: width * 24,
     overflow: 'visible',
   },
 
   imgArr: {
     flexDirection: 'row',
     marginLeft: width * 8,
+    width: '100%',
 
     // overflow: 'visible',
   },
