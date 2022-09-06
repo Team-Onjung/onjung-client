@@ -63,15 +63,16 @@ const ImagePicker = ({form, setForm}) => {
 
   return (
     <View style={styles.block}>
+      <Pressable style={styles.picker} onPress={() => setModalVisible(true)}>
+        <CameraIcon width={24} height={24} />
+        {/* imgarray는 전부 response로  */}
+        <Text style={styles.text}>{response.length}/12</Text>
+      </Pressable>
+
       <ScrollView
         style={styles.imgArr}
         horizontal
         contentContainerStyle={styles.contentContainer}>
-        <Pressable style={styles.picker} onPress={() => setModalVisible(true)}>
-          <CameraIcon width={24} height={24} />
-          {/* imgarray는 전부 response로  */}
-          <Text style={styles.text}>{response.length}/12</Text>
-        </Pressable>
         {response.map((res, idx) => (
           <View
             key={res.id}
@@ -93,6 +94,8 @@ const ImagePicker = ({form, setForm}) => {
                 style={[
                   styles.img,
                   idx === response.length - 1 && styles.lastImg,
+
+                  idx === 0 && styles.firstImg,
                 ]}
                 source={{uri: res.uri}}
               />
@@ -114,6 +117,7 @@ const ImagePicker = ({form, setForm}) => {
 const styles = StyleSheet.create({
   block: {
     flex: 1,
+    flexDirection: 'row',
     paddingBottom: width * 24,
     paddingHorizontal: width * 24,
     overflow: 'visible',
@@ -121,10 +125,16 @@ const styles = StyleSheet.create({
 
   imgArr: {
     flexDirection: 'row',
-    overflow: 'visible',
+    marginLeft: width * 8,
+
+    // overflow: 'visible',
   },
 
-  contentContainer: {flexGrow: 1, justifyContent: 'flex-start'},
+  contentContainer: {
+    flexGrow: 1,
+    justifyContent: 'flex-start',
+    // overflow: 'hidden',
+  },
 
   extra: {paddingTop: width * 24},
 
@@ -137,6 +147,8 @@ const styles = StyleSheet.create({
     marginHorizontal: width * 8,
   },
 
+  firstImg: {marginLeft: 0},
+
   lastImg: {
     marginRight: 0,
   },
@@ -147,7 +159,6 @@ const styles = StyleSheet.create({
     right: 0,
     zIndex: 99,
     padding: 2,
-    // transform: [{translateY: -24}, {translateX: 24}],
   },
 
   lastClose: {
