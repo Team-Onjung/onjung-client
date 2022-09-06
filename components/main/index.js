@@ -1,8 +1,12 @@
 import React from 'react';
-import {View} from 'react-native';
+import {Button, View} from 'react-native';
 
-const Main = () => {
-  return <View></View>;
+const Main = ({navigation}) => {
+  return (
+    <View>
+      <Button title="to Detail" onPress={() => navigation.navigate('Detail')} />
+    </View>
+  );
 };
 
 export default Main;

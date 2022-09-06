@@ -4,6 +4,7 @@ import MainTab from './MainTab';
 import PostContent from './../components/posts/content/index';
 import {width} from '../utils/globalStyles';
 import {colors} from './../utils/globalStyles';
+import Detail from './../components/detail/index';
 
 const Stack = createNativeStackNavigator();
 
@@ -18,11 +19,21 @@ const RootStack = () => {
           color: colors['$gray-2'],
         },
       }}>
+      {/* Bottom Tab을 사용한 Main 화면 */}
       <Stack.Screen
         name="MainTab"
         component={MainTab}
         options={{headerShown: false, headerTitleAlign: 'center'}}
       />
+
+      {/* Item 세부사항 */}
+      <Stack.Screen
+        name="Detail"
+        component={Detail}
+        options={{headerShown: false, headerTitleAlign: 'center'}}
+      />
+
+      {/* 물건 등록 */}
       <Stack.Screen
         name="PostAvailable"
         component={PostContent}
@@ -30,6 +41,8 @@ const RootStack = () => {
           headerTitleAlign: 'center',
         }}
       />
+
+      {/* 물건 요청 */}
       <Stack.Screen
         name="PostRequest"
         component={PostContent}
