@@ -5,6 +5,7 @@ import {StyleSheet, Text, View} from 'react-native';
 import {width, colors, fonts} from '../../../../../utils/globalStyles';
 import CustomPressable from '../custom_pressable';
 import DateTimePicker from 'react-native-modal-datetime-picker';
+import {DateTimePickerAndroid} from '@react-native-community/datetimepicker';
 
 const DatePicker = ({
   title,
@@ -72,6 +73,7 @@ const DatePicker = ({
           isVisible={startVisible}
         />
       )}
+
       {endVisible && (
         <DateTimePicker
           onConfirm={onEndConfirm}
