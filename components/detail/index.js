@@ -1,10 +1,9 @@
 import React, {useState} from 'react';
 import {
   Dimensions,
-  Image,
+  Platform,
   Pressable,
   ScrollView,
-  StatusBar,
   StyleSheet,
   Text,
   View,
@@ -12,11 +11,24 @@ import {
 // import HashTag from './hashtag';
 import HashTag from './hashtag';
 import RentDatePicker from './rentPicker';
-import {colors, width} from '../../utils/globalStyles';
+import {colors, height, width} from '../../utils/globalStyles';
 import UserBox from './user_box';
 import BorderIcon from '../../assets/icons/icon-border-line.svg';
+import {SliderBox} from 'react-native-image-slider-box';
+import DetailHeader from './header';
 
 const Detail = () => {
+  const imgArr = [
+    'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT4KbX9ryNVL1pC8iXCLY6lNRAz37Aa7irCYg&usqp=CAU',
+    'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT4KbX9ryNVL1pC8iXCLY6lNRAz37Aa7irCYg&usqp=CAU',
+    'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT4KbX9ryNVL1pC8iXCLY6lNRAz37Aa7irCYg&usqp=CAU',
+    'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT4KbX9ryNVL1pC8iXCLY6lNRAz37Aa7irCYg&usqp=CAU',
+    'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT4KbX9ryNVL1pC8iXCLY6lNRAz37Aa7irCYg&usqp=CAU',
+    'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT4KbX9ryNVL1pC8iXCLY6lNRAz37Aa7irCYg&usqp=CAU',
+    'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT4KbX9ryNVL1pC8iXCLY6lNRAz37Aa7irCYg&usqp=CAU',
+    'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT4KbX9ryNVL1pC8iXCLY6lNRAz37Aa7irCYg&usqp=CAU',
+  ];
+
   const Data = {
     user_name: '얼리어답터 지우',
     user_profile:
@@ -49,14 +61,21 @@ const Detail = () => {
 
   return (
     <>
-      <StatusBar barStyle="default" />
       <ScrollView style={styles.block}>
-        <Image
+        {Platform.OS === 'ios' && <DetailHeader />}
+        <SliderBox
+          images={imgArr}
+          style={styles.imgs}
+          dotColor={colors.$white}
+          inactiveDotColor={colors['$gray-7']}
+          // dotStyle={{width: width * 6, height: height * 6}}
+        />
+        {/* <Image
           source={{
             uri: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT4KbX9ryNVL1pC8iXCLY6lNRAz37Aa7irCYg&usqp=CAU',
           }}
           style={{aspectRatio: 1.5}}
-        />
+        /> */}
         <UserBox
           img={''}
           name={'얼리어답터 지우'}
@@ -130,6 +149,8 @@ const styles = StyleSheet.create({
   border: {
     marginHorizontal: width * 20,
   },
+
+  imgs: {width: width * 375, height: height * 375, aspectRatio: 1},
 
   img: {resizeMode: 'cover'},
 
