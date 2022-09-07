@@ -12,7 +12,9 @@ import {
 // import HashTag from './hashtag';
 import HashTag from './hashtag';
 import RentDatePicker from './rentPicker';
-import {colors} from '../../utils/globalStyles';
+import {colors, width} from '../../utils/globalStyles';
+import UserBox from './user_box';
+import BorderIcon from '../../assets/icons/icon-border-line.svg';
 
 const Detail = () => {
   const Data = {
@@ -55,30 +57,15 @@ const Detail = () => {
           }}
           style={{aspectRatio: 1.5}}
         />
-        <View style={styles.user_box}>
-          <View style={styles.user_content}>
-            <Image
-              source={{
-                uri: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT4KbX9ryNVL1pC8iXCLY6lNRAz37Aa7irCYg&usqp=CAU',
-              }}
-              style={styles.user_profile}
-            />
-            <View>
-              <Text style={[styles.bold, {fontSize: 16}]}>
-                {Data.user_name}
-              </Text>
-              <Text style={[styles.bold, {fontSize: 12, color: '#9e9e9e'}]}>
-                {Data.location}
-              </Text>
-            </View>
-          </View>
-          <View style={styles.rate_box}>
-            <Text style={[styles.bold, {color: colors.$primary}]}>
-              ★ {Data.rates.toFixed(1)}
-            </Text>
-          </View>
-        </View>
-        <View style={[styles.seperator, {marginBottom: 16}]} />
+        <UserBox
+          img={''}
+          name={'얼리어답터 지우'}
+          location={'서초구 반포본동'}
+          comment={'후기 13'}
+          rate={5.0}
+        />
+
+        <BorderIcon style={styles.border} />
         <View style={{marginHorizontal: 16, flex: 1}}>
           <Text style={[styles.title, styles.bold]}>{Data.title}</Text>
           <Text style={[styles.category, styles.bold]}>{Data.category}</Text>
@@ -138,6 +125,10 @@ const Detail = () => {
 const styles = StyleSheet.create({
   block: {
     flex: 1,
+  },
+
+  border: {
+    marginHorizontal: width * 20,
   },
 
   img: {resizeMode: 'cover'},
