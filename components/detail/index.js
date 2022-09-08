@@ -16,6 +16,7 @@ import BorderIcon from '../../assets/icons/icon-border-line.svg';
 import DetailHeader from './detail_header';
 import SwippableImage from './swippable_image';
 import DetailContent from './detail_content';
+import PriceContainer from './price_container';
 
 const Detail = () => {
   const imgArr = [
@@ -79,6 +80,12 @@ const Detail = () => {
       />
 
       <View style={styles.seperator} />
+
+      <PriceContainer
+        rental_fee={Data.rental_fee}
+        deposit={Data.deposit}
+        commission_fee={Data.commission_fee}
+      />
     </ScrollView>
   );
 };
