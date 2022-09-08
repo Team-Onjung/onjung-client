@@ -5,6 +5,7 @@ import PostContent from './../components/posts/content/index';
 import {width} from '../utils/globalStyles';
 import {colors} from './../utils/globalStyles';
 import Detail from './../components/detail/index';
+import {Platform} from 'react-native';
 
 const Stack = createNativeStackNavigator();
 
@@ -30,7 +31,10 @@ const RootStack = () => {
       <Stack.Screen
         name="Detail"
         component={Detail}
-        options={{headerShown: false, headerTitleAlign: 'center'}}
+        options={{
+          headerShown: Platform.OS === 'ios' ? false : true,
+          headerTitleAlign: 'center',
+        }}
       />
 
       {/* 물건 등록 */}

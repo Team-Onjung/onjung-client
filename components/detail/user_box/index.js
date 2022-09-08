@@ -2,31 +2,6 @@ import React from 'react';
 import {View, StyleSheet, Image, Text} from 'react-native';
 import {colors, fonts, height, width} from '../../../utils/globalStyles';
 import FaceIcon from '../../../assets/icons/icon-face.svg';
-{
-  /* 
-<View style={styles.user_box}>
-  <View style={styles.user_content}>
-    <Image
-      source={{
-        uri: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT4KbX9ryNVL1pC8iXCLY6lNRAz37Aa7irCYg&usqp=CAU',
-      }}
-      style={styles.user_profile}
-    />
-    <View>
-      <Text style={[styles.bold, {fontSize: 16}]}>{Data.user_name}</Text>
-      <Text style={[styles.bold, {fontSize: 12, color: '#9e9e9e'}]}>
-        {Data.location}
-      </Text>
-    </View>
-  </View>
-  <View style={styles.rate_box}>
-    <Text style={[styles.bold, {color: colors.$primary}]}>
-      ★ {Data.rates.toFixed(1)}
-    </Text>
-  </View>
-</View>;
-*/
-}
 
 const UserBox = ({img, name, location, comment, rate}) => {
   return (
@@ -80,7 +55,6 @@ const styles = StyleSheet.create({
     ...fonts.H5,
     color: colors['$gray-3'],
     marginBottom: width * 3,
-    height: height * 21,
     textAlignVertical: 'top',
   },
 
