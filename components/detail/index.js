@@ -2,9 +2,9 @@ import React, {useState} from 'react';
 import {
   Dimensions,
   Image,
+  Platform,
   Pressable,
   ScrollView,
-  StatusBar,
   StyleSheet,
   Text,
   View,
@@ -12,9 +12,24 @@ import {
 // import HashTag from './hashtag';
 import HashTag from './hashtag';
 import RentDatePicker from './rentPicker';
-import {colors} from '../../utils/globalStyles';
+import {colors, height, width} from '../../utils/globalStyles';
+import UserBox from './user_box';
+import BorderIcon from '../../assets/icons/icon-border-line.svg';
+import DetailHeader from './header';
+import Swiper from 'react-native-swiper';
 
 const Detail = () => {
+  const imgArr = [
+    'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT4KbX9ryNVL1pC8iXCLY6lNRAz37Aa7irCYg&usqp=CAU',
+    'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT4KbX9ryNVL1pC8iXCLY6lNRAz37Aa7irCYg&usqp=CAU',
+    'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT4KbX9ryNVL1pC8iXCLY6lNRAz37Aa7irCYg&usqp=CAU',
+    'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT4KbX9ryNVL1pC8iXCLY6lNRAz37Aa7irCYg&usqp=CAU',
+    'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT4KbX9ryNVL1pC8iXCLY6lNRAz37Aa7irCYg&usqp=CAU',
+    'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT4KbX9ryNVL1pC8iXCLY6lNRAz37Aa7irCYg&usqp=CAU',
+    'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT4KbX9ryNVL1pC8iXCLY6lNRAz37Aa7irCYg&usqp=CAU',
+    'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT4KbX9ryNVL1pC8iXCLY6lNRAz37Aa7irCYg&usqp=CAU',
+  ];
+
   const Data = {
     user_name: '얼리어답터 지우',
     user_profile:
@@ -47,38 +62,29 @@ const Detail = () => {
 
   return (
     <>
-      <StatusBar barStyle="default" />
       <ScrollView style={styles.block}>
-        <Image
-          source={{
-            uri: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT4KbX9ryNVL1pC8iXCLY6lNRAz37Aa7irCYg&usqp=CAU',
-          }}
-          style={{aspectRatio: 1.5}}
-        />
-        <View style={styles.user_box}>
-          <View style={styles.user_content}>
-            <Image
-              source={{
-                uri: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT4KbX9ryNVL1pC8iXCLY6lNRAz37Aa7irCYg&usqp=CAU',
-              }}
-              style={styles.user_profile}
-            />
+        {Platform.OS === 'ios' && <DetailHeader />}
+        <Swiper width={375} height={375} removeClippedSubviews={false}>
+          {imgArr.map(img => (
             <View>
-              <Text style={[styles.bold, {fontSize: 16}]}>
-                {Data.user_name}
-              </Text>
-              <Text style={[styles.bold, {fontSize: 12, color: '#9e9e9e'}]}>
-                {Data.location}
-              </Text>
+              <Image
+                style={styles.imgs}
+                source={{
+                  uri: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT4KbX9ryNVL1pC8iXCLY6lNRAz37Aa7irCYg&usqp=CAU',
+                }}
+              />
             </View>
-          </View>
-          <View style={styles.rate_box}>
-            <Text style={[styles.bold, {color: colors.$primary}]}>
-              ★ {Data.rates.toFixed(1)}
-            </Text>
-          </View>
-        </View>
-        <View style={[styles.seperator, {marginBottom: 16}]} />
+          ))}
+        </Swiper>
+        <UserBox
+          img={''}
+          name={'얼리어답터 지우'}
+          location={'서초구 반포본동'}
+          comment={'후기 13'}
+          rate={5.0}
+        />
+
+        <BorderIcon style={styles.border} />
         <View style={{marginHorizontal: 16, flex: 1}}>
           <Text style={[styles.title, styles.bold]}>{Data.title}</Text>
           <Text style={[styles.category, styles.bold]}>{Data.category}</Text>
@@ -136,11 +142,20 @@ const Detail = () => {
 };
 
 const styles = StyleSheet.create({
-  block: {
-    flex: 1,
+  block: {flex: 1},
+
+  border: {
+    marginHorizontal: width * 20,
   },
 
-  img: {resizeMode: 'cover'},
+  wrapper: {},
+
+  imgs: {
+    width: width * 375,
+    height: height * 375,
+    aspectRatio: 1,
+    resizeMode: 'contain',
+  },
 
   user_box: {
     marginHorizontal: 16,
