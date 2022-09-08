@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import {
   Dimensions,
+  Image,
   Platform,
   Pressable,
   ScrollView,
@@ -14,8 +15,8 @@ import RentDatePicker from './rentPicker';
 import {colors, height, width} from '../../utils/globalStyles';
 import UserBox from './user_box';
 import BorderIcon from '../../assets/icons/icon-border-line.svg';
-import {SliderBox} from 'react-native-image-slider-box';
 import DetailHeader from './header';
+import Swiper from 'react-native-swiper';
 
 const Detail = () => {
   const imgArr = [
@@ -63,19 +64,18 @@ const Detail = () => {
     <>
       <ScrollView style={styles.block}>
         {Platform.OS === 'ios' && <DetailHeader />}
-        <SliderBox
-          images={imgArr}
-          style={styles.imgs}
-          dotColor={colors.$white}
-          inactiveDotColor={colors['$gray-7']}
-          // dotStyle={{width: width * 6, height: height * 6}}
-        />
-        {/* <Image
-          source={{
-            uri: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT4KbX9ryNVL1pC8iXCLY6lNRAz37Aa7irCYg&usqp=CAU',
-          }}
-          style={{aspectRatio: 1.5}}
-        /> */}
+        <Swiper width={375} height={375} removeClippedSubviews={false}>
+          {imgArr.map(img => (
+            <View>
+              <Image
+                style={styles.imgs}
+                source={{
+                  uri: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT4KbX9ryNVL1pC8iXCLY6lNRAz37Aa7irCYg&usqp=CAU',
+                }}
+              />
+            </View>
+          ))}
+        </Swiper>
         <UserBox
           img={''}
           name={'얼리어답터 지우'}
@@ -142,17 +142,20 @@ const Detail = () => {
 };
 
 const styles = StyleSheet.create({
-  block: {
-    flex: 1,
-  },
+  block: {flex: 1},
 
   border: {
     marginHorizontal: width * 20,
   },
 
-  imgs: {width: width * 375, height: height * 375, aspectRatio: 1},
+  wrapper: {},
 
-  img: {resizeMode: 'cover'},
+  imgs: {
+    width: width * 375,
+    height: height * 375,
+    aspectRatio: 1,
+    resizeMode: 'contain',
+  },
 
   user_box: {
     marginHorizontal: 16,
