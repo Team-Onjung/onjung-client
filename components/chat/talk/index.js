@@ -14,29 +14,70 @@ import line from '../../../assets/icons/chat_icons/icon-line.png';
 import plus from '../../../assets/icons/chat_icons/icon-plus.png';
 import send from '../../../assets/icons/chat_icons/icon-send.png';
 import bim from '../../../assets/imgs/chat/image-sample.png';
+import person from '../../../assets/imgs/chat/image-person.png';
 
 const PreChat = () => {
-  const sample = {name: 'PF50ka lg 빔프로젝터', price: 5000, img: bim};
+  const sample = {
+    name: 'PF50ka lg 빔프로젝터',
+    price: 5000,
+    img: bim,
+    time: '오후 9:40',
+  };
   return (
-    <View>
-      <View>
-        <Image source={sample.img} />
+    <View style={styles.sendPart}>
+      <View style={styles.time}>
+        <Text style={{fontSize: 11, paddingTop: 265}}>{sample.time}</Text>
       </View>
-      <Text>{sample.name}</Text>
-      <Text>{sample.price} /일</Text>
+      <View style={styles.preChat}>
+        <View style={styles.product}>
+          <View style={styles.image}>
+            <Image source={sample.img} />
+          </View>
+          <View>
+            <Text>{sample.name}</Text>
+            <View style={styles.price}>
+              <Text style={{fontWeight: 'bold', fontSize: 15}}>
+                {sample.price}원
+              </Text>
+              <Text> /일</Text>
+            </View>
+          </View>
+        </View>
+        <View style={styles.down}>
+          <View style={styles.left}>
+            <Text style={styles.textH1}>
+              안녕하세요,
+              {'\n'}
+              대여 원합니다!
+            </Text>
+            <Text style={styles.textH2}>
+              채팅으로 대여 가능 여부를
+              {'\n'}
+              확인 후 버튼을 눌러주세요!
+            </Text>
+            <Text style={styles.borrowButton}>대여하기</Text>
+          </View>
+          <Image
+            source={person}
+            style={styles.right}
+            width={110}
+            height={140}
+          />
+        </View>
+      </View>
     </View>
   );
 };
 
 const SendMessage = () => {
   const sample = [
-    {id: 1, time: '오후 9:40', content: '대여하고 싶어요! 대여대여대여대여'},
-    {id: 2, time: '오후 9:40', content: '대여하고 싶어요! 대여대여대여대여'},
-    {id: 3, time: '오후 9:40', content: '대여하고 싶어요! 대여대여대여대여'},
-    {id: 4, time: '오후 9:40', content: '대여하고 싶어요! 대여대여대여대여'},
-    {id: 5, time: '오후 9:40', content: '대여하고 싶어요! 대여대여대여대여'},
-    {id: 6, time: '오후 9:40', content: '대여하고 싶어요! 대여대여대여대여'},
-    {id: 7, time: '오후 9:40', content: '대여하고 싶어요! 대여대여대여대여'},
+    {id: 1, time: '오후 9:40', content: '대여하고 싶어요! 대여대여대여'},
+    {id: 2, time: '오후 9:40', content: '대여하고 싶어요! 대여대여대여'},
+    {id: 3, time: '오후 9:40', content: '대여하고 싶어요! 대여대여대여'},
+    {id: 4, time: '오후 9:40', content: '대여하고 싶어요! 대여대여대여'},
+    {id: 5, time: '오후 9:40', content: '대여하고 싶어요! 대여대여대여'},
+    {id: 6, time: '오후 9:40', content: '대여하고 싶어요! 대여대여대여'},
+    {id: 7, time: '오후 9:40', content: '대여하고 싶어요! 대여대여대여'},
   ];
 
   return (
@@ -116,7 +157,12 @@ const Talk = () => {
           <TextInput placeholder="메시지를 입력하세요" />
         </View>
         <View style={styles.sendPart}>
-          <Image source={send} width={30} height={30} />
+          <Image
+            source={send}
+            width={30}
+            height={30}
+            style={styles.sendButton}
+          />
         </View>
       </View>
     </SafeAreaView>
@@ -174,7 +220,7 @@ const styles = StyleSheet.create({
     borderBottomLeftRadius: 20,
     borderBottomRightRadius: 20,
     borderTopRightRadius: 2,
-    width: 250,
+    width: 230,
     height: 40,
     justifyContent: 'center',
     alignItems: 'center',
@@ -202,7 +248,7 @@ const styles = StyleSheet.create({
     borderTopRightRadius: 20,
     alignItems: 'center',
     justifyContent: 'center',
-    width: 250,
+    width: 230,
     height: 40,
   },
 
@@ -215,7 +261,7 @@ const styles = StyleSheet.create({
   },
 
   plus: {
-    marginRight: 7,
+    marginRight: 10,
     width: 33,
     height: 33,
   },
@@ -227,5 +273,78 @@ const styles = StyleSheet.create({
     fontSize: 12,
     borderRadius: 30,
     paddingLeft: 10,
+  },
+
+  sendButton: {
+    position: 'absolute',
+    left: -35,
+    top: -5,
+  },
+
+  product: {
+    backgroundColor: '#FFFFFF',
+    flexDirection: 'row',
+    alignItems: 'center',
+    height: 90,
+    paddingLeft: 5,
+    borderTopLeftRadius: 15,
+    borderTopRightRadius: 15,
+  },
+
+  price: {
+    flexDirection: 'row',
+  },
+
+  image: {
+    margin: 15,
+  },
+
+  textH1: {
+    fontSize: 18,
+    fontWeight: 'bold',
+  },
+
+  textH2: {
+    paddingTop: 10,
+  },
+
+  left: {
+    // backgroundColor: 'blue',
+    paddingLeft: 20,
+    paddingTop: 25,
+    paddingBottom: 25,
+  },
+
+  borrowButton: {
+    // backgroundColor: 'white',
+    color: '#FC7574',
+    fontSize: 15,
+    fontWeight: 'bold',
+    width: 115,
+    height: 40,
+    textAlign: 'center',
+    lineHeight: 40,
+    borderRadius: 30,
+    borderColor: '#FC7574',
+    borderWidth: 1,
+    marginTop: 25,
+  },
+
+  down: {
+    backgroundColor: '#FFF3EF',
+    flexDirection: 'row',
+    borderBottomLeftRadius: 15,
+    borderBottomRightRadius: 15,
+  },
+
+  right: {
+    marginTop: 76,
+  },
+
+  preChat: {
+    width: 300,
+    borderColor: '#E5E8EB',
+    borderWidth: 1,
+    borderRadius: 15,
   },
 });
