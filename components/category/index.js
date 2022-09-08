@@ -1,5 +1,4 @@
 import React from 'react';
-
 import {StatusBar, StyleSheet, Text, View, FlatList} from 'react-native';
 
 //Static data to displaty in list
