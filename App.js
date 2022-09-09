@@ -17,7 +17,6 @@ const App = () => {
   return (
     <NavigationContainer>
       <RootStack />
-      <Category />
     </NavigationContainer>
   );
 };
