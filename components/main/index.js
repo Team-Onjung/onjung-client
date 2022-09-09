@@ -48,7 +48,7 @@ const Main = () => {
             style={
               (styles.text,
               {fontSize: 50},
-              {color: value === '대여 요청' ? 'red' : 'grey'})
+              {color: value === '대여 요청' ? 'red' : '#8B95A1'})
             }>
             대여 요청
           </Text>
