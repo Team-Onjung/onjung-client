@@ -2,9 +2,9 @@ import React, {useState} from 'react';
 import {
   Dimensions,
   Image,
+  Platform,
   Pressable,
   ScrollView,
-  StatusBar,
   StyleSheet,
   Text,
   View,
@@ -12,9 +12,24 @@ import {
 // import HashTag from './hashtag';
 import HashTag from './hashtag';
 import RentDatePicker from './rentPicker';
-import {colors} from '../../utils/globalStyles';
+import {colors, height, width} from '../../utils/globalStyles';
+import UserBox from './user_box';
+import BorderIcon from '../../assets/icons/icon-border-line.svg';
+import DetailHeader from './header';
+import SwippableImage from './swippable_image';
 
 const Detail = () => {
+  const imgArr = [
+    'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT4KbX9ryNVL1pC8iXCLY6lNRAz37Aa7irCYg&usqp=CAU',
+    'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT4KbX9ryNVL1pC8iXCLY6lNRAz37Aa7irCYg&usqp=CAU',
+    'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT4KbX9ryNVL1pC8iXCLY6lNRAz37Aa7irCYg&usqp=CAU',
+    'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT4KbX9ryNVL1pC8iXCLY6lNRAz37Aa7irCYg&usqp=CAU',
+    'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT4KbX9ryNVL1pC8iXCLY6lNRAz37Aa7irCYg&usqp=CAU',
+    'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT4KbX9ryNVL1pC8iXCLY6lNRAz37Aa7irCYg&usqp=CAU',
+    'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT4KbX9ryNVL1pC8iXCLY6lNRAz37Aa7irCYg&usqp=CAU',
+    'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT4KbX9ryNVL1pC8iXCLY6lNRAz37Aa7irCYg&usqp=CAU',
+  ];
+
   const Data = {
     user_name: '얼리어답터 지우',
     user_profile:
@@ -46,101 +61,79 @@ const Detail = () => {
   };
 
   return (
-    <>
-      <StatusBar barStyle="default" />
-      <ScrollView style={styles.block}>
-        <Image
-          source={{
-            uri: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT4KbX9ryNVL1pC8iXCLY6lNRAz37Aa7irCYg&usqp=CAU',
-          }}
-          style={{aspectRatio: 1.5}}
-        />
-        <View style={styles.user_box}>
-          <View style={styles.user_content}>
-            <Image
-              source={{
-                uri: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT4KbX9ryNVL1pC8iXCLY6lNRAz37Aa7irCYg&usqp=CAU',
-              }}
-              style={styles.user_profile}
-            />
-            <View>
-              <Text style={[styles.bold, {fontSize: 16}]}>
-                {Data.user_name}
-              </Text>
-              <Text style={[styles.bold, {fontSize: 12, color: '#9e9e9e'}]}>
-                {Data.location}
-              </Text>
-            </View>
-          </View>
-          <View style={styles.rate_box}>
-            <Text style={[styles.bold, {color: colors.$primary}]}>
-              ★ {Data.rates.toFixed(1)}
-            </Text>
-          </View>
-        </View>
-        <View style={[styles.seperator, {marginBottom: 16}]} />
-        <View style={{marginHorizontal: 16, flex: 1}}>
-          <Text style={[styles.title, styles.bold]}>{Data.title}</Text>
-          <Text style={[styles.category, styles.bold]}>{Data.category}</Text>
-          <Price />
-          <Text style={styles.description}>{Data.description}</Text>
-          <HashTag item={[...Data.hashtags]} />
-        </View>
-        <View style={styles.seperator} />
-        <View style={[styles.price, {marginVertical: 24}]}>
-          <View
-            style={{
-              flexDirection: 'row',
-              justifyContent: 'space-between',
-              marginBottom: 8,
-            }}>
-            <Text style={[styles.bold, {fontSize: 14, alignItems: 'center'}]}>
-              일일 대여가
-            </Text>
-            <Price />
-          </View>
-          <View
-            style={{
-              flexDirection: 'row',
-              justifyContent: 'space-between',
-            }}>
-            <Text style={[styles.bold, {fontSize: 14, alignItems: 'center'}]}>
-              일일 대여가
-            </Text>
-            <Text style={[styles.bold, {fontSize: 18, color: '#444'}]}>
-              {(Data.price_for_day * date).toLocaleString('ko-KR')}원
-            </Text>
-          </View>
-          <Text style={[styles.bold, {fontSize: 11, color: '#9e9e9e'}]}>
-            최소 3일 이상 대여해야 해요.
-          </Text>
-          <RentDatePicker date={date} setDate={setDate} />
-        </View>
-        <Pressable
+    <ScrollView style={styles.block}>
+      {Platform.OS === 'ios' && <DetailHeader />}
+      <SwippableImage imgs={imgArr} />
+      <UserBox
+        img={''}
+        name={'얼리어답터 지우'}
+        location={'서초구 반포본동'}
+        comment={'후기 13'}
+        rate={5.0}
+      />
+
+      <BorderIcon style={styles.border} />
+      <View style={{marginHorizontal: 16, flex: 1}}>
+        <Text style={[styles.title, styles.bold]}>{Data.title}</Text>
+        <Text style={[styles.category, styles.bold]}>{Data.category}</Text>
+        <Price />
+        <Text style={styles.description}>{Data.description}</Text>
+        <HashTag item={[...Data.hashtags]} />
+      </View>
+      <View style={styles.seperator} />
+      <View style={[styles.price, {marginVertical: 24}]}>
+        <View
           style={{
-            marginHorizontal: 16,
-            marginBottom: 16,
-            height: 48,
-            borderRadius: 8,
-            backgroundColor: colors.$primary,
-            justifyContent: 'center',
-            alignItems: 'center',
+            flexDirection: 'row',
+            justifyContent: 'space-between',
+            marginBottom: 8,
           }}>
-          <Text style={[styles.bold, {color: colors.$white, fontSize: 16}]}>
-            채팅하기
+          <Text style={[styles.bold, {fontSize: 14, alignItems: 'center'}]}>
+            일일 대여가
           </Text>
-        </Pressable>
-      </ScrollView>
-    </>
+          <Price />
+        </View>
+        <View
+          style={{
+            flexDirection: 'row',
+            justifyContent: 'space-between',
+          }}>
+          <Text style={[styles.bold, {fontSize: 14, alignItems: 'center'}]}>
+            일일 대여가
+          </Text>
+          <Text style={[styles.bold, {fontSize: 18, color: '#444'}]}>
+            {(Data.price_for_day * date).toLocaleString('ko-KR')}원
+          </Text>
+        </View>
+        <Text style={[styles.bold, {fontSize: 11, color: '#9e9e9e'}]}>
+          최소 3일 이상 대여해야 해요.
+        </Text>
+        <RentDatePicker date={date} setDate={setDate} />
+      </View>
+      <Pressable
+        style={{
+          marginHorizontal: 16,
+          marginBottom: 16,
+          height: 48,
+          borderRadius: 8,
+          backgroundColor: colors.$primary,
+          justifyContent: 'center',
+          alignItems: 'center',
+        }}>
+        <Text style={[styles.bold, {color: colors.$white, fontSize: 16}]}>
+          채팅하기
+        </Text>
+      </Pressable>
+    </ScrollView>
   );
 };
 
 const styles = StyleSheet.create({
-  block: {
-    flex: 1,
-  },
+  block: {flex: 1},
 
-  img: {resizeMode: 'cover'},
+  border: {
+    marginHorizontal: width * 20,
+  },
 
   user_box: {
     marginHorizontal: 16,

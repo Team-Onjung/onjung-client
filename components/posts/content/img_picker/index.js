@@ -10,7 +10,7 @@ import {
 } from 'react-native';
 import {launchCamera, launchImageLibrary} from 'react-native-image-picker';
 import CameraIcon from '../../../../assets/icons/icon-camera.svg';
-import {width, height, colors} from '../../../../utils/globalStyles';
+import {width, colors} from '../../../../utils/globalStyles';
 import ImgModal from './img_modal';
 import CloseIcon from '../../../../assets/icons/icon-circle-close.svg';
 import {v4 as uuidv4} from 'uuid';
@@ -32,6 +32,7 @@ const ImagePicker = ({form, setForm}) => {
       return;
     }
 
+    console.log(res);
     const addRes = {uri: res.assets[0].uri, id: uuidv4()};
     const formImg = form.img;
 
@@ -62,15 +63,16 @@ const ImagePicker = ({form, setForm}) => {
 
   return (
     <View style={styles.block}>
+      <Pressable style={styles.picker} onPress={() => setModalVisible(true)}>
+        <CameraIcon width={24} height={24} />
+        {/* imgarray는 전부 response로  */}
+        <Text style={styles.text}>{response.length}/12</Text>
+      </Pressable>
+
       <ScrollView
         style={styles.imgArr}
         horizontal
         contentContainerStyle={styles.contentContainer}>
-        <Pressable style={styles.picker} onPress={() => setModalVisible(true)}>
-          <CameraIcon width={24} height={24} />
-          {/* imgarray는 전부 response로  */}
-          <Text style={styles.text}>{response.length}/12</Text>
-        </Pressable>
         {response.map((res, idx) => (
           <View
             key={res.id}
@@ -92,6 +94,8 @@ const ImagePicker = ({form, setForm}) => {
                 style={[
                   styles.img,
                   idx === response.length - 1 && styles.lastImg,
+
+                  idx === 0 && styles.firstImg,
                 ]}
                 source={{uri: res.uri}}
               />
@@ -113,17 +117,25 @@ const ImagePicker = ({form, setForm}) => {
 const styles = StyleSheet.create({
   block: {
     flex: 1,
+    flexDirection: 'row',
     paddingBottom: width * 24,
-    paddingHorizontal: width * 24,
+    marginHorizontal: width * 24,
     overflow: 'visible',
   },
 
   imgArr: {
     flexDirection: 'row',
-    overflow: 'visible',
+    marginLeft: width * 8,
+    width: '100%',
+
+    // overflow: 'visible',
   },
 
-  contentContainer: {flexGrow: 1, justifyContent: 'flex-start'},
+  contentContainer: {
+    flexGrow: 1,
+    justifyContent: 'flex-start',
+    // overflow: 'hidden',
+  },
 
   extra: {paddingTop: width * 24},
 
@@ -136,6 +148,8 @@ const styles = StyleSheet.create({
     marginHorizontal: width * 8,
   },
 
+  firstImg: {marginLeft: 0},
+
   lastImg: {
     marginRight: 0,
   },
@@ -146,7 +160,6 @@ const styles = StyleSheet.create({
     right: 0,
     zIndex: 99,
     padding: 2,
-    // transform: [{translateY: -24}, {translateX: 24}],
   },
 
   lastClose: {

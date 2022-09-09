@@ -1,9 +1,8 @@
 import {format} from 'date-fns';
 import {ko} from 'date-fns/locale';
-import React, {useEffect, useState} from 'react';
+import React, {useState} from 'react';
 import {StyleSheet, Text, View} from 'react-native';
 import {width, colors, fonts} from '../../../../../utils/globalStyles';
-import DatePickerModal from './date_picker_modal';
 import CustomPressable from '../custom_pressable';
 import DateTimePicker from 'react-native-modal-datetime-picker';
 
@@ -73,6 +72,7 @@ const DatePicker = ({
           isVisible={startVisible}
         />
       )}
+
       {endVisible && (
         <DateTimePicker
           onConfirm={onEndConfirm}
@@ -83,25 +83,6 @@ const DatePicker = ({
           isVisible={endVisible}
         />
       )}
-      {/* {startVisible ? (
-        <DatePickerModal
-          isVisible={startVisible}
-          minimumDate={new Date()}
-          date={startDate}
-          onConfirm={onStartConfirm}
-          onCancel={onStartCancel}
-        />
-      ) : (
-        endVisible && (
-          <DatePickerModal
-            isVisible={endVisible}
-            minimumDate={startDate}
-            date={endDate}
-            onConfirm={onEndConfirm}
-            onCancel={onEndCancel}
-          />
-        )
-      )} */}
     </View>
   );
 };

@@ -2,7 +2,6 @@ import React, {useState} from 'react';
 import {StyleSheet, Text, TextInput, View} from 'react-native';
 import {width, colors, fonts} from './../../../../../utils/globalStyles';
 import WonIcon from '../../../../../assets/icons/icon-won.svg';
-import WonFocusIcon from '../../../../../assets/icons/icon-won-focused.svg';
 
 const PostTextInput = ({
   title,
@@ -13,6 +12,14 @@ const PostTextInput = ({
   icon,
 }) => {
   const [focused, setFocused] = useState(false);
+  // const [formatted, setFormatted] = useState('');
+
+  // useEffect(() => {
+  //   if (icon && value) {
+  //     setFormatted(value.replace(/\B(?=(\d{3})+(?!\d))/g, ','));
+  //   }
+  // }, [value, icon]);
+
   return (
     <>
       {icon ? (
@@ -24,16 +31,20 @@ const PostTextInput = ({
             style={styles.icon}
           />
           <TextInput
+            keyboardType="numeric"
+            returnKeyType="next"
             style={[styles.withText, multiline && styles.multiline]}
             onChangeText={onChangeText}
-            value={value}
+            value={value && value.replace(/\B(?=(\d{3})+(?!\d))/g, ',')}
             placeholder={title}
             placeholderTextColor={colors['$gray-6']}
             multiline={multiline}
             onFocus={() => setFocused(true)}
             onBlur={() => setFocused(false)}
           />
-          <Text style={styles.secondText}>{secondText}</Text>
+          <Text style={[styles.secondText, value && styles.visible]}>
+            {secondText}
+          </Text>
         </View>
       ) : (
         <TextInput
@@ -41,6 +52,7 @@ const PostTextInput = ({
           onChangeText={onChangeText}
           value={value}
           placeholder={title}
+          returnKeyType="next"
           placeholderTextColor={colors['$gray-6']}
           multiline={multiline}
         />
@@ -89,7 +101,10 @@ const styles = StyleSheet.create({
     color: colors['$gray-6'],
     fontSize: width * 17,
     fontFamily: 'AppleSDGothicNeoSB',
+    display: 'none',
   },
+
+  visible: {display: 'flex'},
 
   multiline: {
     fontFamily: 'AppleSDGothicNeoR',
