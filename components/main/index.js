@@ -7,11 +7,11 @@ import {
   Pressable,
   ScrollView,
 } from 'react-native';
-import alarm from '../../assets/imgs/alarm.png';
-import menu from '../../assets/imgs/menu.png';
-import search from '../../assets/imgs/search.png';
+import alarm from '../../assets/imgs/mainImg/alarm.png';
+import menu from '../../assets/imgs/mainImg/menu.png';
+import search from '../../assets/imgs/mainImg/search.png';
 import {SafeAreaView} from 'react-native-safe-area-context';
-import {width, height, colors} from '../../utils/globalStyles';
+import {width, colors} from '../../utils/globalStyles';
 import data from './data.json';
 
 const Main = () => {
@@ -59,7 +59,7 @@ const Main = () => {
           <View style={styles.postlist} key={i}>
             <Image
               style={styles.postImage}
-              source={require('../../assets/imgs/beamproject.png')}
+              source={require('../../assets/imgs/mainImg/beamproject.png')}
             />
             <View style={styles.postText}>
               <Text style={styles.postTitle} numberOfLines={1}>
@@ -88,19 +88,16 @@ const styles = StyleSheet.create({
     marginLeft: 25,
     width: 16,
     height: 16,
-    justifyContent: 'flex-start',
   },
   search: {
     marginLeft: 300,
     width: 18,
     height: 18,
-    justifyContent: 'flex-end',
   },
   alarm: {
     marginLeft: 10,
     width: 20,
     height: 20,
-    justifyContent: 'flex-end',
   },
   textbutton01: {
     flex: 1,
@@ -108,15 +105,12 @@ const styles = StyleSheet.create({
     marginLeft: 25,
     height: 30,
     width: 10,
-    justifyContent: 'flex-start',
   },
   textbutton02: {
     flex: 1,
     marginTop: 20,
     marginLeft: 5,
     marginHorizontal: width * 230,
-    justifyContent: 'flex-start',
-    height: 30,
   },
   text: {
     fontSize: 20,
@@ -124,30 +118,26 @@ const styles = StyleSheet.create({
   },
   contentContainer: {
     height: 500,
-
   },
 
   postlist: {
     flex: 1,
     flexDirection: 'row',
     margin: 10,
-    justifyContent: 'flex-start',
   },
   postImage: {
     flex: 1,
-    width: 30,
-    height: 100,
-    borderRadius: 10,
-    resizeMode: 'cover',
-    justifyContent: 'flex-start',
+    width: 10,
+    height: 90,
+    borderRadius: 20,
     margin: 10,
+    resizeMode: 'cover',
   },
   postText: {
     flex: 1,
     flexDirection: 'column',
     marginTop: 7,
     justifyContent: 'flex-start',
-
   },
   postTitle: {
     fontSize: 20,
@@ -158,8 +148,7 @@ const styles = StyleSheet.create({
   postUser: {
     fontSize: 15,
     justifyContent: 'flex-start',
-    marginBottom: 30,
-
+    marginBottom: 20,
   },
   postPrice: {
     fontSize: 18,
