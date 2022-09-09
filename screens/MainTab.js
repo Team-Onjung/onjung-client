@@ -47,6 +47,7 @@ const MainTab = navigation => {
         component={Main}
         options={{
           title: '정 나눔',
+          headerShown: false,
           tabBarIconStyle: {height: 32, width: 32},
           tabBarIcon: ({focused}) =>
             focused ? (
