@@ -15,6 +15,7 @@ import plus from '../../../assets/icons/chat_icons/icon-plus.png';
 import send from '../../../assets/icons/chat_icons/icon-send.png';
 import bim from '../../../assets/imgs/chat/image-sample.png';
 import person from '../../../assets/imgs/chat/image-person.png';
+import {width, height, colors} from '../../../utils/globalStyles';
 
 const PreChat = () => {
   const sample = {
@@ -152,9 +153,12 @@ const Talk = () => {
       </ScrollView>
 
       <View style={styles.inputPart}>
-        <Image source={plus} width={30} height={30} style={styles.plus} />
+        <Image source={plus} width={25} height={25} style={styles.plus} />
         <View style={styles.input}>
-          <TextInput placeholder="메시지를 입력하세요" />
+          <TextInput
+            style={{fontSize: width * 12}}
+            placeholder="메시지를 입력하세요"
+          />
         </View>
         <View style={styles.sendPart}>
           <Image
@@ -173,19 +177,17 @@ export default Talk;
 
 const styles = StyleSheet.create({
   bar: {
-    // backgroundColor: 'red',
     flexDirection: 'row',
     justifyContent: 'space-between',
-    padding: 20,
+    padding: width * 20,
   },
   name: {
-    fontSize: 17,
+    fontSize: width * 17,
     fontWeight: 'bold',
   },
 
   chatPart: {
-    // backgroundColor: 'red',
-    height: 442,
+    height: height * 492,
   },
 
   dateBox: {
@@ -194,62 +196,56 @@ const styles = StyleSheet.create({
   },
 
   line: {
-    // backgroundColor: 'red',
-    paddingTop: 19,
-    paddingBottom: 1,
+    paddingTop: height * 19,
+    paddingBottom: height * 1,
   },
 
   date: {
-    // backgroundColor: 'pink',
-    paddingTop: 10,
-    paddingBottom: 10,
-    width: 130,
+    paddingVertical: height * 10,
+    width: width * 130,
     alignItems: 'center',
   },
 
   sendPart: {
-    // backgroundColor: 'red',
     flexDirection: 'row',
     justifyContent: 'flex-end',
-    padding: 10,
+    padding: width * 10,
   },
 
   sendM: {
-    backgroundColor: '#FC7574',
+    backgroundColor: colors['$coral-4'],
     borderTopLeftRadius: 20,
     borderBottomLeftRadius: 20,
     borderBottomRightRadius: 20,
     borderTopRightRadius: 2,
-    width: 230,
-    height: 40,
+    width: width * 210,
+    height: height * 40,
     justifyContent: 'center',
     alignItems: 'center',
   },
 
   time: {
-    // backgroundColor: 'blue',
-    width: 55,
-    paddingTop: 20,
+    width: width * 55,
+    paddingTop: height * 20,
     alignItems: 'center',
   },
 
   getPart: {
-    // backgroundColor: 'red',
     flexDirection: 'row',
     justifyContent: 'flex-start',
-    padding: 10,
+    padding: width * 10,
   },
 
   getM: {
-    backgroundColor: '#EAECEF',
+    backgroundColor: colors['$gray-11'],
     borderTopLeftRadius: 20,
     borderBottomLeftRadius: 2,
     borderBottomRightRadius: 20,
     borderTopRightRadius: 20,
     alignItems: 'center',
     justifyContent: 'center',
-    width: 230,
-    height: 40,
+    width: width * 210,
+    height: height * 40,
   },
 
   inputPart: {
@@ -257,36 +253,35 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'center',
     alignItems: 'center',
-    height: 80,
+    height: height * 80,
   },
 
   plus: {
-    marginRight: 10,
-    width: 33,
-    height: 33,
+    marginRight: width * 10,
+    width: width * 33,
+    height: height * 33,
   },
 
   input: {
-    backgroundColor: '#F2F4F6',
-    width: 320,
-    height: 40,
-    fontSize: 12,
+    backgroundColor: colors['$gray-9'],
+    width: width * 300,
+    height: height * 40,
     borderRadius: 30,
-    paddingLeft: 10,
+    paddingLeft: width * 10,
   },
 
   sendButton: {
     position: 'absolute',
-    left: -35,
-    top: -5,
+    left: width * -30,
+    top: height * -4,
   },
 
   product: {
     backgroundColor: '#FFFFFF',
     flexDirection: 'row',
     alignItems: 'center',
-    height: 90,
-    paddingLeft: 5,
+    height: height * 90,
+    paddingLeft: width * 5,
     borderTopLeftRadius: 15,
     borderTopRightRadius: 15,
   },
@@ -296,55 +291,52 @@ const styles = StyleSheet.create({
   },
 
   image: {
-    margin: 15,
+    margin: width * 15,
   },
 
   textH1: {
-    fontSize: 18,
+    fontSize: width * 18,
     fontWeight: 'bold',
   },
 
   textH2: {
-    paddingTop: 10,
+    paddingTop: height * 10,
   },
 
   left: {
-    // backgroundColor: 'blue',
-    paddingLeft: 20,
-    paddingTop: 25,
-    paddingBottom: 25,
+    paddingLeft: width * 18,
+    paddingVertical: height * 25,
   },
 
   borrowButton: {
-    // backgroundColor: 'white',
-    color: '#FC7574',
-    fontSize: 15,
+    color: colors['$coral-4'],
+    fontSize: width * 15,
     fontWeight: 'bold',
-    width: 115,
-    height: 40,
+    width: width * 115,
+    height: height * 40,
     textAlign: 'center',
-    lineHeight: 40,
+    lineHeight: height * 40,
     borderRadius: 30,
-    borderColor: '#FC7574',
-    borderWidth: 1,
-    marginTop: 25,
+    borderColor: colors['$coral-4'],
+    borderWidth: width * 1,
+    marginTop: height * 25,
   },
 
   down: {
-    backgroundColor: '#FFF3EF',
+    backgroundColor: colors['$coral-1'],
     flexDirection: 'row',
     borderBottomLeftRadius: 15,
     borderBottomRightRadius: 15,
   },
 
   right: {
-    marginTop: 76,
+    marginTop: height * 82,
   },
 
   preChat: {
-    width: 300,
-    borderColor: '#E5E8EB',
-    borderWidth: 1,
+    width: width * 270,
+    borderColor: colors['$gray-8'],
+    borderWidth: width * 1,
     borderRadius: 15,
   },
 });
