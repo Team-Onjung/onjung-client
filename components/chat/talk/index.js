@@ -8,13 +8,13 @@ import {
   TextInput,
   ScrollView,
 } from 'react-native';
-import arrowLeft from '../../../assets/icons/chat_icons/icon-arrow-left.png';
-import dot from '../../../assets/icons/chat_icons/icon-dot.png';
-import line from '../../../assets/icons/chat_icons/icon-line.png';
-import plus from '../../../assets/icons/chat_icons/icon-plus.png';
-import send from '../../../assets/icons/chat_icons/icon-send.png';
+import ArrowLeft from '../../../assets/icons/chat_icons/icon-arrow-left.svg';
+import Dot from '../../../assets/icons/chat_icons/icon-dot.svg';
+import Line from '../../../assets/icons/chat_icons/icon-line.svg';
+import Plus from '../../../assets/icons/chat_icons/icon-plus.svg';
+import Send from '../../../assets/icons/chat_icons/icon-send.svg';
 import bim from '../../../assets/imgs/chat/image-sample.png';
-import person from '../../../assets/imgs/chat/image-person.png';
+import Person from '../../../assets/imgs/chat/image-person.svg';
 import {width, height, colors} from '../../../utils/globalStyles';
 
 const PreChat = () => {
@@ -58,12 +58,7 @@ const PreChat = () => {
             </Text>
             <Text style={styles.borrowButton}>대여하기</Text>
           </View>
-          <Image
-            source={person}
-            style={styles.right}
-            width={110}
-            height={140}
-          />
+          <Person style={styles.right} width={110} height={140} />
         </View>
       </View>
     </View>
@@ -128,24 +123,20 @@ const Talk = () => {
   return (
     <SafeAreaView style={{backgroundColor: '#F9FAFB'}}>
       <View style={styles.bar}>
-        <Image source={arrowLeft} width={30} height={30} />
+        <ArrowLeft style={styles.arrowLeft} />
         <Text style={styles.name}>짱소현</Text>
-        <Image source={dot} width={30} height={30} />
+        <Dot width={20} height={20} />
       </View>
 
       <ScrollView style={styles.chatPart}>
         <View style={styles.dateBox}>
-          <View style={styles.line}>
-            <Image source={line} width={1} />
-          </View>
+          <Line style={styles.line} />
           <View style={styles.date}>
             <Text>
               {year}.{month}.{date} {dayOfWeek}요일
             </Text>
           </View>
-          <View style={styles.line}>
-            <Image source={line} width={1} />
-          </View>
+          <Line style={styles.line} />
         </View>
         <PreChat />
         <SendMessage />
@@ -153,7 +144,7 @@ const Talk = () => {
       </ScrollView>
 
       <View style={styles.inputPart}>
-        <Image source={plus} width={25} height={25} style={styles.plus} />
+        <Plus width={36} height={36} style={styles.plus} />
         <View style={styles.input}>
           <TextInput
             style={{fontSize: width * 12}}
@@ -161,12 +152,7 @@ const Talk = () => {
           />
         </View>
         <View style={styles.sendPart}>
-          <Image
-            source={send}
-            width={30}
-            height={30}
-            style={styles.sendButton}
-          />
+          <Send width={30} height={30} style={styles.sendButton} />
         </View>
       </View>
     </SafeAreaView>
@@ -186,6 +172,11 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
   },
 
+  arrowLeft: {
+    width: width * 1,
+    height: height * 1,
+  },
+
   chatPart: {
     height: height * 492,
   },
@@ -196,8 +187,7 @@ const styles = StyleSheet.create({
   },
 
   line: {
-    paddingTop: height * 19,
-    paddingBottom: height * 1,
+    paddingTop: height * 44,
   },
 
   date: {
@@ -257,9 +247,10 @@ const styles = StyleSheet.create({
   },
 
   plus: {
-    marginRight: width * 10,
+    marginRight: width * 5,
     width: width * 33,
     height: height * 33,
+    marginTop: height * 2,
   },
 
   input: {
@@ -273,7 +264,7 @@ const styles = StyleSheet.create({
   sendButton: {
     position: 'absolute',
     left: width * -30,
-    top: height * -4,
+    top: height * -5,
   },
 
   product: {
