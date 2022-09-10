@@ -125,7 +125,7 @@ const Talk = () => {
       <View style={styles.bar}>
         <ArrowLeft style={styles.arrowLeft} />
         <Text style={styles.name}>짱소현</Text>
-        <Dot width={20} height={20} />
+        <Dot width={width * 20} height={height * 20} />
       </View>
 
       <ScrollView style={styles.chatPart}>
@@ -144,7 +144,7 @@ const Talk = () => {
       </ScrollView>
 
       <View style={styles.inputPart}>
-        <Plus width={36} height={36} style={styles.plus} />
+        <Plus width={width * 36} height={height * 36} style={styles.plus} />
         <View style={styles.input}>
           <TextInput
             style={{fontSize: width * 12}}
@@ -152,7 +152,11 @@ const Talk = () => {
           />
         </View>
         <View style={styles.sendPart}>
-          <Send width={30} height={30} style={styles.sendButton} />
+          <Send
+            width={width * 30}
+            height={height * 30}
+            style={styles.sendButton}
+          />
         </View>
       </View>
     </SafeAreaView>
@@ -248,8 +252,8 @@ const styles = StyleSheet.create({
 
   plus: {
     marginRight: width * 5,
-    width: width * 33,
-    height: height * 33,
+    width: width * 40,
+    height: height * 40,
     marginTop: height * 2,
   },
 
@@ -264,7 +268,7 @@ const styles = StyleSheet.create({
   sendButton: {
     position: 'absolute',
     left: width * -30,
-    top: height * -5,
+    top: height * -3,
   },
 
   product: {
@@ -304,9 +308,9 @@ const styles = StyleSheet.create({
     fontSize: width * 15,
     fontWeight: 'bold',
     width: width * 115,
-    height: height * 40,
+    height: height * 42,
     textAlign: 'center',
-    lineHeight: height * 40,
+    lineHeight: height * 42,
     borderRadius: 30,
     borderColor: colors['$coral-4'],
     borderWidth: width * 1,
