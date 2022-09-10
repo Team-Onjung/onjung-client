@@ -1,10 +1,10 @@
 import React, {useEffect, useState} from 'react';
-import {StyleSheet, Text, View} from 'react-native';
+import {StyleSheet, View} from 'react-native';
 import {colors, fonts, width} from '../../../utils/globalStyles';
 import DatePicker from '../../posts/content/form/date_picker';
 import PricePreview from './price_preview';
 
-const PriceContainer = ({rental_fee, deposit, commission_fee}) => {
+const PriceContainer = ({rental_fee, deposit, commission_fee, duration}) => {
   const [startDate, setStartDate] = useState(new Date());
   const [endDate, setEndDate] = useState(new Date());
   const [rentalDate, setRentalDate] = useState(0);
@@ -28,6 +28,7 @@ const PriceContainer = ({rental_fee, deposit, commission_fee}) => {
         title={'예상 대여 일수'}
         desc={'최소 3일 이상 대여해야 해요.'}
         value={rentalDate}
+        errorMessage={rentalDate < duration}
         unit={'일'}
       />
       <PricePreview

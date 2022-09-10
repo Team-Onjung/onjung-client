@@ -2,14 +2,14 @@ import React from 'react';
 import {StyleSheet, Text, View} from 'react-native';
 import {colors, fonts, width} from '../../../../utils/globalStyles';
 
-const PricePreview = ({title, desc, value, unit}) => {
+const PricePreview = ({title, desc, value, unit, errorMessage}) => {
   return (
     <View style={styles.block}>
       <View style={styles.descBox}>
         <Text style={styles.title}>{title}</Text>
-        <Text style={styles.desc}>{desc}</Text>
+        <Text style={[styles.desc, errorMessage && styles.error]}>{desc}</Text>
       </View>
-      <Text style={styles.value}>
+      <Text style={[styles.value, errorMessage && styles.error]}>
         {value}
         {unit}
       </Text>
@@ -36,6 +36,10 @@ const styles = StyleSheet.create({
     color: colors['$gray-5'],
     lineHeight: width * 20,
     letterSpacing: width * -0.24,
+  },
+
+  error: {
+    color: colors['$coral-5'],
   },
 
   valueBox: {},

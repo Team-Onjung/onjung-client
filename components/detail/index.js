@@ -85,6 +85,7 @@ const Detail = () => {
         rental_fee={Data.rental_fee}
         deposit={Data.deposit}
         commission_fee={Data.commission_fee}
+        duration={Data.duration}
       />
     </ScrollView>
   );
