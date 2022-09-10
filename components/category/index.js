@@ -1,57 +1,132 @@
-import React from 'react';
-import {StatusBar, StyleSheet, Text, View, FlatList} from 'react-native';
+import React, {useState} from 'react';
+import {
+  FlatList,
+  SafeAreaView,
+  StatusBar,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+} from 'react-native';
 
-//Static data to displaty in list
-const DATA = [
-  '인기매물',
-  '디지털기기',
-  '생활가전',
-  '가구/인테리어',
-  '생활/주방',
-  '유아동',
-  '유아도서',
-  '여성의류',
-  '여성잡화',
-  '남성패션/잡화',
-  '뷰티/미용',
-  '스포츠/레저',
-  '취미/게임/음반',
-  '도서',
-  '반려동물용품',
-  '식물',
-  '기타',
+const categoryName = [
+  {
+    id: 1,
+    name: '인기매물',
+  },
+  {
+    id: 2,
+    name: '디지털기기',
+  },
+  {
+    id: 3,
+    name: '생활가전',
+  },
+  {
+    id: 4,
+    name: '가구/인테리어',
+  },
+  {
+    id: 5,
+    name: '생활/주방',
+  },
+  {
+    id: 6,
+    name: '유아동',
+  },
+  {
+    id: 7,
+    name: '유아도서',
+  },
+  {
+    id: 8,
+    name: '여성의류',
+  },
+  {
+    id: 9,
+    name: '여성잡화',
+  },
+  {
+    id: 10,
+    name: '남성패션/잡화',
+  },
+  {
+    id: 11,
+    name: '뷰티/미용',
+  },
+  {
+    id: 12,
+    name: '스포츠/레저',
+  },
+  {
+    id: 13,
+    name: '취미/게임/음반',
+  },
+  {
+    id: 14,
+    name: '도서',
+  },
+  {
+    id: 15,
+    name: '반려동물용품',
+  },
+  {
+    id: 16,
+    name: '식물',
+  },
+  {
+    id: 17,
+    name: '기타',
+  },
 ];
 
-const Category = () => {
-  return (
-    <View style={styles.container_style}>
-      <Text style={styles.header}> 카테고리 </Text>
-      <FlatList
-        horizontal
-        data={DATA}
-        renderItem={({item}) => <Text style={styles.item_style}>{item}</Text>}
+const Item = ({item, onPress, backgroundColor, textColor}) => (
+  <TouchableOpacity onPress={onPress} style={[styles.item, backgroundColor]}>
+    <Text style={[styles.name, textColor]}>{item.name}</Text>
+  </TouchableOpacity>
+);
+
+const App = () => {
+  const [selectedId, setSelectedId] = useState(null);
+
+  const renderItem = ({item}) => {
+    const backgroundColor = item.id === selectedId ? '#6e3b6e' : '#f9c2ff';
+    const color = item.id === selectedId ? 'white' : 'black';
+
+    return (
+      <Item
+        item={item}
+        onPress={() => setSelectedId(item.id)}
+        backgroundColor={{backgroundColor}}
+        textColor={{color}}
       />
-    </View>
+    );
+  };
+
+  return (
+    <SafeAreaView style={styles.container}>
+      <FlatList
+        data={categoryName}
+        renderItem={renderItem}
+        keyExtractor={item => item.id}
+        extraData={selectedId}
+      />
+    </SafeAreaView>
   );
 };
 
-//Styles
 const styles = StyleSheet.create({
-  container_style: {
+  container: {
     flex: 1,
     marginTop: StatusBar.currentHeight || 0,
   },
-  item_style: {
-    backgroundColor: '#B591FF',
+  item: {
     padding: 20,
     marginVertical: 8,
     marginHorizontal: 16,
   },
-  header: {
-    textAlign: 'center',
-    backgroundColor: '#B2C2D2',
-    padding: 20,
-    fontSize: 20,
+  name: {
+    fontSize: 32,
   },
 });
-export default Category;
+
+export default App;
