@@ -172,7 +172,7 @@ const styles = StyleSheet.create({
     padding: width * 20,
   },
   name: {
-    fontSize: width * 17,
+    fontSize: width * 16,
     fontWeight: 'bold',
   },
 
