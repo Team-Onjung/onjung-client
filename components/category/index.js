@@ -2,33 +2,33 @@ import React from 'react';
 import {StyleSheet, Text, View, FlatList} from 'react-native';
 import {colors, width, height} from './utils/globalStyles';
 
-const DATA = [
-  '인기매물',
-  '디지털기기',
-  '생활가전',
-  '가구/인테리어',
-  '생활/주방',
-  '유아동',
-  '유아도서',
-  '여성의류',
-  '여성잡화',
-  '남성패션/잡화',
-  '뷰티/미용',
-  '스포츠/레저',
-  '취미/게임/음반',
-  '도서',
-  '반려동물용품',
-  '식물',
-  '기타',
-];
+const DATA1 = ['인기매물', '디지털기기', '생활가전', '가구/인테리어'];
+const DATA2 = ['생활/주방', '유아동', '유아도서', '여성의류'];
+const DATA3 = ['여성잡화', '남성패션/잡화', '뷰티/미용', '스포츠/레저'];
+const DATA4 = ['도서', '반려동물용품', '식물', '기타'];
 
-const Category = () => {
+const App = () => {
   return (
     <View style={styles.container_style}>
       <Text style={styles.header}> 카테고리 </Text>
       <FlatList
         horizontal
-        data={DATA}
+        data={DATA1}
+        renderItem={({item}) => <Text style={styles.item_style}>{item}</Text>}
+      />
+      <FlatList
+        horizontal
+        data={DATA2}
+        renderItem={({item}) => <Text style={styles.item_style}>{item}</Text>}
+      />
+      <FlatList
+        horizontal
+        data={DATA3}
+        renderItem={({item}) => <Text style={styles.item_style}>{item}</Text>}
+      />
+      <FlatList
+        horizontal
+        data={DATA4}
         renderItem={({item}) => <Text style={styles.item_style}>{item}</Text>}
       />
     </View>
@@ -58,9 +58,10 @@ const styles = StyleSheet.create({
     height: height * 54,
     borderRadius: 10,
     backgroundColor: colors.$white,
-    justifyContent: 'center',
-    alignItems: 'center',
+    justifyContent: 'space-around',
+    alignItems: 'space-around',
     marginHorizontal: width * 6,
+    textAlign: 'center',
   },
 
   text: {
@@ -71,4 +72,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Category;
+export default App;
