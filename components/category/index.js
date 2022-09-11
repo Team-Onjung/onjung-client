@@ -1,132 +1,74 @@
-import React, {useState} from 'react';
-import {
-  FlatList,
-  SafeAreaView,
-  StatusBar,
-  StyleSheet,
-  Text,
-  TouchableOpacity,
-} from 'react-native';
+import React from 'react';
+import {StyleSheet, Text, View, FlatList} from 'react-native';
+import {colors, width, height} from './utils/globalStyles';
 
-const categoryName = [
-  {
-    id: 1,
-    name: '인기매물',
-  },
-  {
-    id: 2,
-    name: '디지털기기',
-  },
-  {
-    id: 3,
-    name: '생활가전',
-  },
-  {
-    id: 4,
-    name: '가구/인테리어',
-  },
-  {
-    id: 5,
-    name: '생활/주방',
-  },
-  {
-    id: 6,
-    name: '유아동',
-  },
-  {
-    id: 7,
-    name: '유아도서',
-  },
-  {
-    id: 8,
-    name: '여성의류',
-  },
-  {
-    id: 9,
-    name: '여성잡화',
-  },
-  {
-    id: 10,
-    name: '남성패션/잡화',
-  },
-  {
-    id: 11,
-    name: '뷰티/미용',
-  },
-  {
-    id: 12,
-    name: '스포츠/레저',
-  },
-  {
-    id: 13,
-    name: '취미/게임/음반',
-  },
-  {
-    id: 14,
-    name: '도서',
-  },
-  {
-    id: 15,
-    name: '반려동물용품',
-  },
-  {
-    id: 16,
-    name: '식물',
-  },
-  {
-    id: 17,
-    name: '기타',
-  },
+const DATA = [
+  '인기매물',
+  '디지털기기',
+  '생활가전',
+  '가구/인테리어',
+  '생활/주방',
+  '유아동',
+  '유아도서',
+  '여성의류',
+  '여성잡화',
+  '남성패션/잡화',
+  '뷰티/미용',
+  '스포츠/레저',
+  '취미/게임/음반',
+  '도서',
+  '반려동물용품',
+  '식물',
+  '기타',
 ];
 
-const Item = ({item, onPress, backgroundColor, textColor}) => (
-  <TouchableOpacity onPress={onPress} style={[styles.item, backgroundColor]}>
-    <Text style={[styles.name, textColor]}>{item.name}</Text>
-  </TouchableOpacity>
-);
-
-const App = () => {
-  const [selectedId, setSelectedId] = useState(null);
-
-  const renderItem = ({item}) => {
-    const backgroundColor = item.id === selectedId ? '#6e3b6e' : '#f9c2ff';
-    const color = item.id === selectedId ? 'white' : 'black';
-
-    return (
-      <Item
-        item={item}
-        onPress={() => setSelectedId(item.id)}
-        backgroundColor={{backgroundColor}}
-        textColor={{color}}
-      />
-    );
-  };
-
+const Category = () => {
   return (
-    <SafeAreaView style={styles.container}>
+    <View style={styles.container_style}>
+      <Text style={styles.header}> 카테고리 </Text>
       <FlatList
-        data={categoryName}
-        renderItem={renderItem}
-        keyExtractor={item => item.id}
-        extraData={selectedId}
+        horizontal
+        data={DATA}
+        renderItem={({item}) => <Text style={styles.item_style}>{item}</Text>}
       />
-    </SafeAreaView>
+    </View>
   );
 };
 
 const styles = StyleSheet.create({
-  container: {
+  block: {
     flex: 1,
-    marginTop: StatusBar.currentHeight || 0,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: colors['$gray-9'],
   },
-  item: {
-    padding: 20,
-    marginVertical: 8,
-    marginHorizontal: 16,
+
+  header: {
+    textAlign: 'center',
+    fontSize: width * 21,
+    letterSpacing: width * -0.24,
+    fontWeight: 'bold',
+    color: colors['$gray-1'],
+    marginVertical: width * 26,
   },
-  name: {
-    fontSize: 32,
+
+  item_style: {
+    flex: 1,
+    width: width * 54,
+    height: height * 54,
+    borderRadius: 10,
+    backgroundColor: colors.$white,
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginHorizontal: width * 6,
+  },
+
+  text: {
+    fontSize: width * 17,
+    fontFamily: 'AppleSDGothicNeoM',
+    color: colors['$gray-2'],
+    fontWeight: 'bold',
   },
 });
 
-export default App;
+export default Category;
