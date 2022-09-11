@@ -4,9 +4,9 @@ import DatePicker from './date_picker';
 import PostTextInput from './input';
 import CustomPressable from './custom_pressable';
 import SelectBox from './select_box';
-import ArrowRight from '../../../../assets/icons/icon-arrow-right.svg';
-import BorderIcon from '../../../../assets/icons/icon-border-line.svg';
+
 import {width} from '../../../../utils/globalStyles';
+import {ArrowRightIcon, BorderIcon} from '../../../svg';
 
 const PostForm = ({form, setForm, routeName}) => {
   const onFormTextHandler = useCallback(
@@ -34,7 +34,7 @@ const PostForm = ({form, setForm, routeName}) => {
         justifyContent="space-between"
         value={form.category}
         onChangeText={onFormTextHandler('category')}>
-        <ArrowRight width={21} height={21} />
+        <ArrowRightIcon />
       </SelectBox>
       <BorderIcon style={styles.border} />
 

@@ -12,7 +12,7 @@ import {SafeAreaView} from 'react-native-safe-area-context';
 import PostForm from './form';
 import ImagePicker from './img_picker';
 import {width, colors} from './../../../utils/globalStyles';
-import ArrowLeft from '../../../assets/icons/icon-arrow-left.svg';
+import {ArrowLeftIcon} from '../../svg';
 
 const PostContent = ({navigation, route}) => {
   const [form, setForm] = useState({
@@ -36,7 +36,7 @@ const PostContent = ({navigation, route}) => {
     navigation.setOptions({
       headerLeft: () => (
         <Pressable onPress={() => navigation.pop()}>
-          <ArrowLeft />
+          <ArrowLeftIcon />
         </Pressable>
       ),
       title: `${route.params.title}`,

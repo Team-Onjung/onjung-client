@@ -1,7 +1,7 @@
 import React from 'react';
-import {View, StyleSheet, Text, Pressable} from 'react-native';
-import ArrowRightIcon from '../../../assets/icons/icon-arrow-right.svg';
+import {StyleSheet, Text, Pressable} from 'react-native';
 import {fonts, width} from '../../../utils/globalStyles';
+import {ArrowRightIcon} from '../../svg';
 import {colors} from './../../../utils/globalStyles';
 
 const Report = () => {

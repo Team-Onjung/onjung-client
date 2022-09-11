@@ -1,12 +1,12 @@
 import React from 'react';
 import {StyleSheet, View} from 'react-native';
 import {height, width} from '../../../utils/globalStyles';
-import ArrowLeftIcon from '../../../assets/icons/icon-arrow-left.svg';
+import {ArrowLeftIcon} from '../../svg';
 
 const DetailHeader = () => {
   return (
     <View style={styles.block}>
-      <ArrowLeftIcon width={24} height={24} />
+      <ArrowLeftIcon />
     </View>
   );
 };

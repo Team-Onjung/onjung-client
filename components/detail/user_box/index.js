@@ -1,7 +1,7 @@
 import React from 'react';
 import {View, StyleSheet, Image, Text} from 'react-native';
 import {colors, fonts, height, width} from '../../../utils/globalStyles';
-import FaceIcon from '../../../assets/icons/icon-face.svg';
+import {FaceIcon} from '../../svg';
 
 const UserBox = ({img, name, location, comment, rate}) => {
   return (
@@ -16,7 +16,7 @@ const UserBox = ({img, name, location, comment, rate}) => {
         </View>
       </View>
       <View style={styles.rateBox}>
-        <FaceIcon width={24} height={24} />
+        <FaceIcon />
         <Text style={styles.rate}>정 {rate.toFixed(1)}</Text>
       </View>
     </View>
