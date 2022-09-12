@@ -5,8 +5,11 @@ import DatePicker from '../../posts/content/form/date_picker';
 import PricePreview from './price_preview';
 
 const PriceContainer = ({rental_fee, deposit, commission_fee, duration}) => {
+  const now = new Date();
   const [startDate, setStartDate] = useState(new Date());
-  const [endDate, setEndDate] = useState(new Date());
+  const [endDate, setEndDate] = useState(
+    new Date(now.setDate(now.getDate() + duration)),
+  );
   const [rentalDate, setRentalDate] = useState(0);
 
   useEffect(() => {
@@ -26,7 +29,7 @@ const PriceContainer = ({rental_fee, deposit, commission_fee, duration}) => {
       />
       <PricePreview
         title={'예상 대여 일수'}
-        desc={'최소 3일 이상 대여해야 해요.'}
+        desc={`최소 ${duration}일 이상 대여해야 해요.`}
         value={rentalDate}
         errorMessage={rentalDate < duration}
         unit={'일'}
