@@ -1,5 +1,5 @@
-import React, {useState} from 'react';
-import {Dimensions, Platform, ScrollView, StyleSheet, View} from 'react-native';
+import React from 'react';
+import {Platform, ScrollView, StyleSheet, View} from 'react-native';
 import {colors, width} from '../../utils/globalStyles';
 import UserBox from './user_box';
 import BorderIcon from '../../assets/icons/icon-border-line.svg';
@@ -39,9 +39,6 @@ const Detail = () => {
     feedback_cnt: 13,
     commission_fee: 1000,
   };
-  const [date, setDate] = useState(3);
-
-  const {width} = Dimensions.get('window');
 
   return (
     <ScrollView style={styles.block}>

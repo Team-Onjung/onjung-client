@@ -1,13 +1,13 @@
 import React from 'react';
 import {Pressable, StyleSheet, Text} from 'react-native';
 import {colors, fonts, width} from '../../../../../utils/globalStyles';
-import DropIcon from '../../../../../assets/icons/icon-drop-down.svg';
+import {DropIcon} from '../../../../svg';
 
 const CustomPressable = ({children, onPress, date}) => {
   return (
     <Pressable style={[styles.block, date && styles.date]} onPress={onPress}>
       <Text style={styles.text}>{children}</Text>
-      <DropIcon width={16} height={16} />
+      <DropIcon />
     </Pressable>
   );
 };

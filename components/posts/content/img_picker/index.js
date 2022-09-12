@@ -9,11 +9,11 @@ import {
   View,
 } from 'react-native';
 import {launchCamera, launchImageLibrary} from 'react-native-image-picker';
-import CameraIcon from '../../../../assets/icons/icon-camera.svg';
 import {width, colors} from '../../../../utils/globalStyles';
 import ImgModal from './img_modal';
-import CloseIcon from '../../../../assets/icons/icon-circle-close.svg';
+// import CloseIcon from '../../../../assets/icons/icon-circle-close.svg';
 import {v4 as uuidv4} from 'uuid';
+import {CameraIcon, CloseIcon} from '../../../svg';
 
 const ImagePicker = ({form, setForm}) => {
   const [response, setResponse] = useState([]);
@@ -64,7 +64,7 @@ const ImagePicker = ({form, setForm}) => {
   return (
     <View style={styles.block}>
       <Pressable style={styles.picker} onPress={() => setModalVisible(true)}>
-        <CameraIcon width={24} height={24} />
+        <CameraIcon />
         {/* imgarray는 전부 response로  */}
         <Text style={styles.text}>{response.length}/12</Text>
       </Pressable>
@@ -82,8 +82,6 @@ const ImagePicker = ({form, setForm}) => {
               <CloseIcon
                 onPress={() => onRemove(res.id, res.uri)}
                 id={res.id}
-                width={24}
-                height={24}
                 style={[
                   styles.close,
                   idx === response.length - 1 && styles.lastClose,
