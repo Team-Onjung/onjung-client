@@ -14,22 +14,22 @@ const App = () => {
       <FlatList
         horizontal
         data={DATA1}
-        renderItem={({item}) => <Text style={styles.item_style}>{item}</Text>}
+        renderItem={({item}) => <Text style={styles.itemStyle}>{item}</Text>}
       />
       <FlatList
         horizontal
         data={DATA2}
-        renderItem={({item}) => <Text style={styles.item_style}>{item}</Text>}
+        renderItem={({item}) => <Text style={styles.itemStyle}>{item}</Text>}
       />
       <FlatList
         horizontal
         data={DATA3}
-        renderItem={({item}) => <Text style={styles.item_style}>{item}</Text>}
+        renderItem={({item}) => <Text style={styles.itemStyle}>{item}</Text>}
       />
       <FlatList
         horizontal
         data={DATA4}
-        renderItem={({item}) => <Text style={styles.item_style}>{item}</Text>}
+        renderItem={({item}) => <Text style={styles.itemStyle}>{item}</Text>}
       />
     </View>
   );
@@ -52,7 +52,7 @@ const styles = StyleSheet.create({
     marginVertical: width * 26,
   },
 
-  item_style: {
+  itemStyle: {
     flex: 1,
     width: width * 54,
     height: height * 54,
