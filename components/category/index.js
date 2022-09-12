@@ -7,7 +7,7 @@ const DATA2 = ['생활/주방', '유아동', '유아도서', '여성의류'];
 const DATA3 = ['여성잡화', '남성패션/잡화', '뷰티/미용', '스포츠/레저'];
 const DATA4 = ['도서', '반려동물용품', '식물', '기타'];
 
-const App = () => {
+const Category = () => {
   return (
     <View style={styles.container_style}>
       <Text style={styles.header}> 카테고리 </Text>
@@ -72,4 +72,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default App;
+export default Category;
