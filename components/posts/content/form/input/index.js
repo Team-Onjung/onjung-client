@@ -1,8 +1,7 @@
 import React, {useState} from 'react';
 import {StyleSheet, Text, TextInput, View} from 'react-native';
+import {WonIcon} from '../../../../svg';
 import {width, colors, fonts} from './../../../../../utils/globalStyles';
-import WonIcon from '../../../../../assets/icons/icon-won.svg';
-
 const PostTextInput = ({
   title,
   secondText,
@@ -25,8 +24,6 @@ const PostTextInput = ({
       {icon ? (
         <View style={styles.iconBox}>
           <WonIcon
-            width={24}
-            height={24}
             color={value || focused ? colors['$gray-2'] : colors['$gray-6']}
             style={styles.icon}
           />

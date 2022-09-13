@@ -3,7 +3,7 @@ import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import Post from '../components/posts';
 import Main from './../components/main/index';
 import Search from './../components/search/index';
-import Chat from './../components/chat/index';
+import Chat from './../components/chat/talk/index';
 import Profile from '../components/profile';
 import {colors, height, width} from './../utils/globalStyles';
 import HomeIcon from '../assets/icons/tabBar_icons/icon-home.svg';
@@ -88,6 +88,7 @@ const MainTab = navigation => {
         component={Chat}
         options={{
           title: '채팅',
+          headerShown: false,
           tabBarIcon: ({focused}) =>
             focused ? (
               <ChatIcon width={32} height={32} />

@@ -24,6 +24,7 @@ export const colors = {
   '$gray-8': '#E5E8EB',
   '$gray-9': '#F2F4F6',
   '$gray-10': '#F9FAFB',
+  '$gray-11': '#EAECEF',
 };
 
 export const basicDimensions = {
