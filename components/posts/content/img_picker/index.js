@@ -1,4 +1,4 @@
-import React, {useCallback, useMemo, useRef, useState} from 'react';
+import React, {useRef, useState} from 'react';
 import {
   Image,
   Platform,
@@ -10,15 +10,12 @@ import {
 } from 'react-native';
 import {launchCamera, launchImageLibrary} from 'react-native-image-picker';
 import {width, colors} from '../../../../utils/globalStyles';
-import ImgModal from './img_modal';
 import {v4 as uuidv4} from 'uuid';
 import {CameraIcon, CloseIcon, MonoCameraIcon, PhtohIcon} from '../../../svg';
-import {BottomSheetModal, BottomSheetModalProvider} from '@gorhom/bottom-sheet';
 import RBSheet from 'react-native-raw-bottom-sheet';
 
 const ImagePicker = ({form, setForm}) => {
   const [response, setResponse] = useState([]);
-  const [modalVisible, setModalVisible] = useState(false);
 
   const imagePickerOption = {
     mediaType: 'photo',
@@ -33,7 +30,6 @@ const ImagePicker = ({form, setForm}) => {
       return;
     }
 
-    console.log(res);
     const addRes = {uri: res.assets[0].uri, id: uuidv4()};
     const formImg = form.img;
 
@@ -72,13 +68,6 @@ const ImagePicker = ({form, setForm}) => {
         {/* imgarray는 전부 response로  */}
         <Text style={styles.text}>{response.length}/12</Text>
       </Pressable>
-
-      {/* <Pressable style={styles.picker} onPress={() => setModalVisible(true)}>
-        <CameraIcon />
-        imgarray는 전부 response로 
-        <Text style={styles.text}>{response.length}/12</Text>
-      </Pressable> */}
-
       <ScrollView
         style={styles.imgArr}
         horizontal
@@ -111,13 +100,6 @@ const ImagePicker = ({form, setForm}) => {
           </View>
         ))}
       </ScrollView>
-      {/* <Image style={styles.box} source={{uri: response?.assets[0]?.uri}} /> */}
-      {/* <ImgModal
-          visible={modalVisible}
-          onLaunchCamera={onLaunchCamera}
-          onLaunchImageLibrary={onLaunchImageLibrary}
-          onClose={() => setModalVisible(false)}
-        /> */}
       <RBSheet
         ref={bottomSheetRef}
         animationType="slide"
@@ -151,6 +133,11 @@ const ImagePicker = ({form, setForm}) => {
           <Text style={styles.modalText}>사진 선택</Text>
         </Pressable>
       </RBSheet>
+      {/* <ImgModal
+        bottomSheetRef={bottomSheetRef}
+        onLaunchCamera={onLaunchCamera}
+        onLaunchImageLibrary={onLaunchImageLibrary}
+      /> */}
     </View>
   );
 };
