@@ -13,7 +13,6 @@ import {width, colors} from '../../../../utils/globalStyles';
 import ImgModal from './img_modal';
 import {v4 as uuidv4} from 'uuid';
 import {CameraIcon, CloseIcon, MonoCameraIcon, PhtohIcon} from '../../../svg';
-import {BottomSheetModal, BottomSheetModalProvider} from '@gorhom/bottom-sheet';
 import RBSheet from 'react-native-raw-bottom-sheet';
 
 const ImagePicker = ({form, setForm}) => {
