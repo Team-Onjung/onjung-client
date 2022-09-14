@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useCallback, useMemo, useRef, useState} from 'react';
 import {
   Image,
   Platform,
@@ -11,9 +11,10 @@ import {
 import {launchCamera, launchImageLibrary} from 'react-native-image-picker';
 import {width, colors} from '../../../../utils/globalStyles';
 import ImgModal from './img_modal';
-// import CloseIcon from '../../../../assets/icons/icon-circle-close.svg';
 import {v4 as uuidv4} from 'uuid';
-import {CameraIcon, CloseIcon} from '../../../svg';
+import {CameraIcon, CloseIcon, MonoCameraIcon, PhtohIcon} from '../../../svg';
+import {BottomSheetModal, BottomSheetModalProvider} from '@gorhom/bottom-sheet';
+import RBSheet from 'react-native-raw-bottom-sheet';
 
 const ImagePicker = ({form, setForm}) => {
   const [response, setResponse] = useState([]);
@@ -58,16 +59,25 @@ const ImagePicker = ({form, setForm}) => {
 
     setResponse(nextarr);
     setForm({...form, img: nextFormImg});
-    // setForm({...form, img: nextFormImg});
   };
+
+  const bottomSheetRef = useRef();
 
   return (
     <View style={styles.block}>
-      <Pressable style={styles.picker} onPress={() => setModalVisible(true)}>
+      <Pressable
+        style={styles.picker}
+        onPress={() => bottomSheetRef.current.open()}>
         <CameraIcon />
         {/* imgarray는 전부 response로  */}
         <Text style={styles.text}>{response.length}/12</Text>
       </Pressable>
+
+      {/* <Pressable style={styles.picker} onPress={() => setModalVisible(true)}>
+        <CameraIcon />
+        imgarray는 전부 response로 
+        <Text style={styles.text}>{response.length}/12</Text>
+      </Pressable> */}
 
       <ScrollView
         style={styles.imgArr}
@@ -102,23 +112,54 @@ const ImagePicker = ({form, setForm}) => {
         ))}
       </ScrollView>
       {/* <Image style={styles.box} source={{uri: response?.assets[0]?.uri}} /> */}
-      <ImgModal
-        visible={modalVisible}
-        onLaunchCamera={onLaunchCamera}
-        onLaunchImageLibrary={onLaunchImageLibrary}
-        onClose={() => setModalVisible(false)}
-      />
+      {/* <ImgModal
+          visible={modalVisible}
+          onLaunchCamera={onLaunchCamera}
+          onLaunchImageLibrary={onLaunchImageLibrary}
+          onClose={() => setModalVisible(false)}
+        /> */}
+      <RBSheet
+        ref={bottomSheetRef}
+        animationType="slide"
+        // closeOnDragDown={true}
+        customStyles={{
+          container: {
+            borderTopLeftRadius: width * 20,
+            borderTopRightRadius: width * 20,
+            height: '20%',
+            paddingTop: width * 20,
+            paddingLeft: width * 24,
+            justifyContent: 'flex-start',
+          },
+        }}>
+        <Pressable
+          style={styles.actionButton}
+          android_ripple={{color: colors.$white}}
+          onPress={() => {
+            onLaunchCamera();
+          }}>
+          <MonoCameraIcon style={styles.icon} />
+          <Text style={styles.modalText}>사진 촬영</Text>
+        </Pressable>
+        <Pressable
+          style={styles.actionButton}
+          android_ripple={{color: colors.$white}}
+          onPress={() => {
+            onLaunchImageLibrary();
+          }}>
+          <PhtohIcon style={styles.icon} />
+          <Text style={styles.modalText}>사진 선택</Text>
+        </Pressable>
+      </RBSheet>
     </View>
   );
 };
 
 const styles = StyleSheet.create({
   block: {
-    flex: 1,
     flexDirection: 'row',
     paddingBottom: width * 24,
-    marginHorizontal: width * 24,
-    overflow: 'visible',
+    marginLeft: width * 24,
   },
 
   imgArr: {
@@ -132,6 +173,8 @@ const styles = StyleSheet.create({
   contentContainer: {
     flexGrow: 1,
     justifyContent: 'flex-start',
+    paddingRight: width * 24,
+
     // overflow: 'hidden',
   },
 
@@ -179,6 +222,24 @@ const styles = StyleSheet.create({
     fontSize: width * 11,
     color: colors['$coral-4'],
     letterSpacing: width * -0.15,
+  },
+
+  whiteBox: {
+    backgroundColor: 'white',
+  },
+
+  actionButton: {
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+  icon: {
+    marginRight: width * 8,
+    marginVertical: width * 8,
+  },
+  modalText: {
+    fontSize: width * 17,
+    color: colors['$gray-4'],
+    marginHorizontal: width * 8,
   },
 });
 

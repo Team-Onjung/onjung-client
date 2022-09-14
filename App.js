@@ -3,6 +3,7 @@ import React, {useEffect} from 'react';
 import RootStack from './screens/RootStack';
 import {setCustomText} from 'react-native-global-props';
 import {Alert, BackHandler} from 'react-native';
+import {GestureHandlerRootView} from 'react-native-gesture-handler';
 
 const App = () => {
   const customTextProps = {
@@ -34,9 +35,11 @@ const App = () => {
   setCustomText(customTextProps);
 
   return (
-    <NavigationContainer>
-      <RootStack />
-    </NavigationContainer>
+    <GestureHandlerRootView style={{flex: 1}}>
+      <NavigationContainer>
+        <RootStack />
+      </NavigationContainer>
+    </GestureHandlerRootView>
   );
 };
 

@@ -15,17 +15,11 @@ const DatePicker = ({
 }) => {
   const [startVisible, setStartVisible] = useState(false);
   const [endVisible, setEndVisible] = useState(false);
-  // console.log(
-  //   format(new Date(), 'yyyy-MM-dd', {locale: ko}) <
-  //     format(new Date(selectedDate), 'yyyy-MM-dd', {locale: ko}),
-  // );
 
   const onStartConfirm = selectedDate => {
     setStartVisible(false);
 
     onChangeStartDate(selectedDate);
-
-    // endDate가 시작일로 선택한 날보다 앞에 있으면 시작일과 종료일 동기화
   };
 
   const onStartCancel = () => {
