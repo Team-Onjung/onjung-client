@@ -1,12 +1,5 @@
-import React from 'react';
-import {
-  Platform,
-  ScrollView,
-  StyleSheet,
-  Text,
-  TouchableOpacity,
-  View,
-} from 'react-native';
+import React, {useState} from 'react';
+import {Platform, ScrollView, StyleSheet, View} from 'react-native';
 import {colors, width} from '../../utils/globalStyles';
 import UserBox from './user_box';
 import BorderIcon from '../../assets/icons/icon-border-line.svg';
@@ -15,19 +8,44 @@ import SwippableImage from './swippable_image';
 import DetailContent from './detail_content';
 import PriceContainer from './price_container';
 import Report from './report';
-import {HeartIcon} from '../svg';
 import ChatButton from './button_chat';
+import {SafeAreaView} from 'react-native-safe-area-context';
+import {ImageView} from 'react-native-image-viewing';
 
 const Detail = () => {
   const imgArr = [
-    'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT4KbX9ryNVL1pC8iXCLY6lNRAz37Aa7irCYg&usqp=CAU',
-    'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT4KbX9ryNVL1pC8iXCLY6lNRAz37Aa7irCYg&usqp=CAU',
-    'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT4KbX9ryNVL1pC8iXCLY6lNRAz37Aa7irCYg&usqp=CAU',
-    'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT4KbX9ryNVL1pC8iXCLY6lNRAz37Aa7irCYg&usqp=CAU',
-    'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT4KbX9ryNVL1pC8iXCLY6lNRAz37Aa7irCYg&usqp=CAU',
-    'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT4KbX9ryNVL1pC8iXCLY6lNRAz37Aa7irCYg&usqp=CAU',
-    'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT4KbX9ryNVL1pC8iXCLY6lNRAz37Aa7irCYg&usqp=CAU',
-    'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT4KbX9ryNVL1pC8iXCLY6lNRAz37Aa7irCYg&usqp=CAU',
+    {
+      id: 0,
+      uri: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT4KbX9ryNVL1pC8iXCLY6lNRAz37Aa7irCYg&usqp=CAU',
+    },
+    {
+      id: 1,
+      uri: 'https://maruzzing.github.io/images/rn_carousel_03.png',
+    },
+    {
+      id: 2,
+      uri: 'https://maruzzing.github.io/images/rn_carousel_01.png',
+    },
+    {
+      id: 3,
+      uri: 'https://sang12.co.kr/upload/2020/04/24/9e27c0cd4c8749d0abafdbef611448d7.png',
+    },
+    // {
+    //   id: 4,
+    //   uri: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT4KbX9ryNVL1pC8iXCLY6lNRAz37Aa7irCYg&usqp=CAU',
+    // },
+    // {
+    //   id: 5,
+    //   uri: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT4KbX9ryNVL1pC8iXCLY6lNRAz37Aa7irCYg&usqp=CAU',
+    // },
+    // {
+    //   id: 6,
+    //   uri: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT4KbX9ryNVL1pC8iXCLY6lNRAz37Aa7irCYg&usqp=CAU',
+    // },
+    // {
+    //   id: 7,
+    //   uri: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT4KbX9ryNVL1pC8iXCLY6lNRAz37Aa7irCYg&usqp=CAU',
+    // },
   ];
 
   const Data = {
@@ -50,8 +68,8 @@ const Detail = () => {
   };
 
   return (
-    <View style={{flex: 1}}>
-      <ScrollView style={styles.block}>
+    <SafeAreaView style={styles.block}>
+      <ScrollView>
         {Platform.OS === 'ios' && <DetailHeader />}
         <SwippableImage imgs={imgArr} />
         <UserBox
@@ -85,7 +103,7 @@ const Detail = () => {
         <Report />
       </ScrollView>
       <ChatButton />
-    </View>
+    </SafeAreaView>
   );
 };
 
@@ -100,64 +118,6 @@ const styles = StyleSheet.create({
     height: width * 8,
     backgroundColor: colors['$gray-9'],
   },
-
-  // buttonContainer: {
-  //   bottom: 0,
-  //   paddingLeft: width * 24,
-  //   paddingTop: width * 17,
-  //   paddingBottom: width * 40,
-  //   backgroundColor: colors.$white,
-
-  //   ...Platform.select({
-  //     ios: {
-  //       shadowColor: '#262D3E',
-  //       shadowOpacity: 0.13,
-  //       shadowOffset: {
-  //         height: 2,
-  //         width: 0,
-  //       },
-  //     },
-  //     android: {elevation: 15},
-  //   }),
-  // },
-
-  // buttonBox: {
-  //   flexDirection: 'row',
-  //   marginLeft: width * 4,
-  //   alignItems: 'center',
-  // },
-
-  // button: {
-  //   flex: 1,
-  //   backgroundColor: colors['$coral-4'],
-  //   marginLeft: width * 7,
-  //   marginRight: width * 24,
-  //   paddingVertical: width * 11,
-  //   borderRadius: width * 10,
-  //   justifyContent: 'center',
-  //   alignItems: 'center',
-  // },
-
-  // buttonText: {
-  //   fontFamily: 'AppleSDGothicNeoM',
-  //   fontSize: width * 16,
-  //   letterSpacing: width * -0.53,
-  //   color: colors.$white,
-  // },
-
-  // heartBox: {
-  //   justifyContent: 'center',
-  //   alignItems: 'center',
-  //   paddingRight: width * 12,
-  // },
-
-  // heart: {},
-
-  // heartText: {
-  //   fontFamily: 'AppleSDGothicNeoSB',
-  //   fontSize: width * 13,
-  //   color: colors['$gray-5'],
-  // },
 });
 
 export default Detail;

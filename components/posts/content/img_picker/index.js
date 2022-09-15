@@ -1,5 +1,6 @@
 import React, {useRef, useState} from 'react';
 import {
+  ActionSheetIOS,
   Image,
   Platform,
   Pressable,
@@ -58,12 +59,29 @@ const ImagePicker = ({form, setForm}) => {
   };
 
   const bottomSheetRef = useRef();
+  const modalOpen = () => {
+    if (Platform.OS === 'android') {
+      bottomSheetRef.current.open();
+    } else {
+      ActionSheetIOS.showActionSheetWithOptions(
+        {
+          options: ['사진 촬영', '사진 선택'],
+          cancelButtonIndex: 2,
+        },
+        buttonIndex => {
+          if (buttonIndex === 0) {
+            onLaunchCamera();
+          } else if (buttonIndex === 1) {
+            onLaunchImageLibrary();
+          }
+        },
+      );
+    }
+  };
 
   return (
     <View style={styles.block}>
-      <Pressable
-        style={styles.picker}
-        onPress={() => bottomSheetRef.current.open()}>
+      <Pressable style={styles.picker} onPress={modalOpen}>
         <CameraIcon />
         {/* imgarray는 전부 response로  */}
         <Text style={styles.text}>{response.length}/12</Text>

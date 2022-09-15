@@ -9,10 +9,10 @@ import {
   ScrollView,
 } from 'react-native';
 import {SafeAreaView} from 'react-native-safe-area-context';
-import PostForm from './form';
-import ImagePicker from './img_picker';
 import {width, colors} from './../../../utils/globalStyles';
 import {ArrowLeftIcon} from '../../svg';
+import PostForm from './form';
+import ImagePicker from './img_picker';
 
 const PostContent = ({navigation, route}) => {
   const [form, setForm] = useState({
