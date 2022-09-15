@@ -2,6 +2,7 @@ import {NavigationContainer} from '@react-navigation/native';
 import React, {useEffect} from 'react';
 import RootStack from './screens/RootStack';
 import {setCustomText} from 'react-native-global-props';
+import Category from './components/category/index';
 import {Alert, BackHandler} from 'react-native';
 
 const App = () => {
