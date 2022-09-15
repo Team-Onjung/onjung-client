@@ -8,3 +8,5 @@ export {default as DropIcon} from '../../assets/icons/icon-drop-down.svg';
 export {default as FaceIcon} from '../../assets/icons/icon-face.svg';
 export {default as WonIcon} from '../../assets/icons/icon-won.svg';
 export {default as PhtohIcon} from '../../assets/icons/icon-photo.svg';
+export {default as HeartIcon} from '../../assets/icons/icon-heart.svg';
+export {default as MonoHeartIcon} from '../../assets/icons/icon-heart-mono.svg';

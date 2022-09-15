@@ -105,6 +105,7 @@ const ImagePicker = ({form, setForm}) => {
         animationType="slide"
         // closeOnDragDown={true}
         customStyles={{
+          wrapper: {backgroundColor: '#202227', opacity: 0.7},
           container: {
             borderTopLeftRadius: width * 20,
             borderTopRightRadius: width * 20,
