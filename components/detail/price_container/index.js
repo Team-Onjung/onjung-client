@@ -10,7 +10,7 @@ const PriceContainer = ({rental_fee, deposit, commission_fee, duration}) => {
   const [endDate, setEndDate] = useState(
     new Date(now.setDate(now.getDate() + duration)),
   );
-  const [rentalDate, setRentalDate] = useState(0);
+  const [rentalDate, setRentalDate] = useState(duration);
 
   useEffect(() => {
     const diff = endDate.getTime() - startDate.getTime();

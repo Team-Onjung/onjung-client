@@ -1,7 +1,8 @@
 import {NavigationContainer} from '@react-navigation/native';
-import React from 'react';
+import React, {useEffect} from 'react';
 import RootStack from './screens/RootStack';
 import {setCustomText} from 'react-native-global-props';
+import {Alert, BackHandler} from 'react-native';
 
 const App = () => {
   const customTextProps = {
@@ -9,6 +10,26 @@ const App = () => {
       fontFamily: 'AppleSDGothicNeoM',
     },
   };
+
+  useEffect(() => {
+    const backAction = () => {
+      Alert.alert('온정을 종료하시겠습니까?', [
+        {
+          text: '취소',
+          onPress: () => null,
+        },
+        {text: '확인', onPress: () => BackHandler.exitApp()},
+      ]);
+      return true;
+    };
+
+    const backHandler = BackHandler.addEventListener(
+      'hardwareBackPress',
+      backAction,
+    );
+
+    return () => backHandler.remove();
+  }, []);
 
   setCustomText(customTextProps);
 
