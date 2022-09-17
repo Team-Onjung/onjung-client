@@ -7,7 +7,6 @@ import {
   KeyboardAvoidingView,
   Platform,
   ScrollView,
-  Dimensions,
 } from 'react-native';
 import {SafeAreaView} from 'react-native-safe-area-context';
 import PostForm from './form';
@@ -16,7 +15,6 @@ import {width, colors} from './../../../utils/globalStyles';
 import {ArrowLeftIcon} from '../../svg';
 
 const PostContent = ({navigation, route}) => {
-  const {height} = Dimensions.get('screen');
   const [form, setForm] = useState({
     img: [],
     title: '',
@@ -55,7 +53,7 @@ const PostContent = ({navigation, route}) => {
       style={styles.keyboardAvoidingView}
       behavior={Platform.select({ios: 'padding'})}>
       <SafeAreaView style={styles.block}>
-        <ScrollView style={{height: height, flex: 1}}>
+        <ScrollView>
           <ImagePicker form={form} setForm={setForm} />
           <PostForm
             form={form}
