@@ -35,11 +35,9 @@ const App = () => {
   setCustomText(customTextProps);
 
   return (
-    <GestureHandlerRootView style={{flex: 1}}>
-      <NavigationContainer>
-        <RootStack />
-      </NavigationContainer>
-    </GestureHandlerRootView>
+    <NavigationContainer>
+      <RootStack />
+    </NavigationContainer>
   );
 };
 
