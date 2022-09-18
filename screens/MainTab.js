@@ -3,7 +3,7 @@ import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import Post from '../components/posts';
 import Main from './../components/main/index';
 import Search from './../components/search/index';
-import Chat from './../components/chat/talk/index';
+import Chat from './../components/chat/chats/index';
 import Profile from '../components/profile';
 import {colors, height, width} from './../utils/globalStyles';
 import HomeIcon from '../assets/icons/tabBar_icons/icon-home.svg';

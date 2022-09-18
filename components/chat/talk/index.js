@@ -17,6 +17,20 @@ import bim from '../../../assets/imgs/chat/image-sample.png';
 import Person from '../../../assets/imgs/chat/image-person.svg';
 import {width, height, colors} from '../../../utils/globalStyles';
 
+const HorizonLine = ({text}) => {
+  return (
+    <div
+      style={{
+        width: '100%',
+        textAlign: 'center',
+        borderBottom: '1px solid #aaa',
+        lineHeight: '0.1em',
+        margin: '10px 0 20px',
+      }}>
+      <span style={{background: '#fff', padding: '0 10px'}}>{text}</span>
+    </div>
+  );
+};
 const PreChat = () => {
   const sample = {
     name: 'PF50ka lg 빔프로젝터',
@@ -216,6 +230,7 @@ const styles = StyleSheet.create({
     height: height * 40,
     justifyContent: 'center',
     alignItems: 'center',
+    borderRadius: 10,
   },
 
   time: {
