@@ -6,6 +6,8 @@ import {width} from '../utils/globalStyles';
 import {colors} from './../utils/globalStyles';
 import Detail from './../components/detail/index';
 import {Platform} from 'react-native';
+import UseCamera from '../components/posts/content/img_selector/camera';
+import PermissionPage from '../components/posts/content/img_selector/camera/permission';
 
 const Stack = createNativeStackNavigator();
 
@@ -50,6 +52,20 @@ const RootStack = () => {
       <Stack.Screen
         name="PostRequest"
         component={PostContent}
+        options={{headerTitleAlign: 'center'}}
+      />
+
+      {/* 카메라 사용 권한 */}
+      <Stack.Screen
+        name="PermissionPage"
+        component={PermissionPage}
+        options={{headerTitleAlign: 'center'}}
+      />
+
+      {/* 카메라 페이지 */}
+      <Stack.Screen
+        name="CameraPage"
+        component={UseCamera}
         options={{headerTitleAlign: 'center'}}
       />
     </Stack.Navigator>
