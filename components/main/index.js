@@ -51,7 +51,7 @@ const Main = () => {
           <View style={styles.postlist} key={i}>
             <Pressable
               onPress={() => {
-                navigation.navigate('Detail', {id: i});
+                navigation.navigate('Detail', {idx: i});
               }}
               style={styles.total}>
               <Image
