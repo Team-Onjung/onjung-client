@@ -1,7 +1,7 @@
 {
     "tip":[
         {
-            "idx":0,
+            "idx": 0,
             "title":"PF50ka lg 빔프로젝터",
             "user_name":"얼리어답터 지우",
             "image":"c:/Users/onjung/onjung-client/assets/imgs/mainImg/beamproject.png",
@@ -9,7 +9,7 @@
             "price":"5,000"
         },
         {
-            "idx":1,
+            "idx": 1,
             "title":"4인용 캠핑 텐트/ 캠핑 장비 / 캠핑",
             "user_name": "캠핑조아",
             "image": "c:/Users/onjung/onjung-client/assets/imgs/mainImg/beamproject.png",
@@ -17,7 +17,7 @@
             "price":"5,000"
         },
         {
-            "idx":2,
+            "idx": 2,
             "title":"응원봉 대여 가능",
             "user_name":"거래계",
             "image": "c:/Users/onjung/onjung-client/assets/imgs/mainImg/beamproject.png",
@@ -25,7 +25,7 @@
             "price":"5,000"
         },
         {
-            "idx":3,
+            "idx": 3,
             "title":"다이슨 청소기",
             "user_name":"클리닝",
             "image": "c:/Users/onjung/onjung-client/assets/imgs/mainImg/beamproject.png",
@@ -33,7 +33,7 @@
             "price":"5,000"
         },
         {
-            "idx":4,
+            "idx": 4,
             "title":"애플 무선 마우스",
             "user_name":"쥐를 잡자 찍찍찍",
             "image": "c:/Users/onjung/onjung-client/assets/imgs/mainImg/beamproject.png",
@@ -41,7 +41,7 @@
             "price":"5,000"
         },
         {
-            "idx":5,
+            "idx": 5,
             "title":"LED 손전등",
             "user_name":"하이라이트",
             "image": "c:/Users/onjung/onjung-client/assets/imgs/mainImg/beamproject.png",

@@ -12,6 +12,7 @@ import Menu from '../../assets/icons/main_icons/icon-menu.svg';
 import Search from '../../assets/icons/main_icons/icon-search.svg';
 import {SafeAreaView} from 'react-native-safe-area-context';
 import {width, height} from '../../utils/globalStyles';
+
 import data from './data.json';
 import {useNavigation} from '@react-navigation/native';
 
@@ -156,7 +157,6 @@ const styles = StyleSheet.create({
     fontFamily: 'Apple SD Gothic Neo',
     fontSize: width * 17,
     color: '#4E5968',
-    marginLeft: width * -3,
   },
 });
 
