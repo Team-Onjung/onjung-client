@@ -7,22 +7,24 @@ import {
   Pressable,
   ScrollView,
 } from 'react-native';
-import alarm from '../../assets/imgs/mainImg/alarm.png';
-import menu from '../../assets/imgs/mainImg/menu.png';
-import search from '../../assets/imgs/mainImg/search.png';
+import Alarm from '../../assets/icons/main_icons/icon-alarm.svg';
+import Menu from '../../assets/icons/main_icons/icon-menu.svg';
+import Search from '../../assets/icons/main_icons/icon-search.svg';
 import {SafeAreaView} from 'react-native-safe-area-context';
-import {width, colors} from '../../utils/globalStyles';
+import {width, height} from '../../utils/globalStyles';
 import data from './data.json';
+import {useNavigation} from '@react-navigation/native';
 
 const Main = () => {
+  const navigation = useNavigation();
   let tip = data.tip;
   const [value, setValue] = useState('대여 가능');
   return (
     <SafeAreaView>
       <View style={styles.settings}>
-        <Image style={styles.menu} source={menu} />
-        <Image style={styles.search} source={search} />
-        <Image style={styles.alarm} source={alarm} />
+        <Menu style={styles.menu} />
+        <Search style={styles.search} />
+        <Alarm style={styles.alarm} />
       </View>
       <View style={styles.container}>
         <Pressable
@@ -30,12 +32,7 @@ const Main = () => {
             setValue('대여 가능');
           }}
           style={styles.textbutton01}>
-          <Text
-            style={
-              (styles.text,
-              {fontSize: 50},
-              {color: value === '대여 가능' ? '#F05655' : '#8B95A1'})
-            }>
+          <Text style={{color: value === '대여 가능' ? '#F05655' : '#8B95A1'}}>
             대여 가능
           </Text>
         </Pressable>
@@ -44,12 +41,7 @@ const Main = () => {
             setValue('대여 요청');
           }}
           style={styles.textbutton02}>
-          <Text
-            style={
-              (styles.text,
-              {fontSize: 50},
-              {color: value === '대여 요청' ? '#F05655' : '#8B95A1'})
-            }>
+          <Text style={{color: value === '대여 요청' ? '#F05655' : '#8B95A1'}}>
             대여 요청
           </Text>
         </Pressable>
@@ -57,17 +49,25 @@ const Main = () => {
       <ScrollView style={styles.contentContainer}>
         {tip.map((content, i) => (
           <View style={styles.postlist} key={i}>
-            <Image
-              style={styles.postImage}
-              source={require('../../assets/imgs/mainImg/beamproject.png')}
-            />
-            <View style={styles.postText}>
-              <Text style={styles.postTitle} numberOfLines={1}>
-                {content.title}
-              </Text>
-              <Text style={styles.postUser}>{content.user_name}</Text>
-              <Text style={styles.postPrice}> {content.price}원 / 일</Text>
-            </View>
+            <Pressable
+              onPress={() => {
+                navigation.navigate('Detail', {id: i});
+              }}
+              style={styles.total}>
+              <Image
+                style={styles.postImage}
+                source={require('../../assets/imgs/main/Rectangle.png')}
+              />
+              <View style={styles.postText}>
+                <Text style={styles.postTitle} numberOfLines={1}>
+                  {content.title}
+                </Text>
+                <Text style={styles.postUser}>
+                  {content.user_name} • {content.time}분 전
+                </Text>
+                <Text style={styles.postPrice}> {content.price}원 /일</Text>
+              </View>
+            </Pressable>
           </View>
         ))}
       </ScrollView>
@@ -81,79 +81,82 @@ const styles = StyleSheet.create({
   },
   settings: {
     flexDirection: 'row',
-    marginTop: 20,
+    marginTop: width * 10,
   },
 
   menu: {
-    marginLeft: 25,
-    width: 16,
-    height: 16,
+    marginLeft: width * 2,
+    width: width * 15,
+    height: height * 15,
   },
   search: {
-    marginLeft: 300,
-    width: 18,
-    height: 18,
+    marginTop: width * 10,
+    marginLeft: width * 40,
+    width: width * 18,
+    height: height * 18,
   },
   alarm: {
-    marginLeft: 10,
-    width: 20,
-    height: 20,
+    marginTop: width * 11,
+    marginLeft: width * 10,
+    width: width * 20,
+    height: height * 20,
   },
   textbutton01: {
     flex: 1,
-    marginTop: 20,
-    marginLeft: 25,
-    height: 30,
-    width: 10,
+    marginTop: width * 25,
+    marginLeft: width * 25,
+    width: width * 10,
+    height: height * 30,
+    marginBottom: width * 10,
   },
   textbutton02: {
     flex: 1,
-    marginTop: 20,
-    marginLeft: 5,
+    marginTop: width * 25,
+    marginLeft: width * 5,
     marginHorizontal: width * 230,
-  },
-  text: {
-    fontSize: 20,
-    color: colors['$gray-5'],
+    marginBottom: width * 10,
   },
   contentContainer: {
-    height: 500,
+    height: height * 500,
   },
 
   postlist: {
     flex: 1,
     flexDirection: 'row',
-    margin: 10,
+  },
+  total: {
+    flexDirection: 'row',
   },
   postImage: {
-    flex: 1,
-    width: 10,
-    height: 90,
-    borderRadius: 20,
-    margin: 10,
-    resizeMode: 'cover',
+    flexDirection: 'row',
+    width: width * 85,
+    height: height * 105,
+    borderRadius: 10,
+    margin: width * 10,
+    marginLeft: width * 25,
   },
   postText: {
-    flex: 1,
     flexDirection: 'column',
-    marginTop: 7,
-    justifyContent: 'flex-start',
+    marginTop: width * 7,
+    marginLeft: width * 5,
   },
   postTitle: {
-    fontSize: 20,
-    color: '#222222',
-    justifyContent: 'flex-start',
-    marginBottom: 5,
+    fontFamily: 'Apple SD Gothic Neo',
+    fontSize: width * 15,
+    color: '#333D4B',
+    marginBottom: width * 2,
   },
   postUser: {
-    fontSize: 15,
-    justifyContent: 'flex-start',
-    marginBottom: 20,
+    fontFamily: 'Apple SD Gothic Neo',
+    fontSize: width * 12,
+    color: '#8B95A1',
+    marginBottom: width * 25,
   },
   postPrice: {
-    fontSize: 18,
+    fontFamily: 'Apple SD Gothic Neo',
+    fontSize: width * 17,
     color: '#4E5968',
-    justifyContent: 'flex-start',
+    marginLeft: width * -3,
   },
 });
 
