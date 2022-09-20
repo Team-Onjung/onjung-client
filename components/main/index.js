@@ -5,9 +5,7 @@ import {cameraPermissions} from '../config/platform';
 
 const Main = ({navigation}) => {
   const requestPermission = () => {
-    request(cameraPermissions).then(response =>
-      navigation.navigate('CameraPage'),
-    );
+    request(cameraPermissions).then(navigation.navigate('CameraPage'));
   };
 
   return (
