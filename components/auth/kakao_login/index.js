@@ -33,7 +33,7 @@ const KakaoLogin = ({navigation}) => {
         </View>
       </View>
       <Pressable style={styles.kakaoButton}>
-        <KakaoIcon />
+        <KakaoIcon width={24} height={24} />
         <Text style={styles.kakaoText}>카카오톡으로 계속하기</Text>
       </Pressable>
 
@@ -80,9 +80,9 @@ const styles = StyleSheet.create({
     width: '100%',
     flexDirection: 'row',
     justifyContent: 'center',
-    alignItems: 'center',
+    alignItems: 'flex-start',
     backgroundColor: '#F5E14B',
-    paddingVertical: width * 10,
+    paddingVertical: width * 11,
     borderRadius: width * 10,
   },
 
@@ -91,6 +91,7 @@ const styles = StyleSheet.create({
     fontSize: width * 16,
     letterSpacing: width * -0.53,
     color: colors['$gray-1'],
+    marginLeft: width * 8,
   },
 });
 
