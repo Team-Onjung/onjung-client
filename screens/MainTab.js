@@ -16,6 +16,7 @@ import ChatIcon from '../assets/icons/tabBar_icons/icon-chat.svg';
 import MonoChatIcon from '../assets/icons/tabBar_icons-mono/icon-chat-mono.svg';
 import ProfileIcon from '../assets/icons/tabBar_icons/icon-profile.svg';
 import MonoProfileIcon from '../assets/icons/tabBar_icons-mono/icon-profile-mono.svg';
+import KakaoLogin from '../components/auth/kakao_login';
 
 const Tab = createBottomTabNavigator();
 
@@ -99,7 +100,7 @@ const MainTab = navigation => {
       />
       <Tab.Screen
         name="Profile"
-        component={Profile}
+        component={KakaoLogin}
         options={{
           title: '마이페이지',
           tabBarIcon: ({focused}) =>
