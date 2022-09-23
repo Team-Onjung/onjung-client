@@ -5,21 +5,20 @@ import {SafeAreaView} from 'react-native-safe-area-context';
 import {width, height, colors} from '../../utils/globalStyles';
 import {
   ArrowLeftIcon,
-  beautyIcon,
-  booksIcon,
-  campingIcon,
-  childrenIcon,
-  digitalIcon,
-  furnitureIcon,
-  hobbyIcon,
-  kitchenIcon,
-  livingIcon,
-  mFashionIcon,
-  petsIcon,
-  plantsIcon,
-  popularIcon,
-  sportsIcon,
-  wFashionIcon,
+  BeautyIcon,
+  BooksIcon,
+  CampingIcon,
+  ChildrenIcon,
+  DigitalIcon,
+  FurnitureIcon,
+  HobbyIcon,
+  KitchenIcon,
+  LivingIcon,
+  MFashionIcon,
+  PetsIcon,
+  PlantsIcon,
+  PopularIcon,
+  SportsIcon,
 } from '../svg';
 
 const Category = () => {
@@ -31,88 +30,88 @@ const Category = () => {
         <Pressable
           style={styles.box}
           onPress={() => navigation.navigate('Detail', {title: '인기상품'})}>
-          <popularIcon />
+          <PopularIcon />
         </Pressable>
         <Pressable
           style={[styles.box]}
           onPress={() => navigation.navigate('Detail', {title: '디지털기기'})}>
-          <ArrowLeftIcon />
+          <DigitalIcon />
         </Pressable>
         <Pressable
           style={[styles.box]}
           onPress={() => navigation.navigate('Detail', {title: '디지털기기'})}>
-          <ArrowLeftIcon />
+          <LivingIcon />
         </Pressable>
         <Pressable
           style={[styles.box]}
           onPress={() => navigation.navigate('Detail', {title: '디지털기기'})}>
-          <ArrowLeftIcon />
+          <FurnitureIcon />
         </Pressable>
       </View>
       <View style={styles.pressables}>
         <Pressable
           style={styles.box}
           onPress={() => navigation.navigate('Detail', {title: '인기상품'})}>
-          <ArrowLeftIcon />
+          <KitchenIcon />
         </Pressable>
         <Pressable
           style={[styles.box]}
           onPress={() => navigation.navigate('Detail', {title: '디지털기기'})}>
-          <ArrowLeftIcon />
+          <ChildrenIcon />
         </Pressable>
         <Pressable
           style={[styles.box]}
           onPress={() => navigation.navigate('Detail', {title: '디지털기기'})}>
-          <ArrowLeftIcon />
+          <MFashionIcon />
         </Pressable>
         <Pressable
           style={[styles.box]}
           onPress={() => navigation.navigate('Detail', {title: '디지털기기'})}>
-          <ArrowLeftIcon />
+          <MFashionIcon />
         </Pressable>
       </View>
       <View style={styles.pressables}>
         <Pressable
           style={styles.box}
           onPress={() => navigation.navigate('Detail', {title: '인기상품'})}>
-          <ArrowLeftIcon />
+          <BeautyIcon />
         </Pressable>
         <Pressable
           style={[styles.box]}
           onPress={() => navigation.navigate('Detail', {title: '디지털기기'})}>
-          <ArrowLeftIcon />
+          <SportsIcon />
         </Pressable>
         <Pressable
           style={[styles.box]}
           onPress={() => navigation.navigate('Detail', {title: '디지털기기'})}>
-          <ArrowLeftIcon />
+          <HobbyIcon />
         </Pressable>
         <Pressable
           style={[styles.box]}
           onPress={() => navigation.navigate('Detail', {title: '디지털기기'})}>
-          <ArrowLeftIcon />
+          <CampingIcon />
         </Pressable>
       </View>
       <View style={styles.pressables}>
         <Pressable
           style={styles.box}
           onPress={() => navigation.navigate('Detail', {title: '인기상품'})}>
-          <ArrowLeftIcon />
+          <BooksIcon />
         </Pressable>
         <Pressable
           style={[styles.box]}
           onPress={() => navigation.navigate('Detail', {title: '디지털기기'})}>
-          <ArrowLeftIcon />
+          <PetsIcon />
         </Pressable>
         <Pressable
           style={[styles.box]}
           onPress={() => navigation.navigate('Detail', {title: '디지털기기'})}>
-          <ArrowLeftIcon />
+          <PlantsIcon />
         </Pressable>
         <Pressable
           style={[styles.box]}
           onPress={() => navigation.navigate('Detail', {title: '디지털기기'})}>
-          <ArrowLeftIcon />
+          <PlantsIcon />
         </Pressable>
       </View>
     </SafeAreaView>
