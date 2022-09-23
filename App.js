@@ -4,6 +4,7 @@ import RootStack from './screens/RootStack';
 import {setCustomText} from 'react-native-global-props';
 import Category from './components/category/index';
 import {Alert, BackHandler} from 'react-native';
+import SplashScreen from 'react-native-splash-screen';
 
 const App = () => {
   const customTextProps = {
@@ -11,6 +12,8 @@ const App = () => {
       fontFamily: 'AppleSDGothicNeoM',
     },
   };
+
+  setCustomText(customTextProps);
 
   useEffect(() => {
     const backAction = () => {
@@ -32,7 +35,9 @@ const App = () => {
     return () => backHandler.remove();
   }, []);
 
-  setCustomText(customTextProps);
+  useEffect(() => {
+    SplashScreen.hide();
+  }, []);
 
   return (
     <NavigationContainer>
