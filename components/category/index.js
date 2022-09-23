@@ -4,6 +4,7 @@ import {Platform, Pressable, StyleSheet, Text, View} from 'react-native';
 import {SafeAreaView} from 'react-native-safe-area-context';
 import {width, height, colors} from '../../utils/globalStyles';
 import {ArrowLeftIcon} from '../svg';
+import {category_icons} from '../../assets/icons';
 
 const Category = () => {
   const navigation = useNavigation();
@@ -14,7 +15,7 @@ const Category = () => {
         <Pressable
           style={styles.box}
           onPress={() => navigation.navigate('Detail', {title: '인기상품'})}>
-          <ArrowLeftIcon />
+          <category_icons />
         </Pressable>
         <Pressable
           style={[styles.box]}
