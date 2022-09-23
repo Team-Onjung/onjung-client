@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">OnJung_client</string>
+		<string name="kakao_app_key">81c49ff927d56ff4909fe7d97bb466aa</string>
 </resources>

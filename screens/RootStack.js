@@ -7,6 +7,7 @@ import {colors} from './../utils/globalStyles';
 import Detail from './../components/detail/index';
 import {Platform} from 'react-native';
 import UseCamera from '../components/posts/content/img_selector/camera';
+import KakaoLogin from './../components/auth/kakao_login/index';
 
 const Stack = createNativeStackNavigator();
 
@@ -58,6 +59,12 @@ const RootStack = () => {
       <Stack.Screen
         name="CameraPage"
         component={UseCamera}
+        options={{headerTitleAlign: 'center'}}
+      />
+
+      <Stack.Screen
+        name="LoginPage"
+        component={KakaoLogin}
         options={{headerTitleAlign: 'center'}}
       />
     </Stack.Navigator>

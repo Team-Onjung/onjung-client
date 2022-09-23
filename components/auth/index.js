@@ -19,7 +19,7 @@ const Auth = ({navigation}) => {
         <Text style={styles.subText}>당신 곁에서 만나는 따뜻함, 온정</Text>
         <Image
           style={styles.img}
-          source={require('../../../assets/imgs/login_image.png')}
+          source={require('../../assets/imgs/login_image.png')}
         />
       </View>
       <View>
@@ -32,7 +32,11 @@ const Auth = ({navigation}) => {
       </View>
       <Pressable style={styles.kakaoButton}>
         <KakaoIcon width={24} height={24} />
-        <Text style={styles.kakaoText}>카카오톡으로 계속하기</Text>
+        <Text
+          style={styles.kakaoText}
+          onPress={() => navigation.navigate('LoginPage')}>
+          카카오톡으로 계속하기
+        </Text>
       </Pressable>
 
       <Pressable>
