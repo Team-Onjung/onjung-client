@@ -13,6 +13,10 @@ const Main = ({navigation}) => {
   return (
     <View>
       <Button title="to Detail" onPress={() => navigation.navigate('Detail')} />
+      <Button
+        title="to Category"
+        onPress={() => navigation.navigate('카테고리')}
+      />
       <Button title="to Camera" onPress={requestPermission} />
     </View>
   );

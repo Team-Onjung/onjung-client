@@ -7,6 +7,7 @@ import {colors} from './../utils/globalStyles';
 import Detail from './../components/detail/index';
 import {Platform} from 'react-native';
 import UseCamera from '../components/posts/content/img_selector/camera';
+import Category from '../components/category/index';
 
 const Stack = createNativeStackNavigator();
 
@@ -59,6 +60,16 @@ const RootStack = () => {
         name="CameraPage"
         component={UseCamera}
         options={{headerTitleAlign: 'center'}}
+      />
+
+      {/* 카테고리 페이지 */}
+      <Stack.Screen
+        name="카테고리"
+        component={Category}
+        options={{
+          headerShown: Platform.OS === 'ios' ? false : true,
+          headerTitleAlign: 'center',
+        }}
       />
     </Stack.Navigator>
   );
