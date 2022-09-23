@@ -3,8 +3,24 @@ import React from 'react';
 import {Platform, Pressable, StyleSheet, Text, View} from 'react-native';
 import {SafeAreaView} from 'react-native-safe-area-context';
 import {width, height, colors} from '../../utils/globalStyles';
-import {ArrowLeftIcon} from '../svg';
-import {category_icons} from '../../assets/icons';
+import {
+  ArrowLeftIcon,
+  beautyIcon,
+  booksIcon,
+  campingIcon,
+  childrenIcon,
+  digitalIcon,
+  furnitureIcon,
+  hobbyIcon,
+  kitchenIcon,
+  livingIcon,
+  mFashionIcon,
+  petsIcon,
+  plantsIcon,
+  popularIcon,
+  sportsIcon,
+  wFashionIcon,
+} from '../svg';
 
 const Category = () => {
   const navigation = useNavigation();
@@ -15,7 +31,7 @@ const Category = () => {
         <Pressable
           style={styles.box}
           onPress={() => navigation.navigate('Detail', {title: '인기상품'})}>
-          <category_icons />
+          <popularIcon />
         </Pressable>
         <Pressable
           style={[styles.box]}
