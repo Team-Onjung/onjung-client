@@ -4,7 +4,6 @@ import {Platform, Pressable, StyleSheet, Text, View} from 'react-native';
 import {SafeAreaView} from 'react-native-safe-area-context';
 import {width, height, colors} from '../../utils/globalStyles';
 import {
-  ArrowLeftIcon,
   BeautyIcon,
   BooksIcon,
   CampingIcon,
@@ -19,6 +18,7 @@ import {
   PlantsIcon,
   PopularIcon,
   SportsIcon,
+  WFashionIcon,
 } from '../svg';
 
 const Category = () => {
@@ -67,19 +67,14 @@ const Category = () => {
         <Pressable
           style={[styles.box]}
           onPress={() => navigation.navigate('Detail', {title: '디지털기기'})}>
-          <MFashionIcon />
+          <WFashionIcon />
         </Pressable>
       </View>
       <View style={styles.pressables}>
         <Pressable
           style={styles.box}
           onPress={() => navigation.navigate('Detail', {title: '인기상품'})}>
-          <BeautyIcon />
-        </Pressable>
-        <Pressable
-          style={[styles.box]}
-          onPress={() => navigation.navigate('Detail', {title: '디지털기기'})}>
-          <SportsIcon />
+          <CampingIcon />
         </Pressable>
         <Pressable
           style={[styles.box]}
@@ -89,7 +84,12 @@ const Category = () => {
         <Pressable
           style={[styles.box]}
           onPress={() => navigation.navigate('Detail', {title: '디지털기기'})}>
-          <CampingIcon />
+          <SportsIcon />
+        </Pressable>
+        <Pressable
+          style={[styles.box]}
+          onPress={() => navigation.navigate('Detail', {title: '디지털기기'})}>
+          <BeautyIcon />
         </Pressable>
       </View>
       <View style={styles.pressables}>

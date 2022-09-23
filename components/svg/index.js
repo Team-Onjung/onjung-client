@@ -25,3 +25,4 @@ export {default as PetsIcon} from '../../assets/icons/category_icons/icon-pets.s
 export {default as PlantsIcon} from '../../assets/icons/category_icons/icon-plants.svg';
 export {default as PopularIcon} from '../../assets/icons/category_icons/icon-popular.svg';
 export {default as SportsIcon} from '../../assets/icons/category_icons/icon-sports.svg';
+export {default as WFashionIcon} from '../../assets/icons/category_icons/icon-wFashion.svg';
