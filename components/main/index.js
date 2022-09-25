@@ -14,8 +14,13 @@ import {SafeAreaView} from 'react-native-safe-area-context';
 import {width, height} from '../../utils/globalStyles';
 import data from './data.json';
 import {useNavigation} from '@react-navigation/native';
+import {request} from 'react-native-permissions';
+import {cameraPermissions} from '../config/platform';
 
 const Main = () => {
+  const requestPermission = () => {
+    request(cameraPermissions).then(navigation.navigate('CameraPage'));
+  };
   const navigation = useNavigation();
   let tip = data.tip;
   const [value, setValue] = useState('대여 가능');
@@ -71,6 +76,9 @@ const Main = () => {
           </View>
         ))}
       </ScrollView>
+      <Button title="to Detail" onPress={() => navigation.navigate('Detail')} />
+      <Button title="to Camera" onPress={requestPermission} />
+
     </SafeAreaView>
   );
 };

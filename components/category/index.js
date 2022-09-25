@@ -1,6 +1,6 @@
 import React from 'react';
 import {StyleSheet, Text, View, FlatList} from 'react-native';
-import {colors, width, height} from './utils/globalStyles';
+import {colors, width, height} from '../../utils/globalStyles';
 
 const DATA1 = ['인기매물', '디지털기기', '생활가전', '가구/인테리어'];
 const DATA2 = ['생활/주방', '유아동', '유아도서', '여성의류'];
