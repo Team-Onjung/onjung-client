@@ -10,6 +10,7 @@
     "lint": "eslint ."
   },
   "dependencies": {
+    "@bam.tech/react-native-make": "3.0.3",
     "@gorhom/bottom-sheet": "^4",
     "@react-native-community/datetimepicker": "6.3.2",
     "@react-navigation/bottom-tabs": "6.3.3",
