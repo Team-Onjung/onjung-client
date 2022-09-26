@@ -26,3 +26,5 @@ export {default as PlantsIcon} from '../../assets/icons/category_icons/icon-plan
 export {default as PopularIcon} from '../../assets/icons/category_icons/icon-popular.svg';
 export {default as SportsIcon} from '../../assets/icons/category_icons/icon-sports.svg';
 export {default as WFashionIcon} from '../../assets/icons/category_icons/icon-wFashion.svg';
+
+export {default as KakaoIcon} from '../../assets/icons/icon-kakao.svg';
