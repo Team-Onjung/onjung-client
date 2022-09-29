@@ -29,88 +29,112 @@ const Category = () => {
       <View style={styles.pressables}>
         <Pressable
           style={styles.box}
-          onPress={() => navigation.navigate('Detail', {title: '인기상품'})}>
+          onPress={() => navigation.navigate('검색결과', {title: '인기상품'})}>
           <PopularIcon />
         </Pressable>
         <Pressable
           style={[styles.box]}
-          onPress={() => navigation.navigate('Detail', {title: '디지털기기'})}>
+          onPress={() =>
+            navigation.navigate('검색결과', {title: '디지털기기'})
+          }>
           <DigitalIcon />
         </Pressable>
         <Pressable
           style={[styles.box]}
-          onPress={() => navigation.navigate('Detail', {title: '디지털기기'})}>
+          onPress={() =>
+            navigation.navigate('검색결과', {title: '디지털기기'})
+          }>
           <LivingIcon />
         </Pressable>
         <Pressable
           style={[styles.box]}
-          onPress={() => navigation.navigate('Detail', {title: '디지털기기'})}>
+          onPress={() =>
+            navigation.navigate('검색결과', {title: '디지털기기'})
+          }>
           <FurnitureIcon />
         </Pressable>
       </View>
       <View style={styles.pressables}>
         <Pressable
           style={styles.box}
-          onPress={() => navigation.navigate('Detail', {title: '인기상품'})}>
+          onPress={() => navigation.navigate('검색결과', {title: '인기상품'})}>
           <KitchenIcon />
         </Pressable>
         <Pressable
           style={[styles.box]}
-          onPress={() => navigation.navigate('Detail', {title: '디지털기기'})}>
+          onPress={() =>
+            navigation.navigate('검색결과', {title: '디지털기기'})
+          }>
           <ChildrenIcon />
         </Pressable>
         <Pressable
           style={[styles.box]}
-          onPress={() => navigation.navigate('Detail', {title: '디지털기기'})}>
+          onPress={() =>
+            navigation.navigate('검색결과', {title: '디지털기기'})
+          }>
           <MFashionIcon />
         </Pressable>
         <Pressable
           style={[styles.box]}
-          onPress={() => navigation.navigate('Detail', {title: '디지털기기'})}>
+          onPress={() =>
+            navigation.navigate('검색결과', {title: '디지털기기'})
+          }>
           <WFashionIcon />
         </Pressable>
       </View>
       <View style={styles.pressables}>
         <Pressable
           style={styles.box}
-          onPress={() => navigation.navigate('Detail', {title: '인기상품'})}>
+          onPress={() => navigation.navigate('검색결과', {title: '인기상품'})}>
           <CampingIcon />
         </Pressable>
         <Pressable
           style={[styles.box]}
-          onPress={() => navigation.navigate('Detail', {title: '디지털기기'})}>
+          onPress={() =>
+            navigation.navigate('검색결과', {title: '디지털기기'})
+          }>
           <HobbyIcon />
         </Pressable>
         <Pressable
           style={[styles.box]}
-          onPress={() => navigation.navigate('Detail', {title: '디지털기기'})}>
+          onPress={() =>
+            navigation.navigate('검색결과', {title: '디지털기기'})
+          }>
           <SportsIcon />
         </Pressable>
         <Pressable
           style={[styles.box]}
-          onPress={() => navigation.navigate('Detail', {title: '디지털기기'})}>
+          onPress={() =>
+            navigation.navigate('검색결과', {title: '디지털기기'})
+          }>
           <BeautyIcon />
         </Pressable>
       </View>
       <View style={styles.pressables}>
         <Pressable
           style={styles.box}
-          onPress={() => navigation.navigate('Detail', {title: '인기상품'})}>
+          onPress={() => navigation.navigate('검색결과', {title: '인기상품'})}>
           <BooksIcon />
         </Pressable>
         <Pressable
           style={[styles.box]}
-          onPress={() => navigation.navigate('Detail', {title: '디지털기기'})}>
+          onPress={() =>
+            navigation.navigate('검색결과', {title: '디지털기기'})
+          }>
           <PetsIcon />
         </Pressable>
         <Pressable
           style={[styles.box]}
-          onPress={() => navigation.navigate('Detail', {title: '디지털기기'})}>
+          onPress={() =>
+            navigation.navigate('검색결과', {title: '디지털기기'})
+          }>
           <PlantsIcon />
         </Pressable>
         <Pressable
           style={[styles.box]}
-          onPress={() => navigation.navigate('Detail', {title: '디지털기기'})}>
+          onPress={() =>
+            navigation.navigate('검색결과', {title: '디지털기기'})
+          }>
           <PlantsIcon />
         </Pressable>
       </View>

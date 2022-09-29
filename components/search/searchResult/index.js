@@ -8,15 +8,13 @@ import {
   ScrollView,
   Button,
 } from 'react-native';
-import Alarm from '../../assets/icons/main_icons/icon-alarm.svg';
-import Menu from '../../assets/icons/main_icons/icon-menu.svg';
-import Search from '../../assets/icons/main_icons/icon-search.svg';
+import {AlarmIcon, CategotyIcon, SearchIcon} from '../../svg';
 import {SafeAreaView} from 'react-native-safe-area-context';
-import {width, height} from '../../utils/globalStyles';
+import {width, height} from '../../../utils/globalStyles';
 import data from './data.json';
 import {useNavigation} from '@react-navigation/native';
 import {request} from 'react-native-permissions';
-import {cameraPermissions} from '../config/platform';
+import {cameraPermissions} from '../../config/platform';
 
 const SearchResult = () => {
   const requestPermission = () => {
@@ -28,19 +26,19 @@ const SearchResult = () => {
   return (
     <SafeAreaView>
       <View style={styles.settings}>
-        <Menu
+        <CategotyIcon
           onPress={() => {
             navigation.navigate('카테고리');
           }}
           style={styles.menu}
         />
-        <Search
+        <SearchIcon
           onPress={() => {
             navigation.navigate('Search');
           }}
           style={styles.search}
         />
-        <Alarm style={styles.alarm} />
+        <AlarmIcon style={styles.alarm} />
       </View>
       <View style={styles.container}>
         <Pressable

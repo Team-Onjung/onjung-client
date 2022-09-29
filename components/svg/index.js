@@ -26,3 +26,6 @@ export {default as PopularIcon} from '../../assets/icons/category_icons/icon-pop
 export {default as SportsIcon} from '../../assets/icons/category_icons/icon-sports.svg';
 export {default as WFashionIcon} from '../../assets/icons/category_icons/icon-wFashion.svg';
 export {default as KakaoIcon} from '../../assets/icons/icon-kakao.svg';
+export {default as AlarmIcon} from '../../assets/icons/main_icons/icon-alarm.svg';
+export {default as CategoryIcon} from '../../assets/icons/main_icons/icon-menu.svg';
+export {default as SearchIcon} from '../../assets/icons/main_icons/icon-search.svg';
