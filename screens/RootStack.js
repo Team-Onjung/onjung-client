@@ -8,6 +8,7 @@ import Detail from './../components/detail/index';
 import {Platform} from 'react-native';
 import UseCamera from '../components/posts/content/img_selector/camera';
 import Category from '../components/category/index';
+import SearchResult from '../components/search/searchResult/index';
 
 const Stack = createNativeStackNavigator();
 
@@ -66,6 +67,15 @@ const RootStack = () => {
       <Stack.Screen
         name="카테고리"
         component={Category}
+        options={{
+          headerShown: Platform.OS === 'ios' ? false : true,
+          headerTitleAlign: 'center',
+        }}
+      />
+      {/* 검색결과 페이지 */}
+      <Stack.Screen
+        name="검색결과"
+        component={SearchResult}
         options={{
           headerShown: Platform.OS === 'ios' ? false : true,
           headerTitleAlign: 'center',

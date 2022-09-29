@@ -1,9 +1,18 @@
 import {useNavigation} from '@react-navigation/native';
-import React from 'react';
-import {Platform, Pressable, StyleSheet, Text, View} from 'react-native';
+import React, {useLayoutEffect, useState} from 'react';
+import {
+  Platform,
+  Pressable,
+  StyleSheet,
+  Text,
+  View,
+  Keyboard,
+  TextInput,
+} from 'react-native';
 import {SafeAreaView} from 'react-native-safe-area-context';
 import {width, height, colors} from '../../utils/globalStyles';
 import {
+  ArrowLeftIcon,
   ChildrenIcon,
   DigitalIcon,
   FurnitureIcon,
@@ -17,9 +26,27 @@ import {
 const Search = () => {
   const navigation = useNavigation();
 
+  const onSubmit = () => {
+    Keyboard.dismiss();
+  };
+  useLayoutEffect(() => {
+    navigation.setOptions({
+      headerLeft: () => (
+        <Pressable onPress={() => navigation.pop()}>
+          <ArrowLeftIcon />
+        </Pressable>
+      ),
+      headerRight: () => (
+        <Pressable onPress={() => onSubmit()}>
+          <Text style={styles.complete}>완료 </Text>
+        </Pressable>
+      ),
+    });
+  });
+
   return (
     <SafeAreaView style={styles.block}>
-      <Text>인기 카테고리</Text>
+      <Text style={styles.popularCategory}>인기 카테고리</Text>
       <View style={styles.pressables}>
         <Pressable
           style={styles.box}
@@ -71,6 +98,7 @@ const Search = () => {
 const styles = StyleSheet.create({
   block: {
     flex: 1,
+    paddingTop: width * 25,
     alignItems: 'center',
     backgroundColor: '#FFF',
   },
@@ -113,6 +141,18 @@ const styles = StyleSheet.create({
     fontFamily: 'AppleSDGothicNeoM',
     color: colors['$gray-2'],
     fontWeight: 'bold',
+  },
+  complete: {
+    color: colors['$coral-4'],
+    fontWeight: 'bold',
+    letterSpacing: width * -0.24,
+    fontSize: width * 17,
+  },
+  popularCategory: {
+    color: colors.$black,
+    fontWeight: 'bold',
+    letterSpacing: width * -0.24,
+    fontSize: width * 17,
   },
 });
 

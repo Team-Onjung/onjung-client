@@ -19,7 +19,7 @@ const Auth = ({navigation}) => {
         <Text style={styles.subText}>당신 곁에서 만나는 따뜻함, 온정</Text>
         <Image
           style={styles.img}
-          source={require('../../../assets/imgs/login_image.png')}
+          source={require('../../assets/imgs/login_image.png')}
         />
       </View>
       <View>

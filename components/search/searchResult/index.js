@@ -18,7 +18,7 @@ import {useNavigation} from '@react-navigation/native';
 import {request} from 'react-native-permissions';
 import {cameraPermissions} from '../config/platform';
 
-const Main = () => {
+const SearchResult = () => {
   const requestPermission = () => {
     request(cameraPermissions).then(navigation.navigate('CameraPage'));
   };
@@ -183,4 +183,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Main;
+export default SearchResult;

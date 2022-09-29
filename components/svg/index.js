@@ -10,10 +10,6 @@ export {default as WonIcon} from '../../assets/icons/icon-won.svg';
 export {default as PhtohIcon} from '../../assets/icons/icon-photo.svg';
 export {default as HeartIcon} from '../../assets/icons/icon-heart.svg';
 export {default as MonoHeartIcon} from '../../assets/icons/icon-heart-mono.svg';
-<<<<<<< HEAD
-
-=======
->>>>>>> 34ab3b1586dfdbb9257537220f2c582b89fef85c
 export {default as BeautyIcon} from '../../assets/icons/category_icons/icon-beauty.svg';
 export {default as BooksIcon} from '../../assets/icons/category_icons/icon-books.svg';
 export {default as CampingIcon} from '../../assets/icons/category_icons/icon-camping.svg';
@@ -29,8 +25,4 @@ export {default as PlantsIcon} from '../../assets/icons/category_icons/icon-plan
 export {default as PopularIcon} from '../../assets/icons/category_icons/icon-popular.svg';
 export {default as SportsIcon} from '../../assets/icons/category_icons/icon-sports.svg';
 export {default as WFashionIcon} from '../../assets/icons/category_icons/icon-wFashion.svg';
-<<<<<<< HEAD
-
-=======
->>>>>>> 34ab3b1586dfdbb9257537220f2c582b89fef85c
 export {default as KakaoIcon} from '../../assets/icons/icon-kakao.svg';
