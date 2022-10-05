@@ -19,6 +19,7 @@ import {
   PopularIcon,
   SportsIcon,
   WFashionIcon,
+  EtcIcon,
 } from '../svg';
 
 const Category = () => {
@@ -135,7 +136,7 @@ const Category = () => {
           onPress={() =>
             navigation.navigate('검색결과', {title: '디지털기기'})
           }>
-          <PlantsIcon />
+          <EtcIcon />
         </Pressable>
       </View>
     </SafeAreaView>
