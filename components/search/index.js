@@ -36,6 +36,13 @@ const Search = () => {
           <ArrowLeftIcon />
         </Pressable>
       ),
+      headerTitle: () => (
+        <TextInput
+          placeholder="온 동네에 정을 나눠요"
+          style={styles.formField}
+          placeholderTextColor={'#E5E8EB'}
+        />
+      ),
       headerRight: () => (
         <Pressable onPress={() => onSubmit()}>
           <Text style={styles.complete}>완료 </Text>
@@ -153,6 +160,30 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     letterSpacing: width * -0.24,
     fontSize: width * 17,
+  },
+  formField: {
+    width: width * 88,
+    height: height * 96,
+    borderRadius: 20,
+    backgroundColor: colors.$white,
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginHorizontal: width * 6,
+
+    ...Platform.select({
+      ios: {
+        shadowColor: '#142742',
+        shadowOpacity: 0.07,
+        shadowRadius: 25,
+        shadowOffset: {
+          height: 2,
+          width: 0,
+        },
+      },
+      android: {
+        elevation: 2,
+      },
+    }),
   },
 });
 

@@ -70,7 +70,7 @@ const SearchResult = () => {
               style={styles.total}>
               <Image
                 style={styles.postImage}
-                source={require('../../assets/imgs/main/Rectangle.png')}
+                source={require('../../../assets/imgs/main/Rectangle.png')}
               />
               <View style={styles.postText}>
                 <Text style={styles.postTitle} numberOfLines={1}>
