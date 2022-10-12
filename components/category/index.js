@@ -161,11 +161,10 @@ const styles = StyleSheet.create({
     flex: 1,
     width: width * 88,
     height: height * 96,
-    borderRadius: 20,
     backgroundColor: colors.$white,
     justifyContent: 'center',
     alignItems: 'center',
-    marginHorizontal: width * 6,
+    marginHorizontal: width * 5,
   },
 
   text: {
