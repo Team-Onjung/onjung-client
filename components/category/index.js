@@ -166,21 +166,6 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     marginHorizontal: width * 6,
-
-    ...Platform.select({
-      ios: {
-        shadowColor: '#142742',
-        shadowOpacity: 0.07,
-        shadowRadius: 25,
-        shadowOffset: {
-          height: 2,
-          width: 0,
-        },
-      },
-      android: {
-        elevation: 2,
-      },
-    }),
   },
 
   text: {

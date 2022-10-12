@@ -40,7 +40,7 @@ const Search = () => {
         <TextInput
           placeholder="온 동네에 정을 나눠요"
           style={styles.formField}
-          placeholderTextColor={'#E5E8EB'}
+          placeholderTextColor={colors['$gray-6']}
         />
       ),
       headerRight: () => (
@@ -126,21 +126,6 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     marginHorizontal: width * 6,
-
-    ...Platform.select({
-      ios: {
-        shadowColor: '#142742',
-        shadowOpacity: 0.07,
-        shadowRadius: 25,
-        shadowOffset: {
-          height: 2,
-          width: 0,
-        },
-      },
-      android: {
-        elevation: 2,
-      },
-    }),
   },
 
   text: {
@@ -153,26 +138,34 @@ const styles = StyleSheet.create({
     color: colors['$coral-4'],
     fontWeight: 'bold',
     letterSpacing: width * -0.24,
-    fontSize: width * 17,
+    fontSize: width * 15,
     marginRight: width * 20,
+    marginTop: width * 20,
   },
   goBack: {
     marginLeft: width * 20,
+    marginTop: width * 20,
   },
   popularCategory: {
     color: colors.$black,
     fontWeight: 'bold',
     letterSpacing: width * -0.24,
     fontSize: width * 17,
+    marginTop: width * 12,
+    marginBottom: width * 8,
+    marginRight: 'auto',
+    marginLeft: width * 24,
   },
   formField: {
     width: width * 250,
     height: height * 40,
-    borderRadius: 20,
-    backgroundColor: colors.$white,
+    borderRadius: 5,
+    backgroundColor: colors['$gray-9'],
     justifyContent: 'center',
     alignItems: 'center',
-    marginHorizontal: width * 8,
+    paddingVertical: width * 6,
+    paddingLeft: width * 12,
+    marginTop: width * 20,
 
     ...Platform.select({
       ios: {
