@@ -33,7 +33,7 @@ const Search = () => {
     navigation.setOptions({
       headerLeft: () => (
         <Pressable onPress={() => navigation.pop()}>
-          <ArrowLeftIcon />
+          <ArrowLeftIcon style={styles.goBack} />
         </Pressable>
       ),
       headerTitle: () => (
@@ -45,7 +45,7 @@ const Search = () => {
       ),
       headerRight: () => (
         <Pressable onPress={() => onSubmit()}>
-          <Text style={styles.complete}>완료 </Text>
+          <Text style={styles.complete}>확인 </Text>
         </Pressable>
       ),
     });
@@ -154,6 +154,10 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     letterSpacing: width * -0.24,
     fontSize: width * 17,
+    marginRight: width * 20,
+  },
+  goBack: {
+    marginLeft: width * 20,
   },
   popularCategory: {
     color: colors.$black,
@@ -162,13 +166,13 @@ const styles = StyleSheet.create({
     fontSize: width * 17,
   },
   formField: {
-    width: width * 88,
-    height: height * 96,
+    width: width * 250,
+    height: height * 40,
     borderRadius: 20,
     backgroundColor: colors.$white,
     justifyContent: 'center',
     alignItems: 'center',
-    marginHorizontal: width * 6,
+    marginHorizontal: width * 8,
 
     ...Platform.select({
       ios: {
