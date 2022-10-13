@@ -1,0 +1,67 @@
+{
+    "tip":[
+        {
+            "idx":0,
+            "lastChat":"hey",
+            "user_name":"얼리어답터 지우",
+            "image":"c:/Users/onjung/onjung-client/assets/imgs/main/Rectangle.png",
+            "time" : "5"
+        },
+        {
+            "idx":1,
+            "lastChat":"4인용 캠핑 세트 3명이서 쓰면 큰일 나나요?",
+            "user_name": "캠핑조아",
+            "image": "c:/Users/onjung/onjung-client/assets/imgs/main/Rectangle.png",
+            "time" : "10"
+        },
+        {
+            "idx":2,
+            "lastChat":"응원봉 대여 가능할까요?",
+            "user_name":"정국사랑",
+            "image": "c:/Users/onjung/onjung-client/assets/imgs/main/Rectangle.png",
+            "time" : "15"
+        },
+        {
+            "idx":3,
+            "lastChat":"으슥한 곳에서 직거래 원합니다.",
+            "user_name":"직거래살인마",
+            "image": "c:/Users/onjung/onjung-client/assets/imgs/main/Rectangle.png",
+            "time" : "20"
+        },
+        {
+            "idx":4,
+            "lastChat":"쥐를 잡자 찍찍찍",
+            "user_name":"고양이",
+            "image": "c:/Users/onjung/onjung-client/assets/imgs/main/Rectangle.png",
+            "time" : "25"
+        },
+        {
+            "idx":5,
+            "lastChat":"안녕하세요",
+            "user_name":"인사까진연습했는데",
+            "image": "c:/Users/onjung/onjung-client/assets/imgs/main/Rectangle.png",
+            "time" : "30"
+        },
+        {
+            "idx":6,
+            "lastChat":"4인용 캠핑 세트 3명이서 쓰면 큰일 나나요?",
+            "user_name": "캠핑조아",
+            "image": "c:/Users/onjung/onjung-client/assets/imgs/main/Rectangle.png",
+            "time" : "10"
+        },
+        {
+            "idx":7,
+            "lastChat":"4인용 캠핑 세트 3명이서 쓰면 큰일 나나요?",
+            "user_name": "캠핑조아",
+            "image": "c:/Users/onjung/onjung-client/assets/imgs/main/Rectangle.png",
+            "time" : "10"
+        },
+        {
+            "idx":8,
+            "lastChat":"4인용 캠핑 세트 3명이서 쓰면 큰일 나나요?",
+            "user_name": "캠핑조아",
+            "image": "c:/Users/onjung/onjung-client/assets/imgs/main/Rectangle.png",
+            "time" : "10"
+        }
+    ]
+}

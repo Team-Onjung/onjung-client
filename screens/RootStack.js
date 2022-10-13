@@ -9,6 +9,8 @@ import {Platform} from 'react-native';
 import UseCamera from '../components/posts/content/img_selector/camera';
 import Category from '../components/category/index';
 import SearchResult from '../components/search/searchResult/index';
+import Chats from '../components/chat/chats/index';
+import Talk from '../components/chat/talk';
 
 const Stack = createNativeStackNavigator();
 
@@ -76,6 +78,24 @@ const RootStack = () => {
       <Stack.Screen
         name="검색결과"
         component={SearchResult}
+        options={{
+          headerShown: Platform.OS === 'ios' ? false : true,
+          headerTitleAlign: 'center',
+        }}
+      />
+      {/* 채팅목록 페이지 */}
+      <Stack.Screen
+        name="채팅목록"
+        component={Chats}
+        options={{
+          headerShown: Platform.OS === 'ios' ? false : true,
+          headerTitleAlign: 'center',
+        }}
+      />
+      {/* 채팅목록 페이지 */}
+      <Stack.Screen
+        name="채팅"
+        component={Talk}
         options={{
           headerShown: Platform.OS === 'ios' ? false : true,
           headerTitleAlign: 'center',
