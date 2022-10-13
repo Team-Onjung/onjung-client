@@ -25,21 +25,6 @@ const SearchResult = () => {
   const [value, setValue] = useState('대여 가능');
   return (
     <SafeAreaView>
-      <View style={styles.settings}>
-        <CategotyIcon
-          onPress={() => {
-            navigation.navigate('카테고리');
-          }}
-          style={styles.menu}
-        />
-        <SearchIcon
-          onPress={() => {
-            navigation.navigate('Search');
-          }}
-          style={styles.search}
-        />
-        <AlarmIcon style={styles.alarm} />
-      </View>
       <View style={styles.container}>
         <Pressable
           onPress={() => {
@@ -85,13 +70,6 @@ const SearchResult = () => {
           </View>
         ))}
       </ScrollView>
-      <Button title="to Detail" onPress={() => navigation.navigate('Detail')} />
-      <Button
-        title="to Category"
-        onPress={() => navigation.navigate('카테고리')}
-      />
-      <Button title="to Search" onPress={() => navigation.navigate('Search')} />
-      <Button title="to Camera" onPress={requestPermission} />
     </SafeAreaView>
   );
 };
