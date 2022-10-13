@@ -62,43 +62,39 @@ const Search = () => {
         </Pressable>
         <Pressable
           style={[styles.box]}
-          onPress={() =>
-            navigation.navigate('검색결과', {title: '디지털기기'})
-          }>
+          onPress={() => navigation.navigate('검색결과', {title: '생활가전'})}>
           <DigitalIcon />
         </Pressable>
         <Pressable
           style={[styles.box]}
           onPress={() =>
-            navigation.navigate('검색결과', {title: '디지털기기'})
+            navigation.navigate('검색결과', {title: '가구/인테리어'})
           }>
           <LivingIcon />
         </Pressable>
         <Pressable
           style={[styles.box]}
-          onPress={() =>
-            navigation.navigate('검색결과', {title: '디지털기기'})
-          }>
+          onPress={() => navigation.navigate('검색결과', {title: '생활/주방'})}>
           <FurnitureIcon />
         </Pressable>
       </View>
       <View style={styles.pressables}>
         <Pressable
           style={styles.box}
-          onPress={() => navigation.navigate('검색결과', {title: '인기상품'})}>
+          onPress={() => navigation.navigate('검색결과', {title: '유아동'})}>
           <KitchenIcon />
         </Pressable>
         <Pressable
           style={[styles.box]}
           onPress={() =>
-            navigation.navigate('검색결과', {title: '디지털기기'})
+            navigation.navigate('검색결과', {title: '여성패션/잡화'})
           }>
           <ChildrenIcon />
         </Pressable>
         <Pressable
           style={[styles.box]}
           onPress={() =>
-            navigation.navigate('검색결과', {title: '디지털기기'})
+            navigation.navigate('검색결과', {title: '남성패션/잡화'})
           }>
           <WFashionIcon />
         </Pressable>
