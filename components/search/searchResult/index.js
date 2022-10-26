@@ -60,7 +60,7 @@ const SearchResult = () => {
           setSelected={setCategoryValue}
           boxStyles={{
             marginLeft: width * 20,
-            marginVertical: width * 8,
+            marginTop: width * 8,
             width: width * 60,
             height: width * 30,
             paddingTop: width * 6,
@@ -69,7 +69,7 @@ const SearchResult = () => {
           inputStyles={{fontSize: width * 10}}
           dropdownStyles={{
             marginLeft: width * 20,
-            marginVertical: width * 8,
+            marginTop: width * 0,
             width: width * 60,
           }}
           placeholder="가격"
@@ -80,7 +80,7 @@ const SearchResult = () => {
           setSelected={setCategoryValue}
           boxStyles={{
             marginLeft: width * 10,
-            marginVertical: width * 8,
+            marginTop: width * 8,
             width: width * 100,
             height: width * 30,
             paddingTop: width * 6,
@@ -89,7 +89,7 @@ const SearchResult = () => {
           inputStyles={{fontSize: width * 10}}
           dropdownStyles={{
             marginLeft: width * 10,
-            marginVertical: width * 8,
+            marginTop: width * 0,
             width: width * 100,
           }}
           placeholder="모든 상품 보기"
@@ -100,7 +100,7 @@ const SearchResult = () => {
           setSelected={setCategoryValue}
           boxStyles={{
             marginHorizontal: width * 10,
-            marginVertical: width * 8,
+            marginTop: width * 8,
             width: width * 70,
             height: width * 30,
             paddingTop: width * 6,
@@ -109,7 +109,7 @@ const SearchResult = () => {
           inputStyles={{fontSize: width * 10}}
           dropdownStyles={{
             marginLeft: width * 10,
-            marginVertical: width * 8,
+            marginTop: width * 0,
             width: width * 70,
           }}
           placeholder="최신순"
