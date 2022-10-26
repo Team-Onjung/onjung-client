@@ -193,6 +193,7 @@ const styles = StyleSheet.create({
   },
   contentContainer: {
     height: height * 500,
+    marginTop: width * 20,
   },
 
   postlist: {
