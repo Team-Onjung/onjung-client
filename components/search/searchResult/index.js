@@ -54,12 +54,12 @@ const SearchResult = () => {
           </Text>
         </Pressable>
       </View>
-      <View style={styles.container}>
+      <View style={styles.searchCategoies}>
         <SelectList
           data={categorySelection}
           setSelected={setCategoryValue}
           boxStyles={{
-            marginHorizontal: width * 20,
+            marginLeft: width * 20,
             marginVertical: width * 8,
             width: width * 100,
             height: width * 30,
@@ -68,7 +68,7 @@ const SearchResult = () => {
           }}
           inputStyles={{fontSize: width * 10}}
           dropdownStyles={{
-            marginHorizontal: width * 20,
+            marginLeft: width * 20,
             marginVertical: width * 8,
             width: width * 100,
           }}
@@ -79,7 +79,7 @@ const SearchResult = () => {
           data={categorySelection}
           setSelected={setCategoryValue}
           boxStyles={{
-            marginHorizontal: width * 20,
+            marginLeft: width * 10,
             marginVertical: width * 8,
             width: width * 100,
             height: width * 30,
@@ -88,7 +88,7 @@ const SearchResult = () => {
           }}
           inputStyles={{fontSize: width * 10}}
           dropdownStyles={{
-            marginHorizontal: width * 20,
+            marginLeft: width * 10,
             marginVertical: width * 8,
             width: width * 100,
           }}
@@ -99,7 +99,7 @@ const SearchResult = () => {
           data={categorySelection}
           setSelected={setCategoryValue}
           boxStyles={{
-            marginHorizontal: width * 20,
+            marginHorizontal: width * 10,
             marginVertical: width * 8,
             width: width * 100,
             height: width * 30,
@@ -108,7 +108,7 @@ const SearchResult = () => {
           }}
           inputStyles={{fontSize: width * 10}}
           dropdownStyles={{
-            marginHorizontal: width * 20,
+            marginLeft: width * 10,
             marginVertical: width * 8,
             width: width * 100,
           }}
@@ -147,6 +147,9 @@ const SearchResult = () => {
 
 const styles = StyleSheet.create({
   container: {
+    flexDirection: 'row',
+  },
+  searchCategoies: {
     flexDirection: 'row',
   },
   settings: {
