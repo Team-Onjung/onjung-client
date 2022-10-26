@@ -54,14 +54,14 @@ const SearchResult = () => {
           </Text>
         </Pressable>
       </View>
-      <View style={styles.searchCategoies}>
+      <View style={styles.container}>
         <SelectList
           data={categorySelection}
           setSelected={setCategoryValue}
           boxStyles={{
             marginLeft: width * 20,
             marginVertical: width * 8,
-            width: width * 100,
+            width: width * 60,
             height: width * 30,
             paddingTop: width * 6,
             paddingHorizontal: width * 10,
@@ -70,9 +70,9 @@ const SearchResult = () => {
           dropdownStyles={{
             marginLeft: width * 20,
             marginVertical: width * 8,
-            width: width * 100,
+            width: width * 60,
           }}
-          placeholder="모든 상품 보기"
+          placeholder="가격"
           maxHeight={1000}
         />
         <SelectList
@@ -101,7 +101,7 @@ const SearchResult = () => {
           boxStyles={{
             marginHorizontal: width * 10,
             marginVertical: width * 8,
-            width: width * 100,
+            width: width * 70,
             height: width * 30,
             paddingTop: width * 6,
             paddingHorizontal: width * 10,
@@ -110,9 +110,9 @@ const SearchResult = () => {
           dropdownStyles={{
             marginLeft: width * 10,
             marginVertical: width * 8,
-            width: width * 100,
+            width: width * 70,
           }}
-          placeholder="모든 상품 보기"
+          placeholder="최신순"
           maxHeight={1000}
         />
       </View>
@@ -147,9 +147,6 @@ const SearchResult = () => {
 
 const styles = StyleSheet.create({
   container: {
-    flexDirection: 'row',
-  },
-  searchCategoies: {
     flexDirection: 'row',
   },
   settings: {
