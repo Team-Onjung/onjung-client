@@ -72,6 +72,48 @@ const SearchResult = () => {
             marginVertical: width * 8,
             width: width * 100,
           }}
+          placeholder="모든 상품 보기"
+          maxHeight={1000}
+        />
+        <SelectList
+          data={categorySelection}
+          setSelected={setCategoryValue}
+          boxStyles={{
+            marginHorizontal: width * 20,
+            marginVertical: width * 8,
+            width: width * 100,
+            height: width * 30,
+            paddingTop: width * 6,
+            paddingHorizontal: width * 10,
+          }}
+          inputStyles={{fontSize: width * 10}}
+          dropdownStyles={{
+            marginHorizontal: width * 20,
+            marginVertical: width * 8,
+            width: width * 100,
+          }}
+          placeholder="모든 상품 보기"
+          maxHeight={1000}
+        />
+        <SelectList
+          data={categorySelection}
+          setSelected={setCategoryValue}
+          boxStyles={{
+            marginHorizontal: width * 20,
+            marginVertical: width * 8,
+            width: width * 100,
+            height: width * 30,
+            paddingTop: width * 6,
+            paddingHorizontal: width * 10,
+          }}
+          inputStyles={{fontSize: width * 10}}
+          dropdownStyles={{
+            marginHorizontal: width * 20,
+            marginVertical: width * 8,
+            width: width * 100,
+          }}
+          placeholder="모든 상품 보기"
+          maxHeight={1000}
         />
       </View>
       <ScrollView style={styles.contentContainer}>
