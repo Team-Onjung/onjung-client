@@ -10,11 +10,12 @@ import {
 } from 'react-native';
 import {AlarmIcon, CategotyIcon, SearchIcon} from '../../svg';
 import {SafeAreaView} from 'react-native-safe-area-context';
-import {width, height} from '../../../utils/globalStyles';
+import {width, height, colors} from '../../../utils/globalStyles';
 import data from './data.json';
 import {useNavigation} from '@react-navigation/native';
 import {request} from 'react-native-permissions';
 import {cameraPermissions} from '../../config/platform';
+import SelectList from 'react-native-dropdown-select-list';
 
 const SearchResult = () => {
   const requestPermission = () => {
@@ -23,6 +24,14 @@ const SearchResult = () => {
   const navigation = useNavigation();
   let tip = data.tip;
   const [value, setValue] = useState('대여 가능');
+  const [categoryValue, setCategoryValue] = useState('모든 상품 보기');
+  const categorySelection = [
+    {key: '1', value: '모든 상품 보기'},
+    {key: '2', value: '인기 상품'},
+    {key: '3', value: '디지털 기기'},
+    {key: '4', value: '기타'},
+  ];
+
   return (
     <SafeAreaView>
       <View style={styles.container}>
@@ -44,6 +53,26 @@ const SearchResult = () => {
             대여 요청
           </Text>
         </Pressable>
+      </View>
+      <View style={styles.container}>
+        <SelectList
+          data={categorySelection}
+          setSelected={setCategoryValue}
+          boxStyles={{
+            marginHorizontal: width * 20,
+            marginVertical: width * 8,
+            width: width * 100,
+            height: width * 30,
+            paddingTop: width * 6,
+            paddingHorizontal: width * 10,
+          }}
+          inputStyles={{fontSize: width * 10}}
+          dropdownStyles={{
+            marginHorizontal: width * 20,
+            marginVertical: width * 8,
+            width: width * 100,
+          }}
+        />
       </View>
       <ScrollView style={styles.contentContainer}>
         {tip.map((content, i) => (
@@ -114,6 +143,11 @@ const styles = StyleSheet.create({
     marginLeft: width * 5,
     marginHorizontal: width * 230,
     marginBottom: width * 10,
+  },
+  searchSelection: {
+    flex: 1,
+    paddingTop: 40,
+    alignItems: 'center',
   },
   contentContainer: {
     height: height * 500,

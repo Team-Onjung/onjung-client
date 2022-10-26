@@ -1303,6 +1303,10 @@
   resolved "https://registry.npmjs.org/@react-native-community/eslint-plugin/-/eslint-plugin-1.2.0.tgz"
   integrity sha512-o6aam+0Ug1xGK3ABYmBm0B1YuEKfM/5kaoZO0eHbZwSpw9UzDX4G5y4Nx/K20FHqUmJHkZmLvOUFYwN4N+HqKA==
 
+"@react-native-picker/picker@react-native-picker/picker":
+  version "2.4.8"
+  resolved "https://codeload.github.com/react-native-picker/picker/tar.gz/573492fd6388fe3b6a8cccc86844f340cd763f2f"
+
 "@react-native/assets@1.0.0":
   version "1.0.0"
   resolved "https://registry.npmjs.org/@react-native/assets/-/assets-1.0.0.tgz"
@@ -6335,6 +6339,11 @@ react-native-codegen@^0.0.17:
     flow-parser "^0.121.0"
     jscodeshift "^0.13.1"
     nullthrows "^1.1.1"
+
+react-native-dropdown-select-list@^1.0.23:
+  version "1.0.23"
+  resolved "https://registry.yarnpkg.com/react-native-dropdown-select-list/-/react-native-dropdown-select-list-1.0.23.tgz#63dbaf0a9808514b9151c14a6f3df12ae509ca7d"
+  integrity sha512-P4/GsqVv2EEUUJXyJyMwdDYKAT7qcsD6aXu0BjkM/5VmQGRLhRiLs7wfPW12Tva+AyX6URfw7pTsupJM3/oh/g==
 
 react-native-gesture-handler@2.6.0:
   version "2.6.0"
