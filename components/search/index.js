@@ -22,6 +22,7 @@ import {
   PopularIcon,
   WFashionIcon,
 } from '../svg';
+import RBSheet from 'react-native-raw-bottom-sheet';
 
 const Search = () => {
   const navigation = useNavigation();

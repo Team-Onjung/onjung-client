@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useRef} from 'react';
 import {
   StyleSheet,
   Text,
@@ -16,6 +16,7 @@ import {useNavigation} from '@react-navigation/native';
 import {request} from 'react-native-permissions';
 import {cameraPermissions} from '../../config/platform';
 import SelectList from 'react-native-dropdown-select-list';
+import RBSheet from 'react-native-raw-bottom-sheet';
 
 const SearchResult = () => {
   const requestPermission = () => {
@@ -31,7 +32,7 @@ const SearchResult = () => {
     {key: '3', value: '디지털 기기'},
     {key: '4', value: '기타'},
   ];
-
+  const refRBSheet = useRef();
   return (
     <SafeAreaView>
       <View style={styles.container}>
@@ -55,6 +56,208 @@ const SearchResult = () => {
         </Pressable>
       </View>
       <View style={styles.container}>
+        <Pressable
+          onPress={() => refRBSheet.current.open()}
+          style={styles.searchSelection}>
+          <Text>정확도순</Text>
+        </Pressable>
+        <Pressable
+          onPress={() => refRBSheet.current.open()}
+          style={styles.searchSelection}>
+          <Text>모든 상품 보기</Text>
+        </Pressable>
+        <Pressable
+          onPress={() => refRBSheet.current.open()}
+          style={styles.searchSelection}>
+          <Text>가격</Text>
+        </Pressable>
+        <RBSheet
+          style={styles.contentContainer}
+          ref={refRBSheet}
+          closeOnDragDown={true}
+          closeOnPressMask={false}
+          customStyles={{
+            wrapper: {
+              backgroundColor: 'transparent',
+            },
+            draggableIcon: {
+              backgroundColor: '#000',
+            },
+          }}>
+          <Pressable
+            onPress={() => {
+              setValue('모든상품보기');
+            }}
+            style={styles.textbutton02}>
+            <Text
+              style={{color: value === '모든상품보기' ? '#F05655' : '#8B95A1'}}>
+              모든상품보기
+            </Text>
+          </Pressable>
+          <Pressable
+            onPress={() => {
+              setValue('인기상품');
+            }}
+            style={styles.textbutton02}>
+            <Text style={{color: value === '인기상품' ? '#F05655' : '#8B95A1'}}>
+              인기상품
+            </Text>
+          </Pressable>
+          <Pressable
+            onPress={() => {
+              setValue('디지털기기');
+            }}
+            style={styles.textbutton02}>
+            <Text
+              style={{color: value === '디지털기기' ? '#F05655' : '#8B95A1'}}>
+              디지털기기
+            </Text>
+          </Pressable>
+          <Pressable
+            onPress={() => {
+              setValue('생활가전');
+            }}
+            style={styles.textbutton02}>
+            <Text style={{color: value === '생활가전' ? '#F05655' : '#8B95A1'}}>
+              생활가전
+            </Text>
+          </Pressable>
+          <Pressable
+            onPress={() => {
+              setValue('가구/인테리어');
+            }}
+            style={styles.textbutton02}>
+            <Text
+              style={{
+                color: value === '가구/인테리어' ? '#F05655' : '#8B95A1',
+              }}>
+              가구/인테리어
+            </Text>
+          </Pressable>
+          <Pressable
+            onPress={() => {
+              setValue('생활/주방');
+            }}
+            style={styles.textbutton02}>
+            <Text
+              style={{color: value === '생활/주방' ? '#F05655' : '#8B95A1'}}>
+              생활/주방
+            </Text>
+          </Pressable>
+          <Pressable
+            onPress={() => {
+              setValue('유아동');
+            }}
+            style={styles.textbutton02}>
+            <Text style={{color: value === '유아동' ? '#F05655' : '#8B95A1'}}>
+              유아동
+            </Text>
+          </Pressable>
+          <Pressable
+            onPress={() => {
+              setValue('여성패션/잡화');
+            }}
+            style={styles.textbutton02}>
+            <Text
+              style={{
+                color: value === '여성패션/잡화' ? '#F05655' : '#8B95A1',
+              }}>
+              여성패션/잡화
+            </Text>
+          </Pressable>
+          <Pressable
+            onPress={() => {
+              setValue('남성패션/잡화');
+            }}
+            style={styles.textbutton02}>
+            <Text
+              style={{
+                color: value === '남성패션/잡화' ? '#F05655' : '#8B95A1',
+              }}>
+              남성패션/잡화
+            </Text>
+          </Pressable>
+          <Pressable
+            onPress={() => {
+              setValue('뷰티/미용');
+            }}
+            style={styles.textbutton02}>
+            <Text
+              style={{color: value === '뷰티/미용' ? '#F05655' : '#8B95A1'}}>
+              뷰티/미용
+            </Text>
+          </Pressable>
+          <Pressable
+            onPress={() => {
+              setValue('스포츠/레져');
+            }}
+            style={styles.textbutton02}>
+            <Text
+              style={{color: value === '스포츠/레져' ? '#F05655' : '#8B95A1'}}>
+              스포츠/레져
+            </Text>
+          </Pressable>
+          <Pressable
+            onPress={() => {
+              setValue('취미/게임/음반');
+            }}
+            style={styles.textbutton02}>
+            <Text
+              style={{
+                color: value === '취미/게임/음반' ? '#F05655' : '#8B95A1',
+              }}>
+              취미/게임/음반
+            </Text>
+          </Pressable>
+          <Pressable
+            onPress={() => {
+              setValue('캠핑용품');
+            }}
+            style={styles.textbutton02}>
+            <Text style={{color: value === '캠핑용품' ? '#F05655' : '#8B95A1'}}>
+              캠핑용품
+            </Text>
+          </Pressable>
+          <Pressable
+            onPress={() => {
+              setValue('도서');
+            }}
+            style={styles.textbutton02}>
+            <Text style={{color: value === '도서' ? '#F05655' : '#8B95A1'}}>
+              도서
+            </Text>
+          </Pressable>
+          <Pressable
+            onPress={() => {
+              setValue('반려동물용품');
+            }}
+            style={styles.textbutton02}>
+            <Text
+              style={{color: value === '반려동물용품' ? '#F05655' : '#8B95A1'}}>
+              반려동물용품
+            </Text>
+          </Pressable>
+          <Pressable
+            onPress={() => {
+              setValue('식물');
+            }}
+            style={styles.textbutton02}>
+            <Text style={{color: value === '식물' ? '#F05655' : '#8B95A1'}}>
+              식물
+            </Text>
+          </Pressable>
+          <Pressable
+            onPress={() => {
+              setValue('기타');
+            }}
+            style={styles.textbutton02}>
+            <Text style={{color: value === '기타' ? '#F05655' : '#8B95A1'}}>
+              기타
+            </Text>
+          </Pressable>
+        </RBSheet>
+      </View>
+      {/* <View style={styles.container}>
         <SelectList
           data={categorySelection}
           setSelected={setCategoryValue}
@@ -115,7 +318,7 @@ const SearchResult = () => {
           placeholder="최신순"
           maxHeight={1000}
         />
-      </View>
+      </View> */}
       <ScrollView style={styles.contentContainer}>
         {tip.map((content, i) => (
           <View style={styles.postlist} key={i}>
@@ -187,9 +390,12 @@ const styles = StyleSheet.create({
     marginBottom: width * 10,
   },
   searchSelection: {
-    flex: 1,
-    paddingTop: 40,
-    alignItems: 'center',
+    marginLeft: width * 20,
+    marginTop: width * 8,
+    width: width * 60,
+    height: width * 30,
+    paddingTop: width * 6,
+    paddingHorizontal: width * 10,
   },
   contentContainer: {
     height: height * 500,
