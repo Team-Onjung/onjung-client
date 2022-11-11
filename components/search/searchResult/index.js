@@ -16,6 +16,7 @@ import {useNavigation} from '@react-navigation/native';
 import {request} from 'react-native-permissions';
 import {cameraPermissions} from '../../config/platform';
 import RBSheet from 'react-native-raw-bottom-sheet';
+import CheckBox from '@react-native-community/checkbox';
 
 const SearchResult = () => {
   const requestPermission = () => {
@@ -25,6 +26,7 @@ const SearchResult = () => {
   let tip = data.tip;
   const [value, setValue] = useState('대여 가능');
   const [categoryValue, setCategoryValue] = useState('모든 상품 보기');
+  const [isSelected, setSelection] = useState(false);
 
   const refRBSheet1 = useRef();
   const refRBSheet2 = useRef();
@@ -54,17 +56,17 @@ const SearchResult = () => {
       <View style={styles.container}>
         <Pressable
           onPress={() => refRBSheet1.current.open()}
-          style={styles.searchSelection}>
+          style={styles.searchSelection1}>
           <Text>정확도순</Text>
         </Pressable>
         <Pressable
           onPress={() => refRBSheet2.current.open()}
-          style={styles.searchSelection}>
+          style={styles.searchSelection2}>
           <Text>모든 상품 보기</Text>
         </Pressable>
         <Pressable
           onPress={() => refRBSheet3.current.open()}
-          style={styles.searchSelection}>
+          style={styles.searchSelection3}>
           <Text>가격</Text>
         </Pressable>
         <RBSheet
@@ -73,7 +75,7 @@ const SearchResult = () => {
           closeOnPressMask={false}
           customStyles={{
             wrapper: {
-              backgroundColor: 'transparent',
+              backgroundColor: 'rgba(0, 0, 0, 0.5)',
             },
             draggableIcon: {
               backgroundColor: '#000',
@@ -117,7 +119,7 @@ const SearchResult = () => {
           closeOnPressMask={false}
           customStyles={{
             wrapper: {
-              backgroundColor: 'transparent',
+              backgroundColor: 'rgba(0, 0, 0, 0.5)',
             },
             draggableIcon: {
               backgroundColor: '#000',
@@ -305,7 +307,7 @@ const SearchResult = () => {
           closeOnPressMask={false}
           customStyles={{
             wrapper: {
-              backgroundColor: 'transparent',
+              backgroundColor: 'rgba(0, 0, 0, 0.5)',
             },
             draggableIcon: {
               backgroundColor: '#000',
@@ -459,10 +461,34 @@ const styles = StyleSheet.create({
     marginHorizontal: width * 230,
     marginBottom: width * 10,
   },
-  searchSelection: {
+  searchSelection1: {
+    marginLeft: width * 20,
+    marginTop: width * 8,
+    width: width * 70,
+    height: width * 40,
+    paddingTop: width * 10,
+    paddingHorizontal: width * 10,
+    borderColor: '#333D4B',
+    borderStyle: 'solid',
+    borderRadius: 5,
+    borderWidth: 0.5,
+  },
+  searchSelection2: {
     marginLeft: width * 20,
     marginTop: width * 8,
     width: width * 100,
+    height: width * 40,
+    paddingTop: width * 10,
+    paddingHorizontal: width * 10,
+    borderColor: '#333D4B',
+    borderStyle: 'solid',
+    borderRadius: 5,
+    borderWidth: 0.5,
+  },
+  searchSelection3: {
+    marginLeft: width * 20,
+    marginTop: width * 8,
+    width: width * 50,
     height: width * 40,
     paddingTop: width * 10,
     paddingHorizontal: width * 10,
@@ -521,6 +547,17 @@ const styles = StyleSheet.create({
     height: width * 30,
     paddingTop: width * 6,
     paddingHorizontal: width * 10,
+    fontSize: width * 6,
+  },
+  checkboxContainer: {
+    flexDirection: 'row',
+    marginBottom: 20,
+  },
+  checkbox: {
+    alignSelf: 'center',
+  },
+  label: {
+    margin: 8,
   },
 });
 
