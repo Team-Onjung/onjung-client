@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useRef} from 'react';
 import {
   StyleSheet,
   Text,
@@ -15,6 +15,7 @@ import data from './data.json';
 import {useNavigation} from '@react-navigation/native';
 import {request} from 'react-native-permissions';
 import {cameraPermissions} from '../config/platform';
+import RBSheet from 'react-native-raw-bottom-sheet';
 
 const MyPage = () => {
   const requestPermission = () => {
@@ -23,17 +24,21 @@ const MyPage = () => {
   const navigation = useNavigation();
   let tip = data.tip;
   const [value, setValue] = useState('나의 상품');
+  const [categoryValue, setCategoryValue] = useState('모든 상품 보기');
+  const refRBSheet1 = useRef();
+
   return (
     <SafeAreaView>
       <View style={styles.settings}>
-        <SearchIcon
+        <AlarmIcon
           onPress={() => {
             navigation.navigate('Search');
           }}
-          style={styles.search}
+          style={styles.alarm}
         />
-        <AlarmIcon style={styles.alarm} />
+        <SearchIcon style={styles.search} />
       </View>
+      <View style={styles.container}></View>
       <View style={styles.container}>
         <Pressable
           onPress={() => {
@@ -54,6 +59,58 @@ const MyPage = () => {
             대여한 상품
           </Text>
         </Pressable>
+      </View>
+      <View style={styles.container}>
+        <Pressable
+          onPress={() => refRBSheet1.current.open()}
+          style={styles.searchSelection1}>
+          <Text>대여 가능</Text>
+        </Pressable>
+        <RBSheet
+          ref={refRBSheet1}
+          closeOnDragDown={true}
+          closeOnPressMask={false}
+          customStyles={{
+            wrapper: {
+              backgroundColor: 'rgba(0, 0, 0, 0.5)',
+            },
+            draggableIcon: {
+              backgroundColor: '#000',
+            },
+            container: {
+              backgroundColor: '#fff',
+              borderRadius: 20,
+            },
+          }}>
+          <Text style={styles.searchSelectionTitle}>전체</Text>
+          <Pressable
+            onPress={() => {
+              setCategoryValue('모든상품보기');
+              console.log('click');
+            }}
+            style={styles.searchSelectionOptions}
+          />
+          <Pressable
+            onPress={() => {
+              setCategoryValue('대여가능');
+              console.log('click');
+            }}
+            style={styles.searchSelectionOptions}>
+            <Text style={{color: value === '대여가능' ? '#F05655' : '#8B95A1'}}>
+              대여가능
+            </Text>
+          </Pressable>
+          <Pressable
+            onPress={() => {
+              setCategoryValue('대여중');
+              console.log('click');
+            }}
+            style={styles.searchSelectionOptions}>
+            <Text style={{color: value === '대여중' ? '#F05655' : '#8B95A1'}}>
+              대여중
+            </Text>
+          </Pressable>
+        </RBSheet>
       </View>
       <ScrollView style={styles.contentContainer}>
         {tip.map((content, i) => (
@@ -91,6 +148,7 @@ const styles = StyleSheet.create({
   settings: {
     flexDirection: 'row',
     marginTop: width * 10,
+    marginLeft: width * 260,
   },
 
   menu: {
@@ -100,13 +158,13 @@ const styles = StyleSheet.create({
   },
   search: {
     marginTop: width * 10,
-    marginLeft: width * 40,
+    marginLeft: width * 10,
     width: width * 18,
     height: height * 18,
   },
   alarm: {
-    marginTop: width * 11,
-    marginLeft: width * 10,
+    marginTop: width * 12,
+    marginLeft: width * 40,
     width: width * 20,
     height: height * 20,
   },
@@ -114,7 +172,7 @@ const styles = StyleSheet.create({
     flex: 1,
     marginTop: width * 25,
     marginLeft: width * 25,
-    width: width * 10,
+    width: width * 12,
     height: height * 30,
     marginBottom: width * 10,
   },
@@ -122,7 +180,7 @@ const styles = StyleSheet.create({
     flex: 1,
     marginTop: width * 25,
     marginLeft: width * 5,
-    marginHorizontal: width * 230,
+    marginHorizontal: width * 220,
     marginBottom: width * 10,
   },
   contentContainer: {
@@ -166,6 +224,34 @@ const styles = StyleSheet.create({
     fontSize: width * 17,
     color: '#4E5968',
     marginLeft: width * -3,
+  },
+  searchSelection1: {
+    marginLeft: width * 20,
+    marginTop: width * 8,
+    width: width * 70,
+    height: width * 40,
+    paddingTop: width * 10,
+    paddingHorizontal: width * 10,
+    fontWeight: 'bold',
+  },
+  searchSelectionOptions: {
+    marginLeft: width * 20,
+    marginTop: width * 8,
+    width: width * 300,
+    height: width * 30,
+    paddingTop: width * 6,
+    paddingHorizontal: width * 10,
+    fontSize: width * 8,
+  },
+  searchSelectionTitle: {
+    marginLeft: width * 18,
+    marginVertical: width * 4,
+    width: width * 300,
+    height: width * 30,
+    paddingTop: width * 6,
+    paddingHorizontal: width * 10,
+    fontSize: width * 18,
+    fontWeight: 'bold',
   },
 });
 
