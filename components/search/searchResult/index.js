@@ -17,6 +17,8 @@ import {request} from 'react-native-permissions';
 import {cameraPermissions} from '../../config/platform';
 import RBSheet from 'react-native-raw-bottom-sheet';
 import CheckBox from '@react-native-community/checkbox';
+import CircleCheckBox, {LABEL_POSITION} from 'react-native-circle-checkbox';
+import { is } from '@babel/types';
 
 const SearchResult = () => {
   const requestPermission = () => {
@@ -27,6 +29,10 @@ const SearchResult = () => {
   const [value, setValue] = useState('대여 가능');
   const [categoryValue, setCategoryValue] = useState('모든 상품 보기');
   const [isSelected, setSelection] = useState(false);
+  const [isChecked, setChecked] = useState(false);
+  const [allIsChecked, setAllIsChecked] = useState(true);
+  const [digitalIsChecked, setDigitalIsChecked] = useState(false);
+  const [livingIsChecked, setLivingIsChecked] = useState(false);
 
   const refRBSheet1 = useRef();
   const refRBSheet2 = useRef();
@@ -82,14 +88,17 @@ const SearchResult = () => {
             },
             container: {
               backgroundColor: '#fff',
+              borderRadius: 20,
             },
           }}>
+          <Text style={styles.searchSelectionTitle}>정렬</Text>
           <Pressable
             onPress={() => {
               setCategoryValue('모든상품보기');
               console.log('click');
             }}
-            style={styles.searchSelectionOptions}></Pressable>
+            style={styles.searchSelectionOptions}
+          />
           <Pressable
             onPress={() => {
               setCategoryValue('모든상품보기');
@@ -126,9 +135,11 @@ const SearchResult = () => {
             },
             container: {
               backgroundColor: '#fff',
+              borderRadius: 20,
+              height: width * 400,
             },
           }}>
-          <Pressable
+          {/* <Pressable
             onPress={() => {
               setCategoryValue('모든상품보기');
               console.log('click');
@@ -299,7 +310,92 @@ const SearchResult = () => {
             <Text style={{color: value === '기타' ? '#F05655' : '#8B95A1'}}>
               기타
             </Text>
-          </Pressable>
+          </Pressable> */}
+          <Text style={styles.searchSelectionTitle}>카테고리</Text>
+          <CircleCheckBox
+            innerColor="#FC7574"
+            outerColor="#FDFEFF"
+            styleCheckboxContainer={styles.searchSelectionOptions}
+            checked={allIsChecked}
+            onToggle={allIsChecked => setAllIsChecked(false)}
+            labelPosition={LABEL_POSITION.RIGHT}
+            label="모든 상품 보기"
+          />
+          <CircleCheckBox
+            innerColor="#FC7574"
+            outerColor="#FDFEFF"
+            styleCheckboxContainer={styles.searchSelectionOptions}
+            checked={isChecked}
+            onToggle={isChecked => setChecked(false)}
+            labelPosition={LABEL_POSITION.RIGHT}
+            label="인기상품"
+          />
+          <CircleCheckBox
+            innerColor="#FC7574"
+            outerColor="#FDFEFF"
+            styleCheckboxContainer={styles.searchSelectionOptions}
+            checked={digitalIsChecked}
+            onToggle={digitalIsChecked => setDigitalIsChecked(true)}
+            labelPosition={LABEL_POSITION.RIGHT}
+            label="디지털기기"
+          />
+          <CircleCheckBox
+            innerColor="#FC7574"
+            outerColor="#FDFEFF"
+            styleCheckboxContainer={styles.searchSelectionOptions}
+            checked={livingIsChecked}
+            onToggle={livingIsChecked => setLivingIsChecked(true)}
+            labelPosition={LABEL_POSITION.RIGHT}
+            label="생활가전"
+          />
+          <CircleCheckBox
+            innerColor="#FC7574"
+            outerColor="#FDFEFF"
+            styleCheckboxContainer={styles.searchSelectionOptions}
+            checked={isChecked}
+            onToggle={isChecked => setChecked(false)}
+            labelPosition={LABEL_POSITION.RIGHT}
+            label="가구/인테리어"
+          />
+          <CircleCheckBox
+            innerColor="#FC7574"
+            outerColor="#FDFEFF"
+            styleCheckboxContainer={styles.searchSelectionOptions}
+            checked={isChecked}
+            onToggle={isChecked => setChecked(false)}
+            labelPosition={LABEL_POSITION.RIGHT}
+            label="생활/주방"
+          />
+          <CircleCheckBox
+            innerColor="#FC7574"
+            outerColor="#FDFEFF"
+            styleCheckboxContainer={styles.searchSelectionOptions}
+            checked={isChecked}
+            onToggle={isChecked => setChecked(false)}
+            labelPosition={LABEL_POSITION.RIGHT}
+            label="유아동"
+          />
+          <View
+            style={[
+              {
+                width: '80%',
+                marginTop: 25,
+                marginLeft: 40,
+                backgroundColor: 'red',
+                borderRadius: 100,
+              },
+            ]}>
+            <Button
+              title="적용하기"
+              style={styles.searchSelectionButton}
+              color="#FC7574"
+              paddingHorizontal={width * 6}
+              height={width * 6}
+              onPress={() => {
+                setCategoryValue('');
+              }}
+            />
+          </View>
         </RBSheet>
         <RBSheet
           ref={refRBSheet3}
@@ -314,6 +410,7 @@ const SearchResult = () => {
             },
             container: {
               backgroundColor: '#fff',
+              borderRadius: 20,
             },
           }}>
           <Pressable
@@ -543,11 +640,25 @@ const styles = StyleSheet.create({
   searchSelectionOptions: {
     marginLeft: width * 20,
     marginTop: width * 8,
-    width: width * 100,
+    width: width * 300,
     height: width * 30,
     paddingTop: width * 6,
     paddingHorizontal: width * 10,
-    fontSize: width * 6,
+    fontSize: width * 8,
+  },
+  searchSelectionTitle: {
+    marginLeft: width * 18,
+    marginVertical: width * 4,
+    width: width * 300,
+    height: width * 30,
+    paddingTop: width * 6,
+    paddingHorizontal: width * 10,
+    fontSize: width * 18,
+    fontWeight: 'bold',
+  },
+  searchSelectionButton: {
+    width: width * 20,
+    color: '#FC7574',
   },
   checkboxContainer: {
     flexDirection: 'row',
