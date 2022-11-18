@@ -8,7 +8,17 @@ import {
   ScrollView,
   Button,
 } from 'react-native';
-import {AlarmIcon, SearchIcon} from '../svg';
+import {
+  AlarmIcon,
+  SearchIcon,
+  SettingIcon,
+  OnjungIcon,
+  LikeIcon,
+  ReviewIcon,
+  BorrowIcon,
+  DropdownIcon,
+  PinkCheckIcon,
+} from '../svg';
 import {SafeAreaView} from 'react-native-safe-area-context';
 import {width, height} from '../../utils/globalStyles';
 import data from './data.json';
@@ -29,116 +39,142 @@ const MyPage = () => {
 
   return (
     <SafeAreaView>
-      <View style={styles.settings}>
-        <AlarmIcon
-          onPress={() => {
-            navigation.navigate('Search');
-          }}
-          style={styles.alarm}
-        />
-        <SearchIcon style={styles.search} />
-      </View>
-      <View style={styles.container}></View>
-      <View style={styles.container}>
-        <Pressable
-          onPress={() => {
-            setValue('나의 상품');
-          }}
-          style={styles.textbutton01}>
-          <Text style={{color: value === '나의 상품' ? '#F05655' : '#8B95A1'}}>
-            나의 상품
-          </Text>
-        </Pressable>
-        <Pressable
-          onPress={() => {
-            setValue('대여한 상품');
-          }}
-          style={styles.textbutton02}>
-          <Text
-            style={{color: value === '대여한 상품' ? '#F05655' : '#8B95A1'}}>
-            대여한 상품
-          </Text>
-        </Pressable>
-      </View>
-      <View style={styles.container}>
-        <Pressable
-          onPress={() => refRBSheet1.current.open()}
-          style={styles.searchSelection1}>
-          <Text style={styles.myPageCategory}>{categoryValue}</Text>
-        </Pressable>
-        <RBSheet
-          ref={refRBSheet1}
-          closeOnDragDown={true}
-          closeOnPressMask={false}
-          customStyles={{
-            wrapper: {
-              backgroundColor: 'rgba(0, 0, 0, 0.5)',
-            },
-            draggableIcon: {
-              backgroundColor: '#000',
-            },
-            container: {
-              backgroundColor: '#fff',
-              borderRadius: 20,
-            },
-          }}>
-          <Text style={styles.searchSelectionTitle}>전체</Text>
-          <Pressable
+      <ScrollView style={styles.pageContainer}>
+        <View style={styles.settings}>
+          <AlarmIcon
             onPress={() => {
-              setCategoryValue('모든상품보기');
+              navigation.navigate('Search');
             }}
-            style={styles.searchSelectionOptions}
+            style={styles.alarm}
           />
+          <SettingIcon style={styles.setting} />
+        </View>
+        <View style={styles.profile}>
+          <Image
+            style={styles.profilePic}
+            source={require('../../assets/imgs/main/Rectangle.png')}
+          />
+          <Text style={styles.userName}>얼리어답터 지우</Text>
+        </View>
+        <View style={styles.profileMenu}>
+          <View style={styles.rateBox}>
+            <Text style={styles.rateText}>나의 정 5.0</Text>
+            <OnjungIcon style={styles.rateIcon} />
+            <OnjungIcon style={styles.rateIcon} />
+            <OnjungIcon style={styles.rateIcon} />
+            <OnjungIcon style={styles.rateIcon} />
+            <OnjungIcon style={styles.rateIcon} />
+          </View>
+        </View>
+        <View style={styles.profileMenu}>
+          <ReviewIcon />
+          <LikeIcon />
+          <BorrowIcon />
+        </View>
+        <View style={styles.container}>
           <Pressable
             onPress={() => {
-              setCategoryValue('대여 가능');
+              setValue('나의 상품');
             }}
-            style={styles.searchSelectionOptions}>
+            style={styles.textbutton01}>
             <Text
-              style={{
-                color: categoryValue === '대여 가능' ? '#F05655' : '#8B95A1',
-              }}>
-              대여 가능
+              style={{color: value === '나의 상품' ? '#F05655' : '#8B95A1'}}>
+              나의 상품
             </Text>
           </Pressable>
           <Pressable
             onPress={() => {
-              setCategoryValue('대여중');
+              setValue('대여한 상품');
             }}
-            style={styles.searchSelectionOptions}>
+            style={styles.textbutton02}>
             <Text
-              style={{
-                color: categoryValue === '대여중' ? '#F05655' : '#8B95A1',
-              }}>
-              대여중
+              style={{color: value === '대여한 상품' ? '#F05655' : '#8B95A1'}}>
+              대여한 상품
             </Text>
           </Pressable>
-        </RBSheet>
-      </View>
-      <ScrollView style={styles.contentContainer}>
-        {tip.map((content, i) => (
-          <View style={styles.postlist} key={i}>
+        </View>
+        <View style={styles.container}>
+          <Pressable
+            onPress={() => refRBSheet1.current.open()}
+            style={styles.searchSelection1}>
+            <Text style={styles.myPageCategory}>{categoryValue}</Text>
+            <DropdownIcon style={styles.dropdown} />
+          </Pressable>
+          <RBSheet
+            ref={refRBSheet1}
+            closeOnDragDown={true}
+            closeOnPressMask={false}
+            customStyles={{
+              wrapper: {
+                backgroundColor: 'rgba(0, 0, 0, 0.5)',
+              },
+              draggableIcon: {
+                backgroundColor: '#000',
+              },
+              container: {
+                backgroundColor: '#fff',
+                borderRadius: 20,
+                height: 200,
+              },
+            }}>
             <Pressable
               onPress={() => {
-                navigation.navigate('Detail', {idx: i});
+                setCategoryValue('모든상품보기');
               }}
-              style={styles.total}>
-              <Image
-                style={styles.postImage}
-                source={require('../../assets/imgs/main/Rectangle.png')}
-              />
-              <View style={styles.postText}>
-                <Text style={styles.postTitle} numberOfLines={1}>
-                  {content.title}
-                </Text>
-                <Text style={styles.postUser}>
-                  {content.user_name} • {content.time}분 전
-                </Text>
-                <Text style={styles.postPrice}> {content.price}원 /일</Text>
-              </View>
+              style={styles.searchSelectionTitle}>
+              <Text style={styles.searchSelectionTitle}>전체</Text>
             </Pressable>
-          </View>
-        ))}
+            <Pressable
+              onPress={() => {
+                setCategoryValue('대여 가능');
+              }}
+              style={styles.searchSelectionOptions}>
+              <Text
+                style={{
+                  color: categoryValue === '대여 가능' ? '#F05655' : '#333D4B',
+                }}>
+                대여 가능
+              </Text>
+            </Pressable>
+            <Pressable
+              onPress={() => {
+                setCategoryValue('대여중');
+              }}
+              style={styles.searchSelectionOptions}>
+              <Text
+                style={{
+                  color: categoryValue === '대여중' ? '#F05655' : '#333D4B',
+                }}>
+                대여중
+              </Text>
+            </Pressable>
+          </RBSheet>
+        </View>
+        <ScrollView style={styles.contentContainer}>
+          {tip.map((content, i) => (
+            <View style={styles.postlist} key={i}>
+              <Pressable
+                onPress={() => {
+                  navigation.navigate('Detail', {idx: i});
+                }}
+                style={styles.total}>
+                <Image
+                  style={styles.postImage}
+                  source={require('../../assets/imgs/main/Rectangle.png')}
+                />
+                <View style={styles.postText}>
+                  <Text style={styles.postTitle} numberOfLines={1}>
+                    {content.title}
+                  </Text>
+                  <Text style={styles.postUser}>
+                    {content.user_name} • {content.time}분 전
+                  </Text>
+                  <Text style={styles.postPrice}> {content.price}원 /일</Text>
+                </View>
+              </Pressable>
+            </View>
+          ))}
+        </ScrollView>
       </ScrollView>
     </SafeAreaView>
   );
@@ -148,6 +184,59 @@ const styles = StyleSheet.create({
   container: {
     flexDirection: 'row',
   },
+  profile: {
+    flexDirection: 'column',
+    alignSelf: 'center',
+    justifyContent: 'center',
+    alignItem: 'center',
+  },
+  profileMenu: {
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItem: 'center',
+  },
+
+  profilePic: {
+    height: 72,
+    width: 72,
+    borderRadius: 100,
+    marginLeft: 14,
+  },
+  userName: {
+    fontFamily: 'Apple SD Gothic Neo',
+    fontSize: width * 14,
+    fontWeight: 'bold',
+    color: '#333D4B',
+    marginTop: width * 10,
+    marginBottom: width * 18,
+  },
+  rateBox: {
+    flexDirection: 'row',
+    height: 40,
+    width: 276,
+    borderRadius: 140,
+    borderWidth: 1,
+    borderColor: '#F05655',
+    marginBottom: 30,
+  },
+  rateText: {
+    fontFamily: 'Apple SD Gothic Neo',
+    fontSize: width * 12,
+    fontWeight: 'light',
+    color: '#F05655',
+    marginTop: width * 9,
+    marginBottom: width * 10,
+    marginLeft: width * 18,
+    marginRight: width * 6,
+  },
+  rateIcon: {
+    height: 24,
+    width: 24,
+    marginTop: width * 6.3,
+    marginBottom: width * 10,
+    marginLeft: width * 6,
+  },
+
   settings: {
     flexDirection: 'row',
     marginTop: width * 10,
@@ -159,7 +248,7 @@ const styles = StyleSheet.create({
     width: width * 15,
     height: height * 15,
   },
-  search: {
+  setting: {
     marginTop: width * 10,
     marginLeft: width * 10,
     width: width * 18,
@@ -171,21 +260,29 @@ const styles = StyleSheet.create({
     width: width * 20,
     height: height * 20,
   },
+  dropdown: {
+    width: width * 20,
+    height: height * 20,
+  },
   textbutton01: {
     flex: 1,
     marginTop: width * 25,
     marginLeft: width * 25,
     width: width * 12,
-    height: height * 30,
+    height: height * 20,
   },
   textbutton02: {
-    flex: 1,
     marginTop: width * 25,
     marginLeft: width * 5,
     marginHorizontal: width * 220,
   },
   contentContainer: {
-    height: height * 500,
+    height: height * 600,
+    backgroundColor: '#F9FAFB',
+  },
+  pageContainer: {
+    height: height * 600,
+    backgroundColor: '#FFF',
   },
 
   postlist: {
@@ -227,32 +324,31 @@ const styles = StyleSheet.create({
     marginLeft: width * -3,
   },
   searchSelection1: {
-    marginLeft: width * 20,
-    marginTop: width * 8,
-    width: width * 70,
+    marginLeft: width * 15,
+    width: width * 10,
     height: width * 40,
-    paddingTop: width * 10,
+    paddingTop: width * 15,
     paddingHorizontal: width * 10,
     fontWeight: 'bold',
+    flexDirection: 'row',
   },
   searchSelectionOptions: {
-    marginLeft: width * 20,
-    marginTop: width * 8,
+    marginLeft: width * 15,
+    marginTop: width * 6,
     width: width * 300,
     height: width * 30,
-    paddingTop: width * 6,
     paddingHorizontal: width * 10,
     fontSize: width * 8,
   },
   searchSelectionTitle: {
-    marginLeft: width * 18,
-    marginVertical: width * 4,
+    marginLeft: width * 3,
+    marginVertical: width * 6,
     width: width * 300,
     height: width * 30,
-    paddingTop: width * 6,
     paddingHorizontal: width * 10,
-    fontSize: width * 18,
+    fontSize: width * 15,
     fontWeight: 'bold',
+    color: '#333D4B',
   },
   myPageCategory: {
     fontFamily: 'Apple SD Gothic Neo',
@@ -260,7 +356,7 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     color: '#333D4B',
     marginBottom: width * 2,
-    width: width * 80,
+    width: width * 100,
   },
 });
 
