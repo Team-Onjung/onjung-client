@@ -102,8 +102,8 @@ const MainTab = navigation => {
         }}
       />
       <Tab.Screen
-        name="Profile"
-        component={MyPage}
+        name="MyPage"
+        component={Profile}
         options={{
           title: '마이페이지',
           tabBarIcon: ({focused}) =>

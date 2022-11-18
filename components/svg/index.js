@@ -39,3 +39,5 @@ export {default as OnjungIcon} from '../../assets/icons/icon-onjung.svg';
 export {default as ReviewIcon} from '../../assets/icons/profile_icons/icon-review.svg';
 export {default as LikeIcon} from '../../assets/icons/profile_icons/icon-like.svg';
 export {default as BorrowIcon} from '../../assets/icons/profile_icons/icon-borrow.svg';
+
+export {default as DotsIcon} from '../../assets/icons/icon-dots.svg';
