@@ -30,3 +30,12 @@ export {default as KakaoIcon} from '../../assets/icons/icon-kakao.svg';
 export {default as AlarmIcon} from '../../assets/icons/main_icons/icon-alarm.svg';
 export {default as CategoryIcon} from '../../assets/icons/main_icons/icon-menu.svg';
 export {default as SearchIcon} from '../../assets/icons/main_icons/icon-search.svg';
+
+export {default as DropdownIcon} from '../../assets/icons/icon-dropdown.svg';
+export {default as PinkCheckIcon} from '../../assets/icons/icon-pink-check.svg';
+export {default as SettingIcon} from '../../assets/icons/icon-setting.svg';
+export {default as OnjungIcon} from '../../assets/icons/icon-onjung.svg';
+
+export {default as ReviewIcon} from '../../assets/icons/profile_icons/icon-review.svg';
+export {default as LikeIcon} from '../../assets/icons/profile_icons/icon-like.svg';
+export {default as BorrowIcon} from '../../assets/icons/profile_icons/icon-borrow.svg';
