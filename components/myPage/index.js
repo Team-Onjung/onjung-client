@@ -64,7 +64,7 @@ const MyPage = () => {
         <Pressable
           onPress={() => refRBSheet1.current.open()}
           style={styles.searchSelection1}>
-          <Text>대여 가능</Text>
+          <Text style={styles.myPageCategory}>{categoryValue}</Text>
         </Pressable>
         <RBSheet
           ref={refRBSheet1}
@@ -86,27 +86,30 @@ const MyPage = () => {
           <Pressable
             onPress={() => {
               setCategoryValue('모든상품보기');
-              console.log('click');
             }}
             style={styles.searchSelectionOptions}
           />
           <Pressable
             onPress={() => {
-              setCategoryValue('대여가능');
-              console.log('click');
+              setCategoryValue('대여 가능');
             }}
             style={styles.searchSelectionOptions}>
-            <Text style={{color: value === '대여가능' ? '#F05655' : '#8B95A1'}}>
-              대여가능
+            <Text
+              style={{
+                color: categoryValue === '대여 가능' ? '#F05655' : '#8B95A1',
+              }}>
+              대여 가능
             </Text>
           </Pressable>
           <Pressable
             onPress={() => {
               setCategoryValue('대여중');
-              console.log('click');
             }}
             style={styles.searchSelectionOptions}>
-            <Text style={{color: value === '대여중' ? '#F05655' : '#8B95A1'}}>
+            <Text
+              style={{
+                color: categoryValue === '대여중' ? '#F05655' : '#8B95A1',
+              }}>
               대여중
             </Text>
           </Pressable>
@@ -174,14 +177,12 @@ const styles = StyleSheet.create({
     marginLeft: width * 25,
     width: width * 12,
     height: height * 30,
-    marginBottom: width * 10,
   },
   textbutton02: {
     flex: 1,
     marginTop: width * 25,
     marginLeft: width * 5,
     marginHorizontal: width * 220,
-    marginBottom: width * 10,
   },
   contentContainer: {
     height: height * 500,
@@ -252,6 +253,14 @@ const styles = StyleSheet.create({
     paddingHorizontal: width * 10,
     fontSize: width * 18,
     fontWeight: 'bold',
+  },
+  myPageCategory: {
+    fontFamily: 'Apple SD Gothic Neo',
+    fontSize: width * 15,
+    fontWeight: 'bold',
+    color: '#333D4B',
+    marginBottom: width * 2,
+    width: width * 80,
   },
 });
 
