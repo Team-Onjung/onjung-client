@@ -183,6 +183,7 @@ const MyPage = () => {
 const styles = StyleSheet.create({
   container: {
     flexDirection: 'row',
+    backgroundColor: '#F9FAFB',
   },
   profile: {
     flexDirection: 'column',
@@ -208,7 +209,7 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     color: '#333D4B',
     marginTop: width * 10,
-    marginBottom: width * 18,
+    marginBottom: width * 15,
   },
   rateBox: {
     flexDirection: 'row',
@@ -217,12 +218,11 @@ const styles = StyleSheet.create({
     borderRadius: 140,
     borderWidth: 1,
     borderColor: '#F05655',
-    marginBottom: 30,
+    marginBottom: 25,
   },
   rateText: {
     fontFamily: 'Apple SD Gothic Neo',
     fontSize: width * 12,
-    fontWeight: 'light',
     color: '#F05655',
     marginTop: width * 9,
     marginBottom: width * 10,

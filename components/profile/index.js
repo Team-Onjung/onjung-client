@@ -18,6 +18,8 @@ import {
   BorrowIcon,
   DropdownIcon,
   PinkCheckIcon,
+  DotsIcon,
+  ArrowLeftIcon,
 } from '../svg';
 import {SafeAreaView} from 'react-native-safe-area-context';
 import {width, height} from '../../utils/globalStyles';
@@ -33,15 +35,16 @@ const Profile = () => {
   };
   const navigation = useNavigation();
   let tip = data.tip;
-  const [value, setValue] = useState('나의 상품');
-  const [categoryValue, setCategoryValue] = useState('모든 상품 보기');
+  const [value, setValue] = useState('상품');
   const refRBSheet1 = useRef();
+  const [follow, setFollow] = useState('팔로우');
 
   return (
     <SafeAreaView>
       <ScrollView style={styles.pageContainer}>
         <View style={styles.settings}>
-          <SettingIcon style={styles.setting} />
+          <ArrowLeftIcon style={styles.alarm} />
+          <DotsIcon style={styles.setting} />
         </View>
         <View style={styles.profile}>
           <Image
@@ -52,97 +55,38 @@ const Profile = () => {
         </View>
         <View style={styles.profileMenu}>
           <View style={styles.rateBox}>
-            <Text style={styles.rateText}>나의 정 5.0</Text>
+            <Text style={styles.rateText}>정 5.0</Text>
             <OnjungIcon style={styles.rateIcon} />
             <OnjungIcon style={styles.rateIcon} />
             <OnjungIcon style={styles.rateIcon} />
             <OnjungIcon style={styles.rateIcon} />
             <OnjungIcon style={styles.rateIcon} />
           </View>
-        </View>
-        <View style={styles.profileMenu}>
-          <ReviewIcon />
-          <LikeIcon />
-          <BorrowIcon />
+          <View
+            style={styles.followButton}
+            onPress={() => setFollow('팔로우 중')}>
+            <Text style={styles.followText}>{follow}</Text>
+          </View>
         </View>
         <View style={styles.container}>
           <Pressable
             onPress={() => {
-              setValue('나의 상품');
+              setValue('상품');
             }}
             style={styles.textbutton01}>
-            <Text
-              style={{color: value === '나의 상품' ? '#F05655' : '#8B95A1'}}>
-              나의 상품
+            <Text style={{color: value === '상품' ? '#F05655' : '#8B95A1'}}>
+              상품
             </Text>
           </Pressable>
           <Pressable
             onPress={() => {
-              setValue('대여한 상품');
+              setValue('거래후기');
             }}
             style={styles.textbutton02}>
-            <Text
-              style={{color: value === '대여한 상품' ? '#F05655' : '#8B95A1'}}>
-              대여한 상품
+            <Text style={{color: value === '거래후기' ? '#F05655' : '#8B95A1'}}>
+              거래후기
             </Text>
           </Pressable>
-        </View>
-        <View style={styles.container}>
-          <Pressable
-            onPress={() => refRBSheet1.current.open()}
-            style={styles.searchSelection1}>
-            <Text style={styles.myPageCategory}>{categoryValue}</Text>
-            <DropdownIcon style={styles.dropdown} />
-          </Pressable>
-          <RBSheet
-            ref={refRBSheet1}
-            closeOnDragDown={true}
-            closeOnPressMask={false}
-            customStyles={{
-              wrapper: {
-                backgroundColor: 'rgba(0, 0, 0, 0.5)',
-              },
-              draggableIcon: {
-                backgroundColor: '#000',
-              },
-              container: {
-                backgroundColor: '#fff',
-                borderRadius: 20,
-                height: 200,
-              },
-            }}>
-            <Pressable
-              onPress={() => {
-                setCategoryValue('모든상품보기');
-              }}
-              style={styles.searchSelectionTitle}>
-              <Text style={styles.searchSelectionTitle}>전체</Text>
-            </Pressable>
-            <Pressable
-              onPress={() => {
-                setCategoryValue('대여 가능');
-              }}
-              style={styles.searchSelectionOptions}>
-              <Text
-                style={{
-                  color: categoryValue === '대여 가능' ? '#F05655' : '#333D4B',
-                }}>
-                대여 가능
-              </Text>
-            </Pressable>
-            <Pressable
-              onPress={() => {
-                setCategoryValue('대여중');
-              }}
-              style={styles.searchSelectionOptions}>
-              <Text
-                style={{
-                  color: categoryValue === '대여중' ? '#F05655' : '#333D4B',
-                }}>
-                대여중
-              </Text>
-            </Pressable>
-          </RBSheet>
         </View>
         <ScrollView style={styles.contentContainer}>
           {tip.map((content, i) => (
@@ -177,17 +121,20 @@ const Profile = () => {
 const styles = StyleSheet.create({
   container: {
     flexDirection: 'row',
+    backgroundColor: '#F9FAFB',
   },
   profile: {
     flexDirection: 'column',
     alignSelf: 'center',
     justifyContent: 'center',
     alignItem: 'center',
+    marginTop: 10,
   },
   profileMenu: {
     flexDirection: 'row',
     justifyContent: 'center',
     alignItem: 'center',
+    marginRight: 10,
   },
 
   profilePic: {
@@ -202,25 +149,24 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     color: '#333D4B',
     marginTop: width * 10,
-    marginBottom: width * 18,
+    marginBottom: width * 15,
   },
   rateBox: {
     flexDirection: 'row',
     height: 40,
-    width: 276,
+    width: 246,
     borderRadius: 140,
     borderWidth: 1,
     borderColor: '#F05655',
-    marginBottom: 30,
+    marginBottom: 25,
   },
   rateText: {
     fontFamily: 'Apple SD Gothic Neo',
     fontSize: width * 12,
-    fontWeight: 'light',
     color: '#F05655',
     marginTop: width * 9,
     marginBottom: width * 10,
-    marginLeft: width * 18,
+    marginLeft: width * 20,
     marginRight: width * 6,
   },
   rateIcon: {
@@ -230,11 +176,28 @@ const styles = StyleSheet.create({
     marginBottom: width * 10,
     marginLeft: width * 6,
   },
-
+  followButton: {
+    height: 33,
+    width: 58,
+    backgroundColor: '#FFE9E9',
+    marginBottom: 30,
+    marginLeft: 15,
+    marginTop: 3,
+    borderRadius: 6.36,
+  },
+  followText: {
+    fontFamily: 'Apple SD Gothic Neo',
+    fontSize: width * 11,
+    fontWeight: 'light',
+    color: '#F05655',
+    marginTop: width * 7,
+    marginBottom: width * 5,
+    marginLeft: width * 11,
+    marginRight: width * 5,
+  },
   settings: {
     flexDirection: 'row',
-    marginTop: width * 10,
-    marginLeft: width * 260,
+    marginLeft: width * 18,
   },
 
   menu: {
@@ -243,14 +206,13 @@ const styles = StyleSheet.create({
     height: height * 15,
   },
   setting: {
-    marginTop: width * 10,
-    marginLeft: width * 10,
+    marginTop: width * 11,
+    marginLeft: width * 300,
     width: width * 18,
     height: height * 18,
   },
   alarm: {
-    marginTop: width * 12,
-    marginLeft: width * 40,
+    marginTop: width * 9,
     width: width * 20,
     height: height * 20,
   },
@@ -262,13 +224,15 @@ const styles = StyleSheet.create({
     flex: 1,
     marginTop: width * 25,
     marginLeft: width * 25,
+    marginBottom: width * 15,
     width: width * 12,
     height: height * 20,
   },
   textbutton02: {
     marginTop: width * 25,
+    marginBottom: width * 15,
     marginLeft: width * 5,
-    marginHorizontal: width * 220,
+    marginHorizontal: width * 265,
   },
   contentContainer: {
     height: height * 600,
