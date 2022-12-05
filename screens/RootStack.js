@@ -11,6 +11,8 @@ import Category from '../components/category/index';
 import SearchResult from '../components/search/searchResult/index';
 import Chats from '../components/chat/chats/index';
 import Talk from '../components/chat/talk';
+import MyPage from '../components/myPage/index';
+import Profile from '../components/profile/index';
 
 const Stack = createNativeStackNavigator();
 
@@ -96,6 +98,24 @@ const RootStack = () => {
       <Stack.Screen
         name="채팅"
         component={Talk}
+        options={{
+          headerShown: Platform.OS === 'ios' ? false : true,
+          headerTitleAlign: 'center',
+        }}
+      />
+      {/* 마이페이지 */}
+      <Stack.Screen
+        name="마이페이지"
+        component={MyPage}
+        options={{
+          headerShown: Platform.OS === 'ios' ? false : true,
+          headerTitleAlign: 'center',
+        }}
+      />
+      {/* 상대프로필 */}
+      <Stack.Screen
+        name="프로필"
+        component={Profile}
         options={{
           headerShown: Platform.OS === 'ios' ? false : true,
           headerTitleAlign: 'center',

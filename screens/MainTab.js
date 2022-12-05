@@ -18,6 +18,7 @@ import ProfileIcon from '../assets/icons/tabBar_icons/icon-profile.svg';
 import MonoProfileIcon from '../assets/icons/tabBar_icons-mono/icon-profile-mono.svg';
 import Auth from '../components/auth';
 import Chats from '../components/chat/chats';
+import MyPage from '../components/myPage/index';
 
 const Tab = createBottomTabNavigator();
 
@@ -101,8 +102,8 @@ const MainTab = navigation => {
         }}
       />
       <Tab.Screen
-        name="Profile"
-        component={Auth}
+        name="MyPage"
+        component={Profile}
         options={{
           title: '마이페이지',
           tabBarIcon: ({focused}) =>

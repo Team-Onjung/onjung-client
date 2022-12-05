@@ -154,7 +154,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     marginHorizontal: width * 3,
-    marginTop: width * 15,
+    marginTop: width * 30,
   },
 
   box: {

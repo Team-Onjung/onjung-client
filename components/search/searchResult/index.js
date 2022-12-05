@@ -18,7 +18,6 @@ import {cameraPermissions} from '../../config/platform';
 import RBSheet from 'react-native-raw-bottom-sheet';
 import CheckBox from '@react-native-community/checkbox';
 import CircleCheckBox, {LABEL_POSITION} from 'react-native-circle-checkbox';
-import { is } from '@babel/types';
 
 const SearchResult = () => {
   const requestPermission = () => {
