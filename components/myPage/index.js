@@ -8,7 +8,7 @@ import {
   ScrollView,
   Button,
 } from 'react-native';
-import {AlarmIcon, CategoryIcon, SearchIcon} from '../svg';
+import {AlarmIcon, SearchIcon} from '../svg';
 import {SafeAreaView} from 'react-native-safe-area-context';
 import {width, height} from '../../utils/globalStyles';
 import data from './data.json';
@@ -16,22 +16,16 @@ import {useNavigation} from '@react-navigation/native';
 import {request} from 'react-native-permissions';
 import {cameraPermissions} from '../config/platform';
 
-const Main = () => {
+const MyPage = () => {
   const requestPermission = () => {
     request(cameraPermissions).then(navigation.navigate('CameraPage'));
   };
   const navigation = useNavigation();
   let tip = data.tip;
-  const [value, setValue] = useState('대여 가능');
+  const [value, setValue] = useState('나의 상품');
   return (
     <SafeAreaView>
       <View style={styles.settings}>
-        <CategoryIcon
-          onPress={() => {
-            navigation.navigate('카테고리');
-          }}
-          style={styles.menu}
-        />
         <SearchIcon
           onPress={() => {
             navigation.navigate('Search');
@@ -43,20 +37,21 @@ const Main = () => {
       <View style={styles.container}>
         <Pressable
           onPress={() => {
-            setValue('대여 가능');
+            setValue('나의 상품');
           }}
           style={styles.textbutton01}>
-          <Text style={{color: value === '대여 가능' ? '#F05655' : '#8B95A1'}}>
-            대여 가능
+          <Text style={{color: value === '나의 상품' ? '#F05655' : '#8B95A1'}}>
+            나의 상품
           </Text>
         </Pressable>
         <Pressable
           onPress={() => {
-            setValue('대여 요청');
+            setValue('대여한 상품');
           }}
           style={styles.textbutton02}>
-          <Text style={{color: value === '대여 요청' ? '#F05655' : '#8B95A1'}}>
-            대여 요청
+          <Text
+            style={{color: value === '대여한 상품' ? '#F05655' : '#8B95A1'}}>
+            대여한 상품
           </Text>
         </Pressable>
       </View>
@@ -85,13 +80,6 @@ const Main = () => {
           </View>
         ))}
       </ScrollView>
-      <Button title="to Detail" onPress={() => navigation.navigate('Detail')} />
-      <Button
-        title="to Category"
-        onPress={() => navigation.navigate('카테고리')}
-      />
-      <Button title="to Search" onPress={() => navigation.navigate('Search')} />
-      <Button title="to Camera" onPress={requestPermission} />
     </SafeAreaView>
   );
 };
@@ -181,4 +169,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Main;
+export default MyPage;

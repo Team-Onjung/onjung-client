@@ -17,6 +17,7 @@ import MonoChatIcon from '../assets/icons/tabBar_icons-mono/icon-chat-mono.svg';
 import ProfileIcon from '../assets/icons/tabBar_icons/icon-profile.svg';
 import MonoProfileIcon from '../assets/icons/tabBar_icons-mono/icon-profile-mono.svg';
 import Auth from '../components/auth';
+import Chats from '../components/chat/chats';
 
 const Tab = createBottomTabNavigator();
 
@@ -87,7 +88,7 @@ const MainTab = navigation => {
       />
       <Tab.Screen
         name="Chat"
-        component={Chat}
+        component={Chats}
         options={{
           title: '채팅',
           headerShown: false,

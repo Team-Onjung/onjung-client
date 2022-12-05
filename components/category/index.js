@@ -1,67 +1,170 @@
+import {useNavigation} from '@react-navigation/native';
 import React from 'react';
-import {StyleSheet, Text, View, FlatList} from 'react-native';
-import {colors, width, height} from '../../utils/globalStyles';
-
-const DATA1 = ['인기매물', '디지털기기', '생활가전', '가구/인테리어'];
-const DATA2 = ['생활/주방', '유아동', '유아도서', '여성의류'];
-const DATA3 = ['여성잡화', '남성패션/잡화', '뷰티/미용', '스포츠/레저'];
-const DATA4 = ['도서', '반려동물용품', '식물', '기타'];
+import {Platform, Pressable, StyleSheet, Text, View} from 'react-native';
+import {SafeAreaView} from 'react-native-safe-area-context';
+import {width, height, colors} from '../../utils/globalStyles';
+import {
+  BeautyIcon,
+  BooksIcon,
+  CampingIcon,
+  ChildrenIcon,
+  DigitalIcon,
+  FurnitureIcon,
+  HobbyIcon,
+  KitchenIcon,
+  LivingIcon,
+  MFashionIcon,
+  PetsIcon,
+  PlantsIcon,
+  PopularIcon,
+  SportsIcon,
+  WFashionIcon,
+  EtcIcon,
+} from '../svg';
 
 const Category = () => {
+  const navigation = useNavigation();
+
   return (
-    <View style={styles.container_style}>
-      <Text style={styles.header}> 카테고리 </Text>
-      <FlatList
-        horizontal
-        data={DATA1}
-        renderItem={({item}) => <Text style={styles.itemStyle}>{item}</Text>}
-      />
-      <FlatList
-        horizontal
-        data={DATA2}
-        renderItem={({item}) => <Text style={styles.itemStyle}>{item}</Text>}
-      />
-      <FlatList
-        horizontal
-        data={DATA3}
-        renderItem={({item}) => <Text style={styles.itemStyle}>{item}</Text>}
-      />
-      <FlatList
-        horizontal
-        data={DATA4}
-        renderItem={({item}) => <Text style={styles.itemStyle}>{item}</Text>}
-      />
-    </View>
+    <SafeAreaView style={styles.block}>
+      <View style={styles.pressables}>
+        <Pressable
+          style={styles.box}
+          onPress={() => navigation.navigate('검색결과', {title: '인기상품'})}>
+          <PopularIcon />
+        </Pressable>
+        <Pressable
+          style={[styles.box]}
+          onPress={() =>
+            navigation.navigate('검색결과', {title: '디지털기기'})
+          }>
+          <DigitalIcon />
+        </Pressable>
+        <Pressable
+          style={[styles.box]}
+          onPress={() =>
+            navigation.navigate('검색결과', {title: '디지털기기'})
+          }>
+          <LivingIcon />
+        </Pressable>
+        <Pressable
+          style={[styles.box]}
+          onPress={() =>
+            navigation.navigate('검색결과', {title: '디지털기기'})
+          }>
+          <FurnitureIcon />
+        </Pressable>
+      </View>
+      <View style={styles.pressables}>
+        <Pressable
+          style={styles.box}
+          onPress={() => navigation.navigate('검색결과', {title: '인기상품'})}>
+          <KitchenIcon />
+        </Pressable>
+        <Pressable
+          style={[styles.box]}
+          onPress={() =>
+            navigation.navigate('검색결과', {title: '디지털기기'})
+          }>
+          <ChildrenIcon />
+        </Pressable>
+        <Pressable
+          style={[styles.box]}
+          onPress={() =>
+            navigation.navigate('검색결과', {title: '디지털기기'})
+          }>
+          <MFashionIcon />
+        </Pressable>
+        <Pressable
+          style={[styles.box]}
+          onPress={() =>
+            navigation.navigate('검색결과', {title: '디지털기기'})
+          }>
+          <WFashionIcon />
+        </Pressable>
+      </View>
+      <View style={styles.pressables}>
+        <Pressable
+          style={styles.box}
+          onPress={() => navigation.navigate('검색결과', {title: '인기상품'})}>
+          <CampingIcon />
+        </Pressable>
+        <Pressable
+          style={[styles.box]}
+          onPress={() =>
+            navigation.navigate('검색결과', {title: '디지털기기'})
+          }>
+          <HobbyIcon />
+        </Pressable>
+        <Pressable
+          style={[styles.box]}
+          onPress={() =>
+            navigation.navigate('검색결과', {title: '디지털기기'})
+          }>
+          <SportsIcon />
+        </Pressable>
+        <Pressable
+          style={[styles.box]}
+          onPress={() =>
+            navigation.navigate('검색결과', {title: '디지털기기'})
+          }>
+          <BeautyIcon />
+        </Pressable>
+      </View>
+      <View style={styles.pressables}>
+        <Pressable
+          style={styles.box}
+          onPress={() => navigation.navigate('검색결과', {title: '인기상품'})}>
+          <BooksIcon />
+        </Pressable>
+        <Pressable
+          style={[styles.box]}
+          onPress={() =>
+            navigation.navigate('검색결과', {title: '디지털기기'})
+          }>
+          <PetsIcon />
+        </Pressable>
+        <Pressable
+          style={[styles.box]}
+          onPress={() =>
+            navigation.navigate('검색결과', {title: '디지털기기'})
+          }>
+          <PlantsIcon />
+        </Pressable>
+        <Pressable
+          style={[styles.box]}
+          onPress={() =>
+            navigation.navigate('검색결과', {title: '디지털기기'})
+          }>
+          <EtcIcon />
+        </Pressable>
+      </View>
+    </SafeAreaView>
   );
 };
 
 const styles = StyleSheet.create({
   block: {
     flex: 1,
+    alignItems: 'center',
+    backgroundColor: '#FFF',
+  },
+
+  pressables: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    marginHorizontal: width * 3,
+    marginTop: width * 15,
+  },
+
+  box: {
+    flex: 1,
+    width: width * 88,
+    height: height * 96,
+    backgroundColor: colors.$white,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: colors['$gray-9'],
-  },
-
-  header: {
-    textAlign: 'center',
-    fontSize: width * 21,
-    letterSpacing: width * -0.24,
-    fontWeight: 'bold',
-    color: colors['$gray-1'],
-    marginVertical: width * 26,
-  },
-
-  itemStyle: {
-    flex: 1,
-    width: width * 54,
-    height: height * 54,
-    borderRadius: 10,
-    backgroundColor: colors.$white,
-    justifyContent: 'space-around',
-    alignItems: 'space-around',
-    marginHorizontal: width * 6,
-    textAlign: 'center',
+    marginHorizontal: width * 5,
   },
 
   text: {
